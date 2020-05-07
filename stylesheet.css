@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: 'Lora', serif;
+  background-image: linear-gradient(to right, #7AE0D6, #0066FF);
+  background-color: black;
+  min-width: 18rem;
+  
+  
+}
+
+p{
+  color: #292929;
+}
+
+h2{
+  margin: 0 auto 4rem auto;
+  font-size: 2.5rem;
+  text-align: center;
+  
+}
+
+@media screen and (max-width: 580px){
+  h2{
+    font-size: 2rem; 
+    border: none !important;
+  }
+  .project .about-section .contactme{
+    padding: 6rem 1rem 0rem !important;
+  }
+}
+
+header{
+  position: fixed;
+  background-color: whitesmoke;
+  width: 100%;
+  height: auto;
+  z-index: 1000;
+}
+
+#navbar{
+  
+ 
+}
+
+
+#navbar ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  min-width: 50%;
+  
+
+}
+
+#navbar a{
+  display: block;
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #292929;
+  margin: 0 1rem;
+  padding: 0.8rem;
+
+  
+}
+
+#navbar a:hover{
+  background-color: #C0C0C0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  
+}
+
+/* navbar toggle here */
+
+.nav-toggle{
+  display: none;
+}
+
+.nav-toggle-label{
+  display: none;
+}
+
+/* media query for mobile phones */
+
+@media screen and (max-width: 580px){
+  
+  nav{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    border-radius: 0 0 0.9rem 0.9rem;
+    opacity: 0.9;
+    transform: scale(0,0);
+    transition: transform 250ms ease-in-out;
+    transform-origin: 93% 6%;
+    background-color: whitesmoke;
+  }
+ 
+  
+  #navbar ul{
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  #navbar a{
+    margin: 0;
+    
+  }
+   
+  .nav-toggle-label {
+    display: inline-block;
+    position: absolute;
+    align-self: center;
+    top: 2vh;
+    right: 3%;
+   background-color: whitesmoke;
+    border-radius: 0.5rem;
+    z-index: 100;
+    
+  }
+  
+  .nav-toggle-label img{
+    display: block;
+    
+  }
+  
+  .nav-toggle:checked ~ nav{
+   transform: scale(1,1); 
+  }
+  
+  .nav-link-bar a{
+    opacity: 0;
+  }
+  
+  .nav-toggle:checked ~ nav a{
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+  }
+  
+}
+
+/* welcome section starts here */
+
+#welcome-section{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 4.4rem;
+  
+  
+  
+}
+
+#welcome-section h1{
+  font-size: 3.75rem;
+  text-align: center;
+  
+}
+
+
+#welcome-section p{
+  font-size: 1.875rem;
+  text-align: center;
+}
+.chevron{
+  position: absolute;
+  font-size: 4rem;
+  bottom: 5%;
+  transform: translate(-50%,-50%);
+  color: lightgray;
+}
+
+
+
+
+@media screen and (max-width: 580px){
+  
+  #welcome-section h1{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  #welcome-section p{
+    font-size: 1.5rem;  
+  }
+  .chevron{
+    font-size: 2rem;
+    bottom: 10%;
+  }
+}
+
+/* Projects section starts here */
+
+.projects{
+  
+  padding: 6rem 1rem 0rem;
+  height: 100%;
+}
+
+.projects h2{
+  max-width: 400px;
+  border-bottom: solid 1px;
+  
+}
+
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(15rem,28rem));
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  grid-gap: 3rem;
+  padding: 0 auto;
+  justify-content: center;
+  margin-top: 5rem;
+
+}
+
+.project-tile{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.project-tile img{
+  width: 100%;
+  
+}
+
+.project-tile p{
+  background-color: white;
+  display: block;
+  padding: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+  width: 100%;
+  transition-duration: 250ms;
+  
+ 
+}
+
+.project-tile p:hover{
+  
+  background-color: #292929;
+  color: whitesmoke;
+  transition-duration: 250ms;
+  
+}
+
+@media screen and (max-width: 580px){
+  .project-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    
+  }
+  .project-tile{
+    margin-top: 2rem;
+    
+  }
+  
+  .project-tile p{
+    font-size: 1.3rem;
+  }
+}
+
+
+
+/* about section starts here */
+
+.about-section{
+  margin-top: 10vh;
+  padding: 6rem 1rem 0rem;
+  height: 100vh;
+  
+}
+
+.about-section > h2{
+  max-width: 120px;
+  border-bottom: solid 1px;
+}
+
+.grid-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  
+}
+
+.about-grid{
+  display: grid;
+  grid-template-columns:  3fr minmax(100px, 1fr);
+  grid-column-gap: 2rem;
+  height: auto;
+  max-width: 60rem;
+  background-color: whitesmoke;
+  padding: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  
+}
+
+.aboutme {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+}
+
+.aboutme > p{
+  font-size: 1.4rem;
+}
+
+.about-img-container{
+  grid-column: 2;
+  height: 12.5rem;
+  width: 12.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #f3f3f3; /* used to be #f3f3f3 */
+  border-radius: 50%;
+  justify-self: center;
+    align-self: center;
+  transition: 250ms;
+  
+}
+
+
+.about-img-container:hover{
+  border: solid white 2px;
+  border-radius: 5%;
+  transition: 250ms;
+  
+}
+
+.about-img:hover{
+  transform: scale(1.1);
+  transition: 250ms;
+}
+
+.about-img{
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  
+}
+
+@media screen and (max-width: 970px){
+  
+  
+  .about-img-container{
+  height: 150px;
+  width: 150px;
+ 
+  
+}
+  .aboutme > p{
+  font-size: 1.1rem;
+}
+  
+}
+
+@media screen and (max-width: 670px){
+  
+  .about-grid{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 25rem;
+  }
+  
+  @media screen and (max-width: 580px){
+    .about-grid{
+      margin-top: 3rem;
+    }
+  }
+  
+  
+}
+
+@media screen and (max-width: 460px){
+  
+  .about-grid{
+    min-height: 30rem;
+    
+  }
+  
+}
+
+/* contact section starts here */
+
+.contactme{
+  height: 100vh;
+  padding: 6rem 0rem;
+  position: relative;
+}
+.contactme h2{
+  border-bottom: solid 1px;
+  max-width: 200px;
+}
+
+.contact-container{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  
+}
+
+.contact-container a{
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
+  
+}
+
+.icons{
+  font-size: 5rem;
+  color: #292929;
+  
+}
+
+.contact-container :hover{
+  color: whitesmoke;
+}
+
+
+.contact-container p{
+  margin: 0 1rem;
+}
+
+
+
+@media screen and (max-width: 580px){
+  .contact-container{
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contact-container a{
+    margin: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .icons{
+    font-size: 2.5rem;
+  }
+}
+
+
+
