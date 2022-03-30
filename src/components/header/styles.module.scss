@@ -1,21 +1,29 @@
 @use "../../styles/main.scss" as *;
 
 .header {
-  background-color: lightgray;
+  background-color: $teal-light;
   min-height: 8vh;
+  width: 100%;
   display: flex;
-  
-
+  position: fixed;
+  z-index: 999;
+  @include box-shadow;
 }
 .header-container {
-  
- width: 720px;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: auto auto;
-  
 }
+
+.nav-brand {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-font-light;
+}
+
 .nav-list ul {
   display: flex;
   justify-content: space-around;
@@ -24,17 +32,40 @@
   margin: 0;
 }
 
-.nav-list li{
+.nav-list li {
   list-style: none;
 }
 
-.nav-item{
+.nav-item {
   text-decoration: none;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+  color: $color-font-main;
+  font-size: 1.25rem;
 }
 
-.active-nav-item{
-  border-bottom: solid #666 2px;
+.active-nav-item {
+  border-bottom: solid $color-font-teal 2px;
 }
 
+///////// media queries /////////
 
+.header-icon-container {
+  display: none;
+  @include respond-to("medium") {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.headerIcon {
+  font-size: 1.75rem;
+  margin-left: 1rem;
+  color: $color-font-light;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    color: $color-font-main;
+  }
+}

@@ -1,16 +1,19 @@
 // COLOURS //
-$main-font-color: #282A3E;
 
-$main-background-color: #d8d8d8;
+$grey-dark: #1d1d20;
+$grey-light: #595D60;
+$white: #FFFFFF;
+$white-light: #F5F5F5 ;
+$teal-light: #B3C9C9;
+$teal: #67888D;
+
+$color-font-main: $grey-dark;
+$color-font-light: $grey-light;
+$color-font-teal: $teal;
+$color-bg-light: $white-light;
+$color-bg-white: $white;
 
 
 
-// BACKGROUND COLOURS //
-$color-background-dark: $main-background-color;
 
 
-///FONT COLOURS ///
-
-
-
- $primary-font: $main-font-color;

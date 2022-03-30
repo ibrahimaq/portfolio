@@ -1,11 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
 import * as styles from "./styles.module.scss"
+import {FaLinkedin, FaGithubSquare} from "react-icons/fa";
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
-        <Link to="/">Ibrahim</Link>
+        <Link to="/" className={styles.navBrand} title="Home page">I Q</Link>
         <nav className={styles.navList}>
           <ul>
             <li >
@@ -19,6 +20,10 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <div className={styles.headerIconContainer}>
+        <a href="https://www.linkedin.com/in/ibrahimaq/" className={styles.headerIcon} title="Linkedin account" ><FaLinkedin /></a>
+        <a href="https://github.com/ibrahimaq" className={styles.headerIcon} title="Github account"><FaGithubSquare /></a>
+        </div>
       </div>
     </header>
   )

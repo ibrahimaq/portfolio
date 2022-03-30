@@ -16,26 +16,15 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $color-background-dark;
+  background-color: $color-bg-light;
 }
 
 .content {
   flex-grow: 1 !important;
-  width: 100%;
+  
   // padding: 2rem .5rem;
-  margin: 0 auto;
-  background-color: sandybrown;
+  // margin: 0 auto;
+  padding-top: 8vh;
   
-  @include respond-to("medium") {
-  
-    padding: 1rem 1rem !important;
-    max-width: 786px;
-    margin: 0 auto;
-    flex-grow: 1;
-  }
-  @include respond-to("small") {
-    margin: 0 auto;
-    flex-grow: 1;
-    padding: 1rem !important;
-  }
+
 }

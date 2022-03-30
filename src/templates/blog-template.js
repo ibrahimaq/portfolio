@@ -108,6 +108,7 @@ const BlogTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <div className={styles.container}>
       <header className={styles.header}>
       <h1>{title}</h1>
       <p>Published on {date}</p>
@@ -122,6 +123,7 @@ const BlogTemplate = ({ data }) => {
         
       </header>
       {body && <article className={styles.blogBody}>{renderOutput}</article>}
+      </div>
     </Layout>
   )
 }

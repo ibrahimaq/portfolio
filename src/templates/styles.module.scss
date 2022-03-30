@@ -1,5 +1,13 @@
 @use "../styles/main.scss" as *;
 
+.container{
+    padding: 0 1rem;
+    max-width: 786px;
+    margin: 0 auto;
+    
+}
+
+
 ////// HEADER /////
 .header{
     margin: 2rem 0;
@@ -22,10 +30,11 @@
     margin-top: 2.5rem;
 }
 
-// BLOG'S ARTICLE FULL CONTENT //
+// BLOG'S ARTICLE BODY //
 .blog-body{
     line-height: 1.6em;
     margin-top: 3rem;
+    
     // font-size: 1rem;
 }
 
@@ -73,10 +82,10 @@
     margin-bottom: 1rem;
 }
 
-.h1, .h2 {
+// .h1, .h2 {
     
-    // font-size: 1.75em;
-}
+//     // font-size: 1.75em;
+// }
 .h3, .h4{
    
     margin-bottom: .375rem;
@@ -96,8 +105,8 @@
 }
 
 .blockquote{
-    background: #f9f9f9;
-  border-left: 10px solid #ccc;
+   
+  border-left: 10px solid $teal;
   margin: 1.5em 20px;
   padding: 0.5em 10px;
   width: fit-content;
@@ -120,7 +129,7 @@
   }
 }
 .orderedList, .unorderedList{
-    background: lightcoral;
+    
     padding-left: 4rem;
     
 }

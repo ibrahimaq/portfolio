@@ -11,6 +11,7 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
+      <div className={styles.container}>
       <header className={styles.header}>
         <h1>Blogs</h1>
         <p>Snippets, articles, learning journal and resources</p>
@@ -22,12 +23,13 @@ const Index = ({ data }) => {
             blogs.map((blog, index) => (
               <li key={index} className={styles.listItem}>
                 <Link to={`/blogs/${blog.node.slug}`} className={styles.link}>
-                  <div className={styles.imageContainer}>
+                  
                     <GatsbyImage
                       image={blog.node.image.gatsbyImageData}
                       alt={blog.node.image.title}
+                      className={styles.imageContainer}
                     />
-                  </div>
+                 
                   <div className={styles.blogTextContainer}>
                     <h3>{blog.node.title}</h3>
                     <p>{blog.node.date}</p>
@@ -37,6 +39,7 @@ const Index = ({ data }) => {
             ))}
         </ol>
       </section>
+      </div>
     </Layout>
   )
 }
