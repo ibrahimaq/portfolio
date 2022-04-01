@@ -13,6 +13,7 @@ module.exports = {
     "gatsby-transformer-remark",
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     
     {
       resolve: `gatsby-source-contentful`,
@@ -25,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`, //name of instance - call it anything but usually same as folder
-        path: `${__dirname}/src/posts/`, //name folder to look in
+        name: `images`, //name of instance - call it anything but usually same as folder
+        path: `${__dirname}/src/images/`, //name folder to look in
       },
     },
   ],

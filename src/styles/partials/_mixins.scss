@@ -30,3 +30,7 @@ $breakpoints: (
 @mixin box-shadow{
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
+
+@mixin box-shadow-top{
+  box-shadow: 0px -9px 15px -3px rgba(0,0,0,0.1);
+}

@@ -1,20 +1,21 @@
 @use "../styles/main.scss" as *;
 
+/////// SEE BOTTOM OF SHEET FOR SECTION TITLES, CONTAINERS, ICONS //////////////
+
 /////////////HERO INTRO//////////////////////
-.intro {
-  min-height: 85vh;
+.intro-section {
+  min-height: 80vh;
   // min-width: 100vw;
   background-color: $teal-light;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .intro-title {
   text-align: center;
-  
+
   position: relative;
   top: -8vh;
   h1 {
@@ -24,57 +25,16 @@
 }
 
 //////////////// TOOLS I USE ///////////////
-.tools {
-  background-color: $color-bg-light;
-  width: 90%;
-  // height: 50vh;
-  position: relative;
-  top: -50px;
-  margin: 0 auto;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-  padding-bottom: 1.5rem;
-  @include respond-to("small") {
-    width: 80%;
-  }
+
+.tools-section {
+  padding-bottom: 3rem;
 }
 
-.tools-title {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  padding-top: 0.75rem;
-  @include respond-to("small") {
-    justify-content: flex-start;
-    padding-left: 1rem;
-  }
-}
+.tools-title-container {
+  background-color: $teal-light;
 
-.tools h1 {
-  font-size: 1.75rem;
-  @include respond-to("small") {
-    font-size: 2rem;
-  }
-}
-
-.tool-icon {
-  font-size: 1.25rem;
-  margin-left: 1rem;
-  color: $color-font-teal;
-  @include respond-to("small") {
-    font-size: 1.75rem;
-  }
-}
-
-.tools-container {
-  margin: 0 auto;
-
-  @include respond-to("small") {
-    max-width: 95%;
-  }
-
-  @include respond-to("medium") {
-    width: 80%;
+  .section-title {
+    @include box-shadow-top;
   }
 }
 
@@ -85,14 +45,19 @@
   grid-template-columns: 1fr 1fr;
   row-gap: 1rem;
   column-gap: 1rem;
-  margin-top: 4rem;
+
   @include respond-to("small") {
     display: grid;
-
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 3rem;
     column-gap: 0.75rem;
-    
+  }
+}
+
+///adjusting grid to one column for xsmall screens
+@media only screen and (max-width: 260px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -102,10 +67,10 @@
   margin: 0 auto;
   font-size: 5rem;
   color: $color-font-light;
-
   &:nth-child(even) {
     margin-top: 1.75rem;
   }
+
   @include respond-to("small") {
     font-size: 3rem;
     &:nth-child(even) {
@@ -123,8 +88,199 @@
   padding-bottom: 3rem;
 }
 
-.tools p {
+.tools-section p {
   text-align: center;
   font-weight: 500;
   margin-top: 3rem;
+}
+
+/////////////////// PROJECTS //////////////////
+.projects-section {
+  margin-top: 3rem;
+  .projectsCardsContainer {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-to("small") {
+      display: grid;
+      grid-template-columns: auto auto;
+      row-gap: 1rem;
+      column-gap: 1rem;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    background-color: $teal-light;
+    @include box-shadow;
+    @include respond-to("small") {
+      margin-top: 0;
+    }
+  }
+
+  .card-img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-top: -2.5rem;
+      width: 90%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      // box-shadow: 0px -10px 15px 3px rgba(0,0,0,0.1);
+      @include box-shadow;
+      @include box-shadow-top;
+    }
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+  .card-content-buttons{
+    
+    margin-top: 1rem;
+    a{
+      margin-right: 1rem;
+      text-decoration: none;
+      padding: .25rem .75rem;
+      color: $color-font-main;
+      background-color: $color-bg-light;
+      border-radius: 4px;
+      
+    }
+  }
+}
+
+////////// CONTACT ///////////
+
+.contact-section {
+  background-color: $teal;
+  .contact-title-container {
+    background-color: $color-bg-light;
+  }
+
+  .section-title {
+    background-color: $teal-light !important;
+    @include box-shadow-top;
+  }
+  .section-content-container {
+    background-color: $teal-light;
+    @include box-shadow;
+  }
+
+  .section-title-icon {
+    color: $color-font-main;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  label {
+    margin-top: 1.5rem;
+    padding: 0.5rem 0;
+  }
+
+  input,
+  textarea {
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 2px $teal-light solid;
+  }
+
+  button {
+    padding: 0.75rem;
+    margin: 1.5rem auto 0;
+    background-color: $teal;
+    border: none;
+    font-size: 1rem;
+    border-radius: 8px;
+    word-wrap: break-word;
+    cursor: pointer;
+    @include box-shadow;
+    @include respond-to("small") {
+      font-size: 1.25rem;
+      padding: 0.5rem 1.75rem;
+      margin: 1.5rem auto 0;
+    }
+  }
+}
+
+/////////////// SECTION TITLES /////////////////
+
+.section-title {
+  background-color: $color-bg-light !important;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.75rem 0.5rem 0;
+  background: $teal-light;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  text-align: center;
+  @include respond-to("small") {
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.section-title h1 {
+  font-size: 1.75rem;
+
+  @include respond-to("small") {
+    font-size: 2rem;
+  }
+}
+
+.section-title-icon {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  color: $color-font-teal;
+  @include respond-to("small") {
+    font-size: 1.75rem;
+  }
+}
+
+/////////// SECTION CONTAINERS //////////
+.section-content-container {
+  margin: 0 auto;
+  background-color: $color-bg-light;
+  width: 80%;
+  padding-top: 4rem;
+  padding-bottom: 1.5rem;
+
+  @include respond-to("small") {
+    max-width: 95%;
+  }
+
+  @include respond-to("medium") {
+    width: 80%;
+  }
+}
+
+////  Title icons cause alignment issues for xxsmall screen sizes
+//// so anything below 310px title icons will NOT be displayed.
+
+@media only screen and (max-width: 310px) {
+  .section-title-icon {
+    display: none;
+  }
 }
