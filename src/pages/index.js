@@ -54,8 +54,65 @@ export default function Home() {
               <StaticImage
               src="../images/company-website.png" 
               alt="company website" 
-              layout="CONSTRAINED"
+              layout="constrained"
               placeholder="BLURRED" 
+              aspectRatio={16/9}
+              className={styles.cardImg}
+               />
+            </div>
+            <div className={styles.cardContent}>
+              <h2>Project 1</h2>
+              <p>A daily and hourly forecast weather app for every town on the globe.</p>
+              <div className={styles.cardContentButtons}>
+                <a href="/">View live</a>
+                <a href="/">&lt; View code /&gt;</a>
+              </div>
+            </div>
+          </article>
+          <article className={styles.card}>
+            <div className={styles.cardImgContainer}>
+              <StaticImage src="../images/weather-app.png"
+               alt="weather app" 
+               layout="constrained"
+               placeholder="BLURRED" 
+               aspectRatio={16/9}
+               className={styles.cardImg}
+              />
+            </div>
+            <div className={styles.cardContent}>
+              <h2>Project 1</h2>
+              <p>A daily and hourly forecast weather app for every town on the globe.</p>
+              <div className={styles.cardContentButtons}>
+                <a href="https://ibrahimaq.github.io/weather-app/">View live</a>
+                <a href="https://github.com/ibrahimaq/weather-app">&lt; View code /&gt;</a>
+              </div>
+            </div>
+          </article>
+          <article className={styles.card}>
+            <div className={styles.cardImgContainer}>
+              <StaticImage src="../images/meme-generator.png" 
+              alt="meme generator app"
+              layout="constrained"
+              placeholder="BLURRED" 
+              aspectRatio={16/9} 
+              className={styles.cardImg} />
+            </div>
+            <div className={styles.cardContent}>
+              <h2>Project 1</h2>
+              <p>A daily and hourly forecast weather app for every town on the globe.</p>
+              <div className={styles.cardContentButtons}>
+                <a href="https://ibrahimaq.github.io/meme-generator">View live</a>
+                <a href="https://github.com/ibrahimaq/meme-generator">&lt; View code /&gt;</a>
+              </div>
+            </div>
+          </article>
+          <article className={styles.card}>
+            <div className={styles.cardImgContainer}>
+              <StaticImage src="../images/weather-app.png" 
+              alt="weather app"
+              layout="constrained"
+              placeholder="BLURRED" 
+              aspectRatio={16/9} 
               className={styles.cardImg} />
             </div>
             <div className={styles.cardContent}>
@@ -69,46 +126,12 @@ export default function Home() {
           </article>
           <article className={styles.card}>
             <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/weather-app.png" width={200} alt="weather app" className={styles.cardImg} />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Project 1</h2>
-              <p>A daily and hourly forecast weather app for every town on the globe.</p>
-              <div className={styles.cardContentButtons}>
-                <a href="/">View live</a>
-                <a href="/">&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
-          <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/meme-generator.png" width={200} alt="meme generator app" className={styles.cardImg} />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Project 1</h2>
-              <p>A daily and hourly forecast weather app for every town on the globe.</p>
-              <div className={styles.cardContentButtons}>
-                <a href="/">View live</a>
-                <a href="/">&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
-          <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/weather-app.png" width={200} alt="weather app" className={styles.cardImg} />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Project 1</h2>
-              <p>A daily and hourly forecast weather app for every town on the globe.</p>
-              <div className={styles.cardContentButtons}>
-                <a href="/">View live</a>
-                <a href="/">&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
-          <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/weather-app.png" width={200} alt="weather app" className={styles.cardImg} />
+              <StaticImage src="../images/weather-app.png" 
+              alt="weather app" 
+              layout="constrained"
+              placeholder="BLURRED" 
+              aspectRatio={16/9} 
+              className={styles.cardImg} />
             </div>
             <div className={styles.cardContent}>
               <h2>Project 1</h2>
