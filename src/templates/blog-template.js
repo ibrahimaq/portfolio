@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout/Layout"
+import Seo from "../components/Seo/Seo"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
@@ -10,7 +11,7 @@ const BlogTemplate = ({ data }) => {
   // const blogPost = data.contentfulBlogPost
   // console.log(blogPost)
   const {title, body, image, date} = data.contentfulBlogPost;
-  console.log(image);
+ 
  
 
   // hero image -- getImage is helper function
@@ -92,7 +93,7 @@ const BlogTemplate = ({ data }) => {
 
       // extracting images from raw body via references in query
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        console.log(node);
+      
         const { gatsbyImageData, title } = node.data.target
       if (!gatsbyImageData) {
         // asset is not an image
@@ -108,6 +109,7 @@ const BlogTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title={title} metaDescription={title} />
       <div className={styles.container}>
       <header className={styles.header}>
       <h1>{title}</h1>

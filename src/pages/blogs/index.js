@@ -2,7 +2,9 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../../components/layout/Layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Seo from "../../components/Seo/Seo"
 import * as styles from "./styles.module.scss"
+
 const Index = ({ data }) => {
   console.log(data)
 
@@ -11,6 +13,7 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title="Blogs" />
       <div className={styles.container}>
       <header className={styles.header}>
         <h1>Blogs</h1>

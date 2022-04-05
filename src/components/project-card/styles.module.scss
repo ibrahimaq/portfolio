@@ -1,0 +1,66 @@
+@use "../../styles/main.scss" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  background-color: $teal-light;
+  @include box-shadow;
+  @include respond-to("small") {
+    margin-top: 0;
+    max-width: 400px;
+  }
+
+  .card-img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .card-img {
+      margin-top: -2.5rem;
+      width: 90%;
+      border-radius: 8px;
+      @include box-shadow;
+      @include box-shadow-top;
+    }
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+  .card-content-buttons {
+    display: flex;
+    flex-direction: column;
+    @include respond-to("small") {
+      flex-direction: row;
+    }
+  }
+
+  a {
+    text-align: center;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: $color-bg-light;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid $teal;
+    background-color: $teal;
+
+    &:hover {
+      background: $color-bg-light;
+      color: $teal;
+    }
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  .card {
+    max-width: 350px;
+  }
+}
