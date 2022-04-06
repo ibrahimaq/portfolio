@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import * as styles from "./styles.module.scss"
 import {FaLinkedin, FaGithubSquare} from "react-icons/fa";
@@ -32,8 +32,8 @@ const Header = () => {
             </ul>
           </nav>
         <div className={styles.headerIconContainer}>
-        <a href="https://www.linkedin.com/in/ibrahimaq/" className={styles.headerIcon} title="Linkedin account" target="_blank"><FaLinkedin /></a>
-        <a href="https://github.com/ibrahimaq" className={styles.headerIcon} title="Github account" target="_blank"><FaGithubSquare /></a>
+        <a href="https://www.linkedin.com/in/ibrahimaq/" rel="noreferrer" className={styles.headerIcon} title="Linkedin account" target="_blank"><FaLinkedin /></a>
+        <a href="https://github.com/ibrahimaq" rel="noreferrer" className={styles.headerIcon} title="Github account" target="_blank"><FaGithubSquare /></a>
         </div>
         <button className={styles.burgerBtn} onClick={handleSideMenu}>
           <IconContext.Provider value={{size: "2em"}}>

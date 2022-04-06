@@ -5,9 +5,9 @@ import * as styles from "./stylesIndex.module.scss"
 import { StaticImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Seo from "../components/Seo/Seo";
-import {FaTools, FaEnvelope,  FaHtml5, FaCss3, FaBootstrap, FaMdb, FaSass, FaJs, FaReact, FaLaptopCode } from "react-icons/fa";
+import {FaTools, FaEnvelope,  FaHtml5, FaCss3, FaBootstrap, FaMdb, FaSass, FaReact, FaLaptopCode } from "react-icons/fa";
 import {SiGatsby, SiGraphql, SiJavascript} from "react-icons/si";
-import {FiSend} from "react-icons/fi";
+
 
 export default function Home() {
 
@@ -66,84 +66,10 @@ export default function Home() {
           <FaLaptopCode className={styles.sectionTitleIcon} />
         </div>
         <div className={`${styles.sectionContentContainer} ${styles.projectsCardsContainer}`}>
-        <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/meme-generator.png" 
-              alt="meme generator app"
-              layout="constrained"
-              placeholder="BLURRED" 
-              aspectRatio={16/9} 
-              className={styles.cardImg} />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Meme Generator</h2>
-              <p>Make your own meme with over 100 templates to choose from.</p>
-              <div className={styles.cardContentButtons}>
-                <a href="https://ibrahimaq.github.io/meme-generator" className={styles.viewLive}>View live</a>
-                <a href="https://github.com/ibrahimaq/meme-generator" className={styles.viewCode}>&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
-        <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/random-quote-generator.png" 
-              alt="random quote generator app"
-              layout="constrained"
-              placeholder="BLURRED" 
-              aspectRatio={16/9} 
-              className={styles.cardImg} />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Random Quote Generator</h2>
-              <p>Find your inspirational quote and share it to social media.</p>
-              <div className={styles.cardContentButtons}>
-                <a href="/">View live</a>
-                <a href="/">&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
-          <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage src="../images/weather-app.png"
-               alt="weather app" 
-               layout="constrained"
-               placeholder="BLURRED" 
-               aspectRatio={16/9}
-               className={styles.cardImg}
-              />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Weather App</h2>
-              <p>A daily and hourly forecast weather app for every town on the globe.</p>
-              <div className={styles.cardContentButtons}>
-                <a href="https://ibrahimaq.github.io/weather-app/">View live</a>
-                <a href="https://github.com/ibrahimaq/weather-app">&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
-          <article className={styles.card}>
-            <div className={styles.cardImgContainer}>
-              <StaticImage
-              src="../images/company-website.png" 
-              alt="company website" 
-              layout="constrained"
-              placeholder="BLURRED" 
-              aspectRatio={16/9}
-              className={styles.cardImg}
-               />
-            </div>
-            <div className={styles.cardContent}>
-              <h2>Company Website</h2>
-              <p>A business themed website</p>
-              <div className={styles.cardContentButtons}>
-                <a href="/">View live</a>
-                <a href="/">&lt; View code /&gt;</a>
-              </div>
-            </div>
-          </article>
           <Card />
         </div>
       </section>
+      {/*////////////////// CONTACT //////////////////*/}
       <section className={styles.contactSection}>
       <div className={styles.contactTitleContainer}>
         <div className={`${styles.sectionTitle}`}>
