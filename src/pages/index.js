@@ -1,8 +1,9 @@
 import React from "react"
 import Layout from "../components/layout/Layout"
 import Card from "../components/project-card/ProjectCard"
+import ContactForm from "../components/contact-form/ContactForm"
 import * as styles from "./stylesIndex.module.scss"
-import { StaticImage } from "gatsby-plugin-image"
+// import { StaticImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Seo from "../components/Seo/Seo";
 import {FaTools, FaEnvelope,  FaHtml5, FaCss3, FaBootstrap, FaMdb, FaSass, FaReact, FaLaptopCode } from "react-icons/fa";
@@ -79,15 +80,7 @@ export default function Home() {
         </div>
         <div className={styles.sectionContentContainer}>
         <p>Drop me a message below</p>
-        <form onSubmit={handleForm}>
-          <label htmlFor="formName">Name</label>
-          <input id="formName" type="text" required placeholder="Name" />
-          <label htmlFor="formEmail">Email</label>
-          <input id="formEmail" type="email" required placeholder="Email" />
-          <label htmlFor="formMessage">Message</label>
-          <textarea name="formMessage" id="formMessage" cols="30" rows="10" required placeholder="Enter message" />
-          <button type="Submit">Send message</button>
-        </form>
+        <ContactForm />
         </div>
       </section>
     </Layout>

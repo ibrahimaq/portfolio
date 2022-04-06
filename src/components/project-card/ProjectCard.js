@@ -46,8 +46,8 @@ const ProjectCard = () => {
                 <p>{card.frontmatter.description}</p>
                 <p className={styles.cardContentTechUsed}><strong>Tools: </strong>{card.frontmatter.stack}</p>
                 <div className={styles.cardContentButtons}>
-                  <a href={`https://ibrahimaq.github.io/${card.frontmatter.slug}`}>View live</a>
-                  <a href={`https://github.com/ibrahimaq/${card.frontmatter.slug}`}>&lt; View code /&gt;</a>
+                  <a href={`https://ibrahimaq.github.io/${card.frontmatter.slug}` } target="_blank" rel="noreferrer">View live</a>
+                  <a href={`https://github.com/ibrahimaq/${card.frontmatter.slug}`} target="_blank" rel="noreferrer">&lt; View code /&gt;</a>
                 </div>
               </div>
               </article>

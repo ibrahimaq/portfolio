@@ -27,13 +27,13 @@ const Header = () => {
                 <Link to="/blogs" className={styles.navItem} activeClassName={styles.activeNavItem}>Blogs</Link>
               </li>
               <li >
-                <Link to="/about" className={styles.navItem} activeClassName={styles.activeNavItem}>About</Link>
+                <Link to="/contact" className={styles.navItem} activeClassName={styles.activeNavItem}>About</Link>
               </li>
             </ul>
           </nav>
         <div className={styles.headerIconContainer}>
-        <a href="https://www.linkedin.com/in/ibrahimaq/" rel="noreferrer" className={styles.headerIcon} title="Linkedin account" target="_blank"><FaLinkedin /></a>
-        <a href="https://github.com/ibrahimaq" rel="noreferrer" className={styles.headerIcon} title="Github account" target="_blank"><FaGithubSquare /></a>
+        <a href="https://www.linkedin.com/in/ibrahimaq/" rel="noreferrer" className={styles.headerIcon} title="Linkedin account" aria-label="Linkedin" target="_blank"><FaLinkedin /></a>
+        <a href="https://github.com/ibrahimaq" rel="noreferrer" className={styles.headerIcon} title="Github account" aria-label="Github" target="_blank"><FaGithubSquare /></a>
         </div>
         <button className={styles.burgerBtn} onClick={handleSideMenu}>
           <IconContext.Provider value={{size: "2em"}}>
