@@ -3,7 +3,7 @@ import * as styles from "./styles.module.scss"
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const ProjectCard = () => {
+const ProjectCard = ({animation}) => {
     const data = useStaticQuery(graphql`
     query MyQuery {
       allMarkdownRemark {
@@ -26,13 +26,14 @@ const ProjectCard = () => {
     
     `)
     
-        console.log(data);
-        const cards = data.allMarkdownRemark.nodes;
-        console.log(cards);
+     
+      const cards = data.allMarkdownRemark.nodes;
+
+      
     return ( 
         <>
             {cards && cards.map((card, i) => (
-              <article className={styles.card} key={card.id}>
+              <article  className={`${styles.card} ${animation}`} key={card.id}>
                 <div className={styles.cardImgContainer}>
                 <GatsbyImage 
                 image={card.frontmatter.featuredImage.childImageSharp.gatsbyImageData} 
@@ -56,30 +57,7 @@ const ProjectCard = () => {
      
      );
 }
- //https://ibrahimaq.github.io/meme-generator
+
 export default ProjectCard;
 
-// export const card = graphql`
-// query MyQuery {
-//     allMarkdownRemark {
-//       nodes {
-//         id,
-//         frontmatter {
-//           description,
-//           slug,
-//           stack,
-//           title,
-//           featuredImage {
-//             childImageSharp {
-//               gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-  
-  
- 
-//  `
 

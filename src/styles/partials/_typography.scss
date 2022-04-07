@@ -6,7 +6,7 @@ $main-font: 'Montserrat', sans-serif;
 *{
     font-family: $main-font;
     letter-spacing: -.5px;
-    
+
     
 }
 
@@ -16,4 +16,19 @@ h1,h2,h3,h4,h5,h6,p{
 
 h1,h2,h3,h4,h5,h6{
     font-weight: 500;
+}
+
+a{
+    text-decoration: underline;
+    color: inherit;
+    text-underline-offset: .25rem;
+    text-decoration-thickness: .125rem;
+    text-decoration-color: $teal;
+    
+    
+    &:hover{
+        // text-decoration-thickness: 0;
+       text-decoration: none;
+        
+    }
 }

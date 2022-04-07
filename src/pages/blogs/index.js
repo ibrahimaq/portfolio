@@ -6,10 +6,8 @@ import Seo from "../../components/Seo/Seo"
 import * as styles from "./styles.module.scss"
 
 const Index = ({ data }) => {
-  console.log(data)
 
   const blogs = data.allContentfulBlogPost.edges
-  console.log(blogs)
 
   return (
     <Layout>

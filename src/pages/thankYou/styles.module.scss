@@ -1,0 +1,12 @@
+@import "../../styles/main.scss";
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+
+    h1,p{
+        margin-bottom: .75rem;
+    }
+}

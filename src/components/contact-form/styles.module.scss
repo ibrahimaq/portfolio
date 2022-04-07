@@ -5,7 +5,7 @@
     flex-direction: column;
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1rem 1rem 1rem;
   
     label {
       margin-top: 1.5rem;
@@ -25,10 +25,16 @@
       background-color: $teal;
       border: none;
       font-size: 1rem;
-      border-radius: 8px;
+      border-radius: 6px;
       word-wrap: break-word;
       cursor: pointer;
       @include box-shadow;
+      border: 2px solid $teal;
+      transition: 350ms;
+      &:hover{
+        background-color: $color-bg-light;
+        
+      }
       @include respond-to("small") {
         font-size: 1.25rem;
         padding: 0.5rem 1.75rem;

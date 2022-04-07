@@ -8,14 +8,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import Seo from "../components/Seo/Seo";
 import {FaTools, FaEnvelope,  FaHtml5, FaCss3, FaBootstrap, FaMdb, FaSass, FaReact, FaLaptopCode } from "react-icons/fa";
 import {SiGatsby, SiGraphql, SiJavascript} from "react-icons/si";
+import {useInView} from "react-intersection-observer"
 
 
 export default function Home() {
-
-  const handleForm = (e) =>{
-    e.preventDefault();
-    console.log(e);
-  }
 
   const pageMetadata = useStaticQuery(graphql`
       {
@@ -28,14 +24,20 @@ export default function Home() {
   `)
   const title = pageMetadata.site.siteMetadata.indexPageTitle;
   const description = pageMetadata.site.siteMetadata.description;
+
+  // const { ref: heroText, inView} = useInView({triggerOnce: true});
+
+  const { ref: project, inView: isProject} = useInView({triggerOnce: true});
+  
   return(
     <Layout>
       <Seo title="Home" metaDescription={description} keywords={"developer,frontend,portfolio,javascript,gatsby,react,html,css"}/>
       {/* ///////// LANDING/INTRO SECTION ////////////// */}
       <section className={styles.introSection}>
-        <div className={styles.introTitle}>
+        <div className={`${styles.introTitle} animate__animated animate__fadeInLeft`}>
         <h1>Hello, I'm Ibrahim.</h1>
-        <h1>I build web apps!</h1>
+        <h2>I build web apps!</h2>
+        
         </div>
       </section>
        {/* ///////// TOOLS SECTION ////////////// */}
@@ -47,7 +49,7 @@ export default function Home() {
         </div>
         </div>
         <div className={styles.sectionContentContainer}>
-        <div className={styles.toolsGrid}>
+        <div  className={styles.toolsGrid}>
           <div className={styles.gridItem}><FaHtml5 color="#e34c26" /></div>
           <div className={styles.gridItem}><FaCss3 color="#264de4" /></div>
           <div className={styles.gridItem}><FaBootstrap color="#59287a" /></div>
@@ -61,13 +63,13 @@ export default function Home() {
         </div>
       </section>
       {/* /////////////// PROJECTS SECTION ////////////// */}
-      <section className={styles.projectsSection}>
-        <div className={styles.sectionTitle}>
+      <section className={styles.projectsSection} ref={project} >
+        <div  className={styles.sectionTitle}>
           <h1>Things I built</h1>
           <FaLaptopCode className={styles.sectionTitleIcon} />
         </div>
         <div className={`${styles.sectionContentContainer} ${styles.projectsCardsContainer}`}>
-          <Card />
+          {isProject? <Card animation="animate__animated animate__fadeInUp animate__slow" /> : <Card animation="" />}
         </div>
       </section>
       {/*////////////////// CONTACT //////////////////*/}

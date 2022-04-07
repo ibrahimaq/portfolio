@@ -33,6 +33,7 @@ const Seo = ({title, metaDescription, keywords}) => {
             <meta name="description" content={metaDescription? metaDescription : defaultDescription} />
             <meta name="author" content="Ibrahim Al-Quraishi" />
             {keywords? <meta name="keywords" content={keywords} /> : null}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         </Helmet>
      );
 }

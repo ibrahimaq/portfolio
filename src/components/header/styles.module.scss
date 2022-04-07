@@ -130,9 +130,9 @@
     height: 92vh;
     background: $teal;
     width: 15rem;
-    transition: 850ms;
-    display: none;
-    transition: 350ms;
+    transition: ease-in-out 500ms;
+    visibility: hidden;
+   
   }
   .nav-list ul {
     display: flex;
@@ -169,11 +169,13 @@
       background-color: black;
     }
   }
+  .nav-show {
+    right: 0;
+    visibility: visible;
+    transition: ease-in-out 500ms;
+    
+  }
 }
 
-.nav-show {
-  right: 0;
-  transition: 700ms;
-  display: block;
-  
-}
+
+
