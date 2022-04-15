@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
@@ -125,6 +125,10 @@ const BlogTemplate = ({ data }) => {
         
       </header>
       {body && <article className={styles.blogBody}>{renderOutput}</article>}
+      <div className={styles.sectionDivider}>
+        <span></span><span></span><span></span>
+      </div>
+      <p style={{marginTop: "2rem"}}>Did you like this article? Let me know by contacting me <Link to="/contact" title="contact page">here</Link> or following me on <a href="https://github.com/ibrahimaq" title="Github account">Github</a> or <a href="https://www.linkedin.com/in/ibrahimaq/" title="Linkedin account">LinkedIn</a>.</p>
       </div>
     </Layout>
   )
