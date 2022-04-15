@@ -135,27 +135,21 @@ const BlogTemplate = ({ data }) => {
 }
 
 export const query = graphql`
-  query ($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
+query ($slug: String!) {
+  contentfulBlogPost(slug: {eq: $slug}) {
+    date(formatString: "Do MMMM YYYY")
+    image {
+      gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
       title
-      date(formatString: "Do MMMM YYYY")
-      body {
-        raw
-        references {
-          ... on ContentfulAsset {
-            contentful_id
-            __typename
-            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-          title
-          }
-        }
-      }
-      image {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-        title
-      }
     }
+    body {
+      raw
+    }
+    title
+    id
   }
+}
+
 `
 
 export default BlogTemplate
@@ -167,6 +161,18 @@ export default BlogTemplate
 //       date(formatString: "Do MMMM YYYY")
 //       body {
 //         raw
+//         references {
+//           ... on ContentfulAsset {
+//             contentful_id
+//             __typename
+//             gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+//           title
+//           }
+//         }
+//       }
+//       image {
+//         gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+//         title
 //       }
 //     }
 //   }
