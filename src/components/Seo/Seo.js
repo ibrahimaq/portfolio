@@ -18,7 +18,7 @@ const Seo = ({title, metaDescription, keywords}) => {
             }
         `
     ) 
-    console.log(site);
+    // console.log(site);
         const author = site.siteMetadata.author;
         const defaultTitle = site.siteMetadata.indexPageTitle;
         const defaultDescription = site.siteMetadata.description;

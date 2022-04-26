@@ -35,13 +35,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`, //name of instance - call it anything but usually same as folder
-        path: `${__dirname}/src/images/`, //name folder to look in
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `project-cards`, //name of instance - call it anything but usually same as folder
         path: `${__dirname}/src/project-card/`, //name folder to look in
       },
@@ -51,6 +44,20 @@ module.exports = {
       options: {
         name: `project-cards-images`, //name of instance - call it anything but usually same as folder
         path: `${__dirname}/src/project-card/`, //name folder to look in
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: "carbon",
+              theme: "bdracula",
+            },
+          },
+        ],
       },
     },
   ],

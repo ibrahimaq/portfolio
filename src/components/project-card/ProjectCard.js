@@ -3,20 +3,24 @@ import * as styles from "./styles.module.scss"
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
+//animation is prop passed from main index.js to animate this component
+
 const ProjectCard = ({animation}) => {
     const data = useStaticQuery(graphql`
     query MyQuery {
-      allMarkdownRemark {
+      allFile(filter: {sourceInstanceName: {eq: "project-cards"}, ext: {eq: ".md"}}) {
         nodes {
-          id,
-          frontmatter {
-            description,
-            slug,
-            stack,
-            title,
-            featuredImage {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          id
+          childMarkdownRemark {
+            frontmatter {
+              title
+              stack
+              slug
+              description
+              featuredImage {
+                childImageSharp {
+                  gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+                }
               }
             }
           }
@@ -24,11 +28,11 @@ const ProjectCard = ({animation}) => {
       }
     }
     
+    
     `)
     
      
-      const cards = data.allMarkdownRemark.nodes;
-
+      const cards = data.allFile.nodes;
       
     return ( 
         <>
@@ -36,19 +40,19 @@ const ProjectCard = ({animation}) => {
               <article  className={`${styles.card} ${animation}`} key={card.id}>
                 <div className={styles.cardImgContainer}>
                 <GatsbyImage 
-                image={card.frontmatter.featuredImage.childImageSharp.gatsbyImageData} 
-                alt={card.frontmatter.title}
+                image={card.childMarkdownRemark.frontmatter.featuredImage.childImageSharp.gatsbyImageData} 
+                alt={card.childMarkdownRemark.frontmatter.title}
                 className={styles.cardImg}
                 />
               
               </div>
               <div className={styles.cardContent}>
-                <h2>{card.frontmatter.title}</h2>
-                <p>{card.frontmatter.description}</p>
-                <p className={styles.cardContentTechUsed}><strong>Tools: </strong>{card.frontmatter.stack}</p>
+                <h2>{card.childMarkdownRemark.frontmatter.title}</h2>
+                <p>{card.childMarkdownRemark.frontmatter.description}</p>
+                <p className={styles.cardContentTechUsed}><strong>Tools: </strong>{card.childMarkdownRemark.frontmatter.stack}</p>
                 <div className={styles.cardContentButtons}>
-                  <a href={`https://ibrahimaq.github.io/${card.frontmatter.slug}` } target="_blank" rel="noreferrer">View live</a>
-                  <a href={`https://github.com/ibrahimaq/${card.frontmatter.slug}`} target="_blank" rel="noreferrer">&lt; View code /&gt;</a>
+                  <a href={`https://ibrahimaq.github.io/${card.childMarkdownRemark.frontmatter.slug}` } target="_blank" rel="noreferrer">View live</a>
+                  <a href={`https://github.com/ibrahimaq/${card.childMarkdownRemark.frontmatter.slug}`} target="_blank" rel="noreferrer">&lt; View code /&gt;</a>
                 </div>
               </div>
               </article>

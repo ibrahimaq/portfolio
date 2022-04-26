@@ -5,12 +5,16 @@ import Seo from "../components/Seo/Seo"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+
 import * as styles from "./styles.module.scss"
 const BlogTemplate = ({ data }) => {
-  console.log(data)
-  // const blogPost = data.contentfulBlogPost
+  // code block highlighter
+  deckDeckGoHighlightElement();
+  // console.log(data)
+ 
   // console.log(blogPost)
-  const {title, body, image, date} = data.contentfulBlogPost;
+  const {title, body, image, date, seoMetaDescriptionFirstPara} = data.contentfulBlogPost;
  
  
 
@@ -18,16 +22,24 @@ const BlogTemplate = ({ data }) => {
   const heroImage = getImage(image);
 
   // embeded images in body
+  
 
 
   //options argument to be passed in renderRichText
   //converting rich text to html format
   const options = {
+
+    // FOR EMBEDDED ASSETS AND ENTRIES
+    
+
     renderMark: {
       [MARKS.BOLD]: text => <b className={styles.fontBold}>{text}</b>,
       [MARKS.ITALIC]: text => <i className={styles.fontItalic}>{text}</i>,
       [MARKS.UNDERLINE]: text => <u className={styles.fontUnderline}>{text}</u>,
-      [MARKS.CODE]: text => <code className={styles.fontCode}>{text}</code>,
+      [MARKS.CODE]: text => {
+        // console.log(text);
+        return <code className={styles.fontCode}>{text}</code>
+      },
     },
     renderNode: {
       [INLINES.HYPERLINK]: (node, children) => (
@@ -68,11 +80,15 @@ const BlogTemplate = ({ data }) => {
         <li className={styles.listItem}>{children}</li>
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => {
-        if (node.content[0].value === "") {
-          return <br />
-        } else {
-          return <p className={styles.p}>{children}</p>
+       
+       
+        if (
+          node.content.length === 1 &&
+          node.content[0].marks.find((x) => x.type === "code")
+        ) {
+          return <pre style={{lineHeight: ".9rem"}}>{children}</pre>;
         }
+        return <p className={styles.p}>{children}</p>
       },
       [BLOCKS.QUOTE]: children => (
         <blockquote className={styles.blockquote}>
@@ -90,10 +106,25 @@ const BlogTemplate = ({ data }) => {
           </>
         )
       },
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        console.log(node);
+        const markdownCodeBlock = node.data.target.codeBlock.childrenMarkdownRemark[0].html
+        return (
+
+            <div className={styles.markdownCodeBlock} dangerouslySetInnerHTML={{__html: markdownCodeBlock}} />
+          // <>
+          
+          //   <h2>Embedded Entry</h2>
+          //   <pre>
+          //     <code>{JSON.stringify(node, null, 2)}</code>
+          //   </pre>
+          // </>
+        )
+      },
 
       // extracting images from raw body via references in query
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      
+        console.log(node)
         const { gatsbyImageData, title } = node.data.target
       if (!gatsbyImageData) {
         // asset is not an image
@@ -109,11 +140,11 @@ const BlogTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title={title} metaDescription={title} />
+      <Seo title={title} metaDescription={seoMetaDescriptionFirstPara.seoMetaDescriptionFirstPara} />
       <div className={styles.container}>
       <header className={styles.header}>
       <h1>{title}</h1>
-      <p>Published on {date}</p>
+      <p>{date}</p>
      
       
       
@@ -138,17 +169,42 @@ export const query = graphql`
 query ($slug: String!) {
   contentfulBlogPost(slug: {eq: $slug}) {
     date(formatString: "Do MMMM YYYY")
+    seoMetaDescriptionFirstPara {
+      seoMetaDescriptionFirstPara
+    }
     image {
       gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
       title
     }
     body {
       raw
+      references {
+        ... on ContentfulCodeBlock {
+          __typename
+          codeBlock {
+            codeBlock
+            id
+            childrenMarkdownRemark {
+              html
+            }
+          }
+          contentful_id
+          
+        }
+        ... on ContentfulAsset {
+          __typename
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          title
+          contentful_id
+          id
+        }
+      }
     }
     title
     id
   }
 }
+
 
 `
 
