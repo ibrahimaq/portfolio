@@ -142,20 +142,15 @@ const BlogTemplate = ({ data }) => {
     <Layout>
       <Seo title={title} metaDescription={seoMetaDescriptionFirstPara.seoMetaDescriptionFirstPara} />
       <div className={styles.container}>
-      <header className={styles.header}>
-      <h1>{title}</h1>
-      <p>{date}</p>
-     
-      
-      
-      <GatsbyImage image={heroImage} alt={image.title} className={styles.heroImage} />
-   
-      
-      
-      
-        
-      </header>
-      {body && <article className={styles.blogBody}>{renderOutput}</article>}
+        <header className={styles.header}>
+          <h1>{title}</h1>
+          <p>{date}</p>
+          <GatsbyImage image={heroImage} alt={image.title} className={styles.heroImage} />
+        </header>
+
+      {body &&
+       <article className={styles.blogBody}>{renderOutput}
+       </article>}
       <div className={styles.sectionDivider}>
         <span></span><span></span><span></span>
       </div>
@@ -178,58 +173,52 @@ query ($slug: String!) {
     }
     body {
       raw
-      references {
-        ... on ContentfulCodeBlock {
-          __typename
-          codeBlock {
-            codeBlock
-            id
-            childrenMarkdownRemark {
-              html
-            }
-          }
-          contentful_id
-          
-        }
-        ... on ContentfulAsset {
-          __typename
-          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-          title
-          contentful_id
-          id
-        }
-      }
     }
     title
     id
   }
 }
-
-
 `
 
 export default BlogTemplate
 
 // export const query = graphql`
-//   query ($slug: String!) {
-//     contentfulBlogPost(slug: { eq: $slug }) {
+// query ($slug: String!) {
+//   contentfulBlogPost(slug: {eq: $slug}) {
+//     date(formatString: "Do MMMM YYYY")
+//     seoMetaDescriptionFirstPara {
+//       seoMetaDescriptionFirstPara
+//     }
+//     image {
+//       gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
 //       title
-//       date(formatString: "Do MMMM YYYY")
-//       body {
-//         raw
-//         references {
-//           ... on ContentfulAsset {
-//             contentful_id
-//             __typename
-//             gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-//           title
+//     }
+//     body {
+//       raw
+//       references {
+//         ... on ContentfulCodeBlock {
+//           __typename
+//           codeBlock {
+//             codeBlock
+//             id
+//             childrenMarkdownRemark {
+//               html
+//             }
 //           }
+//           contentful_id
+          
+//         }
+//         ... on ContentfulAsset {
+//           __typename
+//           gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+//           title
+//           contentful_id
+//           id
 //         }
 //       }
-//       image {
-//         gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-//         title
-//       }
 //     }
+//     title
+//     id
 //   }
+// }
 // `
