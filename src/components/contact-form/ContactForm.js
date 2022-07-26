@@ -13,7 +13,7 @@ const ContactForm = () => {
     console.log("ok");
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if(email.match(mailformat)){
-      emailjs.sendForm(`${process.env.EMAILJS_SERVICE_ID}`, `${process.env.EMAILJS_TEMPLATE_ID}`, form.current, `${process.env.EMAILJS_USER_ID}`)
+      emailjs.sendForm(`${process.env.GATSBY_EMAILJS_SERVICE_ID}`, `${process.env.GATSBY_EMAILJS_TEMPLATE_ID}`, form.current, `${process.env.GATSBY_EMAILJS_USER_ID}`)
       .then(res => console.log('SUCCESS!', res.status, res.text))
       .catch(err => {
       console.log("FAILED", err);
