@@ -47,6 +47,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `client-cards`, //name of instance - call it anything but usually same as folder
+        path: `${__dirname}/src/client-card/`, //name folder to look in
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

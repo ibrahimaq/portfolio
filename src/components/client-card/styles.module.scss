@@ -1,0 +1,85 @@
+@use "../../styles/main.scss" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  background-color: $color-bg-light;
+  @include box-shadow;
+  @include respond-to("small") {
+    margin: 0 1rem;
+    max-width: 400px;
+  }
+
+  .card-img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .card-img {
+      margin-top: -2.5rem;
+      width: 90%;
+      border-radius: 8px;
+      @include box-shadow;
+      @include box-shadow-top;
+    }
+  }
+
+  .card-content {
+    padding: 1rem;
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 0.75rem 0;
+
+      strong {
+        padding-right: 0.35rem;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+
+      @include respond-to("small") {
+        flex-direction: row;
+      }
+    }
+
+    // &-tech-used{
+    //   margin-top:.5rem;
+
+    // }
+
+    a {
+      text-align: center;
+      margin-right: 1rem;
+      margin-top: 1rem;
+      text-decoration: none;
+      color: $color-font-main;
+      padding: 0.25rem 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
+      border-radius: 5px;
+      border: 2px solid $teal;
+      background-color: $teal;
+      font-weight: 500;
+      &:hover {
+        background: $color-bg-light;
+        color: $color-font-main;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  .card {
+    max-width: 350px;
+  }
+}

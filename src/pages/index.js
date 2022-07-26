@@ -6,9 +6,12 @@ import * as styles from "./stylesIndex.module.scss"
 // import { StaticImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Seo from "../components/Seo/Seo";
+import { IconContext } from "react-icons";
 import {FaTools, FaEnvelope,  FaHtml5, FaCss3, FaBootstrap, FaMdb, FaSass, FaReact, FaLaptopCode } from "react-icons/fa";
 import {SiGatsby, SiGraphql, SiJavascript} from "react-icons/si";
+import {MdComputer} from "react-icons/md"
 import {useInView} from "react-intersection-observer"
+import ClientCard from "../components/client-card/ClientCard"
 
 
 export default function Home() {
@@ -28,6 +31,7 @@ export default function Home() {
   // const { ref: heroText, inView} = useInView({triggerOnce: true});
 
   const { ref: project, inView: isProject} = useInView({triggerOnce: true});
+  const { ref: client, inView: isClient} = useInView({triggerOnce: true});
   
   return(
     <Layout>
@@ -49,17 +53,57 @@ export default function Home() {
         </div>
         </div>
         <div className={styles.sectionContentContainer}>
+        <IconContext.Provider value={{className: "grid-icons", size: "4em"}}>
         <div  className={styles.toolsGrid}>
-          <div className={styles.gridItem}><FaHtml5 color="#e34c26" /></div>
-          <div className={styles.gridItem}><FaCss3 color="#264de4" /></div>
-          <div className={styles.gridItem}><FaBootstrap color="#59287a" /></div>
-          <div className={styles.gridItem}><FaSass color="#cc6699" /></div>
-          <div className={styles.gridItem}><SiJavascript color="#f7df1e" style={{backgroundColor: "black"}} /></div>
-          <div className={styles.gridItem}><FaReact color="#61dafb" /></div>
-          <div className={styles.gridItem}><SiGatsby color="#663399" /></div>
-          <div className={styles.gridItem}><SiGraphql color="#e10098" /></div>
+          <div className={styles.gridItem}>
+            <FaHtml5 color="#e34c26" title="HTML 5" />
+            <p>HTML5</p>
+          </div>
+          <div className={styles.gridItem}>
+            <FaCss3 color="#264de4" title="CSS 3" />
+            <p>CSS3</p>
+          </div>
+          <div className={styles.gridItem}>
+            <FaBootstrap color="#59287a" title="Bootstrap" />
+            <p>Bootstrap 5</p>
+          </div>
+          <div className={styles.gridItem}>
+            <FaSass color="#cc6699" title="Sass" />
+            <p>Sass</p>
+          </div>
+          <div className={styles.gridItem}>
+            <SiJavascript color="#f7df1e" style={{backgroundColor: "black"}} title="JavaScript" />
+            <p>JavaScript</p>
+          </div>
+          <div className={styles.gridItem}>
+            <FaReact color="#61dafb" title="React" />
+            <p>React</p>  
+          </div>
+          <div className={styles.gridItem}>
+            <SiGatsby color="#663399" title="Gatsby" />
+            <p>Gatsby</p>
+          </div>
+          <div className={styles.gridItem}>
+            <SiGraphql color="#e10098" title="GraphQL" />
+            <p>GraphQL</p>
+          </div>
         </div>
-        <p>Whilst I am familiar with these technologies, I am currently learning Node.js and Express.</p>
+        </IconContext.Provider>
+        
+        </div>
+      </section>
+      {/* /////////////// CLIENTT SITES //////////////// */}
+      <section ref={client}>
+        <div className={styles.clientSection}>
+          <div className={styles.clientTitleContainer}>
+            <div className={styles.sectionTitle} style={{backgroundColor: "#B3C9C9"}}>
+              <h1>Live Client Sites</h1>
+              <MdComputer className={styles.sectionTitleIcon} color="black" />
+            </div>
+          </div>
+          <div className={`${styles.sectionContentContainer} ${styles.projectsCardsContainer}`} style={{backgroundColor: "#B3C9C9", paddingTop: '5rem'}}>
+          {isClient? <ClientCard animation="animate__animated animate__fadeInUp animate__slow" /> : <ClientCard animation="" />}
+        </div>
         </div>
       </section>
       {/* /////////////// PROJECTS SECTION ////////////// */}

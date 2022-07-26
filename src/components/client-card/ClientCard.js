@@ -5,10 +5,10 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 //animation is prop passed from main index.js to animate this component
 
-const ProjectCard = ({animation}) => {
-    const data = useStaticQuery(graphql`
+const ClientCard = ({animation}) => {
+    const query = useStaticQuery(graphql`
     {
-      allFile(filter: {sourceInstanceName: {eq: "project-cards"}, ext: {eq: ".md"}}) {
+      allFile(filter: {sourceInstanceName: {eq: "client-cards"}, ext: {eq: ".md"}}) {
         nodes {
           id
           childMarkdownRemark {
@@ -29,14 +29,14 @@ const ProjectCard = ({animation}) => {
     }
     
     
-    `);
+    `)
     
-     console.log(data);
-      const cards = data?.allFile?.nodes;
+     
+      const cards = query?.allFile?.nodes;
       
     return ( 
         <>
-            {cards && cards.map((card, i) => (
+            {cards && cards.map((card) => (
               <article  className={`${styles.card} ${animation}`} key={card.id}>
                 <div className={styles.cardImgContainer}>
                 <GatsbyImage 
@@ -51,8 +51,8 @@ const ProjectCard = ({animation}) => {
                 <p>{card.childMarkdownRemark.frontmatter.description}</p>
                 <p className={styles.cardContentTechUsed}><strong>Tools: </strong>{card.childMarkdownRemark.frontmatter.stack}</p>
                 <div className={styles.cardContentButtons}>
-                  <a href={`https://ibrahimaq.github.io/${card.childMarkdownRemark.frontmatter.slug}` } target="_blank" rel="noreferrer">View live</a>
-                  <a href={`https://github.com/ibrahimaq/${card.childMarkdownRemark.frontmatter.slug}`} target="_blank" rel="noreferrer">&lt; View code /&gt;</a>
+                  <a href={`https://${card.childMarkdownRemark.frontmatter.slug}` } target="_blank" rel="noreferrer">View live</a>
+   
                 </div>
               </div>
               </article>
@@ -62,30 +62,6 @@ const ProjectCard = ({animation}) => {
      );
 }
 
-export default ProjectCard;
+export default ClientCard;
 
 
-
-// export const data = graphql`
-// {
-//   allFile(filter: {sourceInstanceName: {eq: "project-cards"}, ext: {eq: ".md"}}) {
-//     nodes {
-//       id
-//       childMarkdownRemark {
-//         frontmatter {
-//           title
-//           stack
-//           slug
-//           description
-//           featuredImage {
-//             childImageSharp {
-//               gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// `

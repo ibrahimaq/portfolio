@@ -160,28 +160,6 @@ const BlogTemplate = ({ data }) => {
   )
 }
 
-export const query = graphql`
-query ($slug: String!) {
-  contentfulBlogPost(slug: {eq: $slug}) {
-    date(formatString: "Do MMMM YYYY")
-    seoMetaDescriptionFirstPara {
-      seoMetaDescriptionFirstPara
-    }
-    image {
-      gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-      title
-    }
-    body {
-      raw
-    }
-    title
-    id
-  }
-}
-`
-
-export default BlogTemplate
-
 // export const query = graphql`
 // query ($slug: String!) {
 //   contentfulBlogPost(slug: {eq: $slug}) {
@@ -195,30 +173,52 @@ export default BlogTemplate
 //     }
 //     body {
 //       raw
-//       references {
-//         ... on ContentfulCodeBlock {
-//           __typename
-//           codeBlock {
-//             codeBlock
-//             id
-//             childrenMarkdownRemark {
-//               html
-//             }
-//           }
-//           contentful_id
-          
-//         }
-//         ... on ContentfulAsset {
-//           __typename
-//           gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-//           title
-//           contentful_id
-//           id
-//         }
-//       }
 //     }
 //     title
 //     id
 //   }
 // }
 // `
+
+export default BlogTemplate
+
+export const query = graphql`
+query ($slug: String!) {
+  contentfulBlogPost(slug: {eq: $slug}) {
+    date(formatString: "Do MMMM YYYY")
+    seoMetaDescriptionFirstPara {
+      seoMetaDescriptionFirstPara
+    }
+    image {
+      gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+      title
+    }
+    body {
+      raw
+      references {
+        ... on ContentfulCodeBlock {
+          __typename
+          codeBlock {
+            codeBlock
+            id
+            childrenMarkdownRemark {
+              html
+            }
+          }
+          contentful_id
+          
+        }
+        ... on ContentfulAsset {
+          __typename
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          title
+          contentful_id
+          id
+        }
+      }
+    }
+    title
+    id
+  }
+}
+`

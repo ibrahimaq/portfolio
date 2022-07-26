@@ -34,7 +34,7 @@ const ContactForm = () => {
           <label htmlFor="formEmail">Email</label>
           <input id="formEmail" type="email" required placeholder="Email" name="user_email" onChange={(e)=>setEmail(e.target.value)}/>
           <label htmlFor="formMessage">Message</label>
-          <textarea id="formMessage" cols="30" rows="10" required placeholder="Enter message" name="message" />
+          <textarea id="formMessage" cols="10" rows="5" required placeholder="Enter message" name="message" />
           <button type="submit" value="Send" onClick={(e)=> {
             handleSubmit(e)
         }}>Send message</button>
