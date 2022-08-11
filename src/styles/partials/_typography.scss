@@ -6,7 +6,7 @@ $main-font: 'Montserrat', sans-serif;
 *{
     font-family: $main-font;
     letter-spacing: -.5px;
-
+    word-wrap: n;
     
 }
 
@@ -31,4 +31,13 @@ a{
        text-decoration: none;
         
     }
+}
+
+code{
+    background-color: #282A36;
+    color: #ffffff;
+    font-family: monospace;
+    padding: 0 .25rem;
+    border-radius: 4px;
+    
 }

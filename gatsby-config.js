@@ -62,6 +62,7 @@ module.exports = {
             options: {
               terminal: "carbon",
               theme: "bdracula",
+              lineNumbers: true,
             },
           },
         ],

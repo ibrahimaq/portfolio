@@ -121,29 +121,30 @@
     font-size: 1.1rem;
 }
 
-.blockquote{
+.blockquote, blockquote{
    
-  border-left: 10px solid $teal;
+  border-left: 8px solid $teal;
   margin: 1.5em 20px;
   padding: 0.5em 10px;
   width: fit-content;
-  quotes: "\201C" "\201D" "\2018" "\2019";
-  &:before{
-    color: #ccc;
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
-  }
-  &:after{
-    color: #ccc;
-    content: close-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-left: 0.25em;
-    vertical-align: -.6em;
-  }
+  background-color: rgb(255, 255, 255);
+//   quotes: "\201C" "\201D" "\2018" "\2019";
+//   &:before{
+//     color: #ccc;
+//     content: open-quote;
+//     font-size: 4em;
+//     line-height: 0.1em;
+//     margin-right: 0.25em;
+//     vertical-align: -0.4em;
+//   }
+//   &:after{
+//     color: #ccc;
+//     content: close-quote;
+//     font-size: 4em;
+//     line-height: 0.1em;
+//     margin-left: 0.25em;
+//     vertical-align: -.6em;
+//   }
 }
 .orderedList, .unorderedList{
     
@@ -168,7 +169,7 @@
 
 .embedded-image{
     display:block;
-   width: 50%;
+   width: 75%;
     margin: 2rem auto 1rem;
     border-radius: 4px;
 }
