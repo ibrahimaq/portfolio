@@ -8,11 +8,11 @@ require("dotenv").config({
 })
 
 module.exports = {
-
   siteMetadata: {
     indexPageTitle: "Ibrahim Al-Quraishi | developer portfolio",
     author: "Ibrahim Al-Quraishi",
-    description: "Hi, I'm a frontend web developer in London. I enjoy building meaningful applications whilst sharing resources and blogging about my journey into web development",
+    description:
+      "Hi, I'm a frontend web developer in London. I enjoy building meaningful applications whilst sharing resources and blogging about my journey into web development",
     url: "https://ibrahimaq.com",
   },
 
@@ -23,7 +23,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
-    
+
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -65,11 +65,16 @@ module.exports = {
               lineNumbers: true,
             },
           },
+          {
+            resolve: "gatsby-plugin-manifest",
+            options: {
+              icon: "src/images/favicon.png",
+            },
+          },
         ],
       },
     },
   ],
 }
-
 
 //`gatsby-transformer-sharp`,

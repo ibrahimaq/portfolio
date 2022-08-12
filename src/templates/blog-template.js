@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { getImage, GatsbyImage, getSrc } from "gatsby-plugin-image"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
 import * as styles from "./styles.module.scss"
@@ -13,13 +13,13 @@ const BlogTemplate = ({ data }) => {
   deckDeckGoHighlightElement();
   // console.log(data)
 
-  const {title, body, image, date, seoMetaDescriptionFirstPara} = data.contentfulBlogPost;
+  const {title, body, slug, image, date, seoMetaDescriptionFirstPara} = data.contentfulBlogPost;
  
  
 
   // hero image -- getImage is helper function
   const heroImage = getImage(image);
-
+  const heroImageSrc = getSrc(heroImage); // for SEO
   // embeded images in body
   
 
@@ -139,7 +139,13 @@ const BlogTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title={title} metaDescription={seoMetaDescriptionFirstPara.seoMetaDescriptionFirstPara} />
+      <Seo 
+      title={title} 
+      description={seoMetaDescriptionFirstPara.seoMetaDescriptionFirstPara}
+      ogType={"article"}
+      ogUrl={`blogs/${slug}`}
+      ogImage={heroImageSrc}
+      />
       <div className={styles.container}>
         <header className={styles.header}>
           <h1>{title}</h1>
@@ -219,6 +225,7 @@ query ($slug: String!) {
     }
     title
     id
+    slug
   }
 }
 `

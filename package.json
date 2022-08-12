@@ -20,6 +20,7 @@
     "@emailjs/browser": "^3.5.0",
     "gatsby": "^4.10.2",
     "gatsby-plugin-image": "^2.10.1",
+    "gatsby-plugin-manifest": "^4.20.0",
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sass": "^5.10.1",
     "gatsby-plugin-sharp": "^4.10.2",

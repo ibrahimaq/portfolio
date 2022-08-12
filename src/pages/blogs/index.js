@@ -11,7 +11,14 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title="Blogs" />
+      <Seo
+      title="Blogs | Ibrahim Al-Quraishi"
+      description={"Welcome to my blogs section! Here you'll find all technical and non-technical blogs about my journey into web development."} 
+      ogType={"Blogs"}
+      ogUrl={"/blogs"}
+      
+      
+      />
       <div className={styles.container}>
       <header className={styles.header}>
         <h1>Blogs</h1>

@@ -1,27 +1,38 @@
 import React from "react"
 import {Helmet} from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import {getSrc} from "gatsby-plugin-image"
 
 
-const Seo = ({title, metaDescription, keywords}) => {
-    const {site} = useStaticQuery(
+const Seo = ({title, description, ogUrl, ogType, ogImage}) => {
+    const {site, contentfulLogo} = useStaticQuery(
        graphql`
-           {
-                site{
-                    siteMetadata{
-                        title
-                        indexPageTitle
-                        author
-                        description
-                    }
-                }
-            }
-        `
+       {
+        site {
+          siteMetadata {
+            title
+            indexPageTitle
+            author
+            description
+          }
+        }
+        contentfulLogo {
+          metaImage {
+            gatsbyImageData
+          }
+        }
+      }
+      
+    `
     ) 
-    // console.log(site);
+   
         const author = site.siteMetadata.author;
         const defaultTitle = site.siteMetadata.indexPageTitle;
         const defaultDescription = site.siteMetadata.description;
+
+        const logo = contentfulLogo.metaImage;
+        const logoSrc = getSrc(logo);
+        console.log(logoSrc)
     
     // const metaDescription = descrition || site.Metadata.description;
 
@@ -30,14 +41,25 @@ const Seo = ({title, metaDescription, keywords}) => {
         
         <Helmet>
             <title>{title? title + " | " + author : defaultTitle }</title>
-            <meta name="description" content={metaDescription? metaDescription : defaultDescription} />
+            <meta name="description" content={description? description : defaultDescription} />
             <meta name="author" content="Ibrahim Al-Quraishi" />
-            {keywords? <meta name="keywords" content={keywords} /> : null}
+
+            {/* <meta property="og:site_name" content={ogSiteName? ogSiteName : "Ibrahim Al-Quraishi | Portfolio"} /> */}
+            <meta property="og:title" content={title} />
+            <meta property="og:type" content={ogType} />
+            <meta property="og:description" content={description ? description : defaultDescription} />
+            <meta property="og:url" content={`https://ibrahimaq.netlify.app${ogUrl? ogUrl : null}`} />
+            <meta property="og:image" content={ogImage? ogImage : logoSrc} />
+
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            <meta name="twitter:url" content={`https://ibrahimaq.netlify.app${ogUrl? ogUrl : null}`} />
+            <meta name="twitter:image" content={ogImage? ogImage : logoSrc} />
+            <meta name="twitter:creator" content="@ibrahimaq30" />
+          
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-            <link rel="manifest" href="/site.webmanifest" />
+            
         </Helmet>
      );
 }

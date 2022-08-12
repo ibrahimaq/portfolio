@@ -35,7 +35,12 @@ export default function Home() {
   
   return(
     <Layout>
-      <Seo title="Home" metaDescription={description} keywords={"developer,frontend,portfolio,javascript,gatsby,react,html,css"}/>
+      <Seo 
+      title="Home" description={description} 
+      ogType={"profile"}
+      
+      
+      />
       {/* ///////// LANDING/INTRO SECTION ////////////// */}
       <section className={styles.introSection}>
         <div className={`${styles.introTitle} animate__animated animate__fadeInLeft`}>
