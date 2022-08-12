@@ -12,8 +12,7 @@ const BlogTemplate = ({ data }) => {
   // code block highlighter
   deckDeckGoHighlightElement();
   // console.log(data)
- 
-  // console.log(blogPost)
+
   const {title, body, image, date, seoMetaDescriptionFirstPara} = data.contentfulBlogPost;
  
  
@@ -107,7 +106,7 @@ const BlogTemplate = ({ data }) => {
         )
       },
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-        console.log(node);
+        // console.log(node);
         const markdownCodeBlock = node.data.target.codeBlock.childrenMarkdownRemark[0].html
         return (
 
@@ -196,25 +195,26 @@ query ($slug: String!) {
     body {
       raw
       references {
-        ... on ContentfulCodeBlock {
-          __typename
-          codeBlock {
-            codeBlock
+        ... on Node{
+          ... on ContentfulAsset {
+            contentful_id
+            __typename
+            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+            title
             id
-            childrenMarkdownRemark {
-              html
+          }
+          ... on ContentfulCodeBlock {
+            contentful_id
+            __typename
+            codeBlock {
+              codeBlock
+              id
+              childrenMarkdownRemark {
+                html
+              }
             }
           }
-          contentful_id
-          
-        }
-        ... on ContentfulAsset {
-          __typename
-          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-          title
-          contentful_id
-          id
-        }
+        }  
       }
     }
     title
@@ -222,3 +222,25 @@ query ($slug: String!) {
   }
 }
 `
+
+// references {
+//   ... on ContentfulCodeBlock {
+//     __typename
+//     codeBlock {
+//       codeBlock
+//       id
+//       childrenMarkdownRemark {
+//         html
+//       }
+//     }
+//     contentful_id
+    
+//   }
+//   ... on ContentfulAsset {
+//     contentful_id
+//     __typename
+//     gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+//     title
+//     id
+//   }
+// }
