@@ -33,6 +33,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/images/favicon.png",
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `project-cards`, //name of instance - call it anything but usually same as folder
@@ -63,12 +69,6 @@ module.exports = {
               terminal: "carbon",
               theme: "bdracula",
               lineNumbers: true,
-            },
-          },
-          {
-            resolve: "gatsby-plugin-manifest",
-            options: {
-              icon: "src/images/favicon.png",
             },
           },
         ],
