@@ -143,7 +143,7 @@ const BlogTemplate = ({ data }) => {
       title={title} 
       description={seoMetaDescriptionFirstPara.seoMetaDescriptionFirstPara}
       ogType={"article"}
-      ogUrl={`blogs/${slug}`}
+      // ogUrl={`blogs/${slug}`}
       ogImage={heroImageSrc}
       />
       <div className={styles.container}>

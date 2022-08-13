@@ -12,7 +12,7 @@ const Contact = () => {
             title={"Contact Me"} 
             description={"Contact me by filling in the contact form or find me on social media."}
             ogType={"website"}
-            ogUrl={`/contact`}
+            // ogUrl={`/contact`}
             />
             <h1 className={styles.title}>Contact</h1>
             <ContactForm />

@@ -15,7 +15,7 @@ const Index = ({ data }) => {
       title="Blogs | Ibrahim Al-Quraishi"
       description={"Welcome to my blogs section! Here you'll find all technical and non-technical blogs about my journey into web development."} 
       ogType={"Blogs"}
-      ogUrl={"/blogs"}
+      // ogUrl={"/blogs"}
       
       
       />

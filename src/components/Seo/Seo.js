@@ -48,13 +48,13 @@ const Seo = ({title, description, ogUrl, ogType, ogImage}) => {
             <meta property="og:title" content={title} />
             <meta property="og:type" content={ogType} />
             <meta property="og:description" content={description ? description : defaultDescription} />
-            <meta property="og:url" content={`https://ibrahimaq.com${ogUrl? ogUrl : null}`} />
+            <meta property="og:url" content={"ibrahimaq.com"} />
             <meta property="og:image" content={ogImage? ogImage : logoSrc} />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
-            <meta name="twitter:url" content={`https://ibrahimaq.com${ogUrl? ogUrl : null}`} />
+            <meta name="twitter:url" content={"ibrahimaq.com"} />
             <meta name="twitter:image" content={ogImage? ogImage : logoSrc} />
             <meta name="twitter:creator" content="@ibrahimaq30" />
           
