@@ -17,7 +17,7 @@ const ContactForm = () => {
       .then(res => console.log('SUCCESS!', res.status, res.text))
       .catch(err => {
       console.log("FAILED", err);
-      alert("Sorry an error occurred when sending your message. Try again or contact me via LinkedIn.")
+      alert("Sorry an error occurred when sending your message. Try again or reach out to me via Tiwtter or LinkedIn.")
     });
     form.current.reset();
     } else{

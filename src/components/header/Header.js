@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import * as styles from "./styles.module.scss"
-import {FaLinkedin, FaGithubSquare} from "react-icons/fa";
+import {FaLinkedin, FaGithubSquare, FaTwitterSquare} from "react-icons/fa";
 import {BiMenu} from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { useState } from "react";
@@ -32,6 +32,7 @@ const Header = () => {
             </ul>
           </nav>
         <div className={styles.headerIconContainer}>
+        <a href="https://twitter.com/ibrahimaq30" rel="noreferrer" className={styles.headerIcon} title="Twitter account" aria-label="Twitter" target="_blank"><FaTwitterSquare /></a>
         <a href="https://www.linkedin.com/in/ibrahimaq/" rel="noreferrer" className={styles.headerIcon} title="Linkedin account" aria-label="Linkedin" target="_blank"><FaLinkedin /></a>
         <a href="https://github.com/ibrahimaq" rel="noreferrer" className={styles.headerIcon} title="Github account" aria-label="Github" target="_blank"><FaGithubSquare /></a>
         </div>
