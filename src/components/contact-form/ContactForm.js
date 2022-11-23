@@ -36,11 +36,12 @@ useEffect(() => {
   }
   else{
       console.log("invalid form")
+      console.log(formData)
       console.log(formValidation);
       setFormValidation({...formValidation, isSubmit: false})
   }
   
-})
+},[formValidation.isSubmit])
 
 const submitForm = () => {
   emailjs.sendForm(`${process.env.GATSBY_EMAILJS_SERVICE_ID}`, `${process.env.GATSBY_EMAILJS_TEMPLATE_ID}`, form.current, `${process.env.GATSBY_EMAILJS_USER_ID}`)
@@ -66,7 +67,7 @@ const submitForm = () => {
     } else if(formData.name.length > 50){
         errors.name = "Name cannot exceed 50 characters!"
     }
-    if(!form.email){
+    if(!formData.email){
         errors.email = "Email is required!"
     } else if(formData.email.length > 100){
         errors.email = "Email cannot exceed 100 characters!"
@@ -82,34 +83,18 @@ const submitForm = () => {
     return errors;
   }
 
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("ok");
-  //   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  //   if(email.match(mailformat)){
-  //     emailjs.sendForm(`${process.env.GATSBY_EMAILJS_SERVICE_ID}`, `${process.env.GATSBY_EMAILJS_TEMPLATE_ID}`, form.current, `${process.env.GATSBY_EMAILJS_USER_ID}`)
-  //     .then(res => console.log('SUCCESS!', res.status, res.text))
-  //     .catch(err => {
-  //     console.log("FAILED", err);
-  //     alert("Sorry an error occurred when sending your message. Try again or reach out to me via Twitter or LinkedIn.")
-  //   });
-  //   form.current.reset();
-  //   } else{
-  //     alert("Please enter a valid email address.")
-  //   }
- 
-  // }
-
     return ( 
 
         <form ref={form} onSubmit={(e)=>handleSubmit(e)} onChange={(e) => handleChange(e)} className={styles.form}>
           <label htmlFor="formName">Name</label>
           <input id="formName" type="text" required placeholder="Name" name="name" />
+          {formValidation.errors.name && <p className={styles.validation}>{formValidation.errors.name}</p>}
           <label htmlFor="formEmail">Email</label>
           <input id="formEmail" type="email" required placeholder="Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>
+          {formValidation.errors.email && <p className={styles.validation}>{formValidation.errors.email}</p>}
           <label htmlFor="formMessage">Message</label>
           <textarea id="formMessage" cols="10" rows="5" required placeholder="Enter message" name="message" />
+          {formValidation.errors.message && <p className={styles.validation}>{formValidation.errors.message}</p>}
           <button type="submit" value="Send" onClick={(e)=> {
             handleSubmit(e)
         }}>Send message</button>
