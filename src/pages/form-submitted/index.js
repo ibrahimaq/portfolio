@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../../components/layout/Layout"
 import * as styles from "./styles.module.scss"
-const ThankYou = () => {
+const FormSubmitted = () => {
 
     return ( 
         <Layout>
@@ -13,4 +13,4 @@ const ThankYou = () => {
      );
 }
  
-export default ThankYou;
+export default FormSubmitted;
