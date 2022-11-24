@@ -1,10 +1,10 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
+import {navigate} from 'gatsby'
 import emailjs from '@emailjs/browser';
 
 import * as styles from "./styles.module.scss";
 const ContactForm = () => {
-  const [email, setEmail] = useState("");
   const [formData, setFormData] = useState({
     name: null,
     email: null,
@@ -35,9 +35,9 @@ useEffect(() => {
       submitForm();
   }
   else{
-      console.log("invalid form")
-      console.log(formData)
-      console.log(formValidation);
+      // console.log("invalid form")
+      // console.log(formData)
+      // console.log(formValidation);
       setFormValidation({...formValidation, isSubmit: false})
   }
   
@@ -48,7 +48,7 @@ const submitForm = () => {
       .then(res => {
           console.log('SUCCESS! ', res.status, res.text)
           // setShowAlert(false);
-          // navigate("/form-submitted")
+          navigate('/form-submitted')
       })
 
       .catch(err => {
@@ -90,7 +90,7 @@ const submitForm = () => {
           <input id="formName" type="text" required placeholder="Name" name="name" />
           {formValidation.errors.name && <p className={styles.validation}>{formValidation.errors.name}</p>}
           <label htmlFor="formEmail">Email</label>
-          <input id="formEmail" type="email" required placeholder="Email" name="email" onChange={(e)=>setEmail(e.target.value)}/>
+          <input id="formEmail" type="email" required placeholder="Email" name="email" />
           {formValidation.errors.email && <p className={styles.validation}>{formValidation.errors.email}</p>}
           <label htmlFor="formMessage">Message</label>
           <textarea id="formMessage" cols="10" rows="5" required placeholder="Enter message" name="message" />
