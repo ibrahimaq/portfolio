@@ -1,4 +1,4 @@
-@use "../styles/main.scss" as *;
+@import "../styles/main.scss";
 
 .container{
     padding: 0 1rem;
@@ -195,6 +195,9 @@
 :root{
     --deckgo-highlight-code-carbon-toolbar-display: none;
     --deckgo-highlight-code-carbon-box-shadow: rgba(0, 0, 0, 0.55) 0 6px 10px;
+    --deckgo-highlight-code-scroll: scroll !important;
+    --deckgo-highlight-code-container-width: 400px;
+    
    
 }
 

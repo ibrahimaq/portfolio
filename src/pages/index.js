@@ -41,6 +41,11 @@ export default function Home() {
       
       
       />
+      <section className="bg-greyBg">
+        <div className="content-container h-[600px]">
+          <h1>Hello, I'm Ibrahim</h1>
+        </div>
+      </section>
       {/* ///////// LANDING/INTRO SECTION ////////////// */}
       <section className={styles.introSection}>
         <div className={`${styles.introTitle} animate__animated animate__fadeInLeft`}>
