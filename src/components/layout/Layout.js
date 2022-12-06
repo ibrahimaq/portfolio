@@ -6,7 +6,7 @@ import Footer from "../footer/Footer"
 import * as styles from "./styles.module.scss"
 const Layout = ({ children }) => {
   return (
-    <div className={styles.container}>
+    <div className={`overflow-x-hidden${styles.container}`}>
       <Header />
       <div className={styles.content}>
         

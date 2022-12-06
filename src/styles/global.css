@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    font-family: 'Karla', sans-serif;
+    /* @apply bg-blackBg */
+}
+.content-container {
+    @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto;
+}
+
+/* .deckgo-highlight-code-carbon{
+    
+    width: 500px;
+
+}
+
+.line-number {
+    word-wrap: normal;
+    word-break: keep-all;
+    width: 300px;
+} */
+
+/* :root{
+    --deckgo-highlight-code-container-width: 500px;
+    --deckgo-highlight-code-scroll: scroll !important;
+   
+} */
