@@ -1,9 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import * as styles from "./styles.module.scss"
-import {FaLinkedin, FaGithubSquare, FaTwitterSquare} from "react-icons/fa";
-import {BiMenu} from "react-icons/bi";
-import { IconContext } from "react-icons";
 import { useState } from "react";
 const Header = () => {
 

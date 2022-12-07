@@ -2,13 +2,11 @@ import React from "react"
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
 
-
-import * as styles from "./styles.module.scss"
 const Layout = ({ children }) => {
   return (
-    <div className={`overflow-x-hidden${styles.container}`}>
+    <div className='overflow-hidden min-h-screen flex flex-col'>
       <Header />
-      <div className={styles.content}>
+      <div className='flex-grow mx-auto'>
         
         {children}
       </div>

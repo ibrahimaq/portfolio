@@ -7,7 +7,6 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import { getImage, GatsbyImage, getSrc } from "gatsby-plugin-image"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
-import * as styles from "./styles.module.scss"
 const BlogTemplate = ({ data }) => {
   // code block highlighter
   deckDeckGoHighlightElement();
@@ -32,12 +31,12 @@ const BlogTemplate = ({ data }) => {
     
 
     renderMark: {
-      [MARKS.BOLD]: text => <b className={styles.fontBold}>{text}</b>,
-      [MARKS.ITALIC]: text => <i className={styles.fontItalic}>{text}</i>,
-      [MARKS.UNDERLINE]: text => <u className={styles.fontUnderline}>{text}</u>,
+      [MARKS.BOLD]: text => <b>{text}</b>,
+      [MARKS.ITALIC]: text => <i>{text}</i>,
+      [MARKS.UNDERLINE]: text => <u>{text}</u>,
       [MARKS.CODE]: text => {
         // console.log(text);
-        return <code className={styles.fontCode}>{text}</code>
+        return <code>{text}</code>
       },
     },
     renderNode: {
@@ -46,37 +45,37 @@ const BlogTemplate = ({ data }) => {
           href={node.data.uri}
           target="_blank"
           rel="noreferrer"
-          className={styles.inlineLink}
+          
         >
           {children}
         </a>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
-        <h2 className={styles.h1}>{children}</h2>
+        <h2>{children}</h2>
       ),
       [BLOCKS.HEADING_2]: (node, children) => (
-        <h2 className={styles.h2}>{children}</h2>
+        <h2>{children}</h2>
       ),
       [BLOCKS.HEADING_3]: (node, children) => (
-        <h3 className={styles.h3}>{children}</h3>
+        <h3>{children}</h3>
       ),
       [BLOCKS.HEADING_4]: (node, children) => (
-        <h4 className={styles.h4}>{children}</h4>
+        <h4>{children}</h4>
       ),
       [BLOCKS.HEADING_5]: (node, children) => (
-        <h5 className={styles.h5}>{children}</h5>
+        <h5>{children}</h5>
       ),
       [BLOCKS.HEADING_6]: (node, children) => (
-        <h6 className={styles.h6}>{children}</h6>
+        <h6>{children}</h6>
       ),
       [BLOCKS.OL_LIST]: (node, children) => (
-        <ol className={styles.orderedList}>{children}</ol>
+        <ol>{children}</ol>
       ),
       [BLOCKS.UL_LIST]: (node, children) => (
-        <ul className={styles.unorderedList}>{children}</ul>
+        <ul>{children}</ul>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => (
-        <li className={styles.listItem}>{children}</li>
+        <li>{children}</li>
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => {
        
@@ -87,14 +86,14 @@ const BlogTemplate = ({ data }) => {
         ) {
           return <pre style={{lineHeight: ".9rem"}}>{children}</pre>;
         }
-        return <p className={styles.p}>{children}</p>
+        return <p>{children}</p>
       },
       [BLOCKS.QUOTE]: children => (
-        <blockquote className={styles.blockquote}>
+        <blockquote>
           <>"{children.content[0].content[0].value}"</>
         </blockquote>
       ),
-      [BLOCKS.HR]: () => <hr className={styles.hr} />,
+      [BLOCKS.HR]: () => <hr />,
       [BLOCKS.EMBEDDED_ASSET]: node => {
         return (
           <>
@@ -110,7 +109,7 @@ const BlogTemplate = ({ data }) => {
         const markdownCodeBlock = node.data.target.codeBlock.childrenMarkdownRemark[0].html
         return (
 
-            <div className={styles.markdownCodeBlock} dangerouslySetInnerHTML={{__html: markdownCodeBlock}} />
+            <div className='markdown-code-block' dangerouslySetInnerHTML={{__html: markdownCodeBlock}} />
           // <>
           
           //   <h2>Embedded Entry</h2>
@@ -130,7 +129,7 @@ const BlogTemplate = ({ data }) => {
         return null
       }
       const embeddedImage = getImage(gatsbyImageData);
-      return <GatsbyImage image={embeddedImage} alt={title} className={styles.embeddedImage} />}
+      return <GatsbyImage image={embeddedImage} alt={title} />}
     },
   }
 
@@ -146,17 +145,17 @@ const BlogTemplate = ({ data }) => {
       // ogUrl={`blogs/${slug}`}
       ogImage={heroImageSrc}
       />
-      <div className={styles.container}>
-        <header className={styles.header}>
+      <div>
+        <header>
           <h1>{title}</h1>
           <p>{date}</p>
-          <GatsbyImage image={heroImage} alt={image.title} className={styles.heroImage} />
+          <GatsbyImage image={heroImage} alt={image.title} />
         </header>
 
       {body &&
-       <article className={styles.blogBody}>{renderOutput}
+       <article className='prose'>{renderOutput}
        </article>}
-      <div className={styles.sectionDivider}>
+      <div>
         <span></span><span></span><span></span>
       </div>
       <p style={{marginTop: "2rem"}}>Did you like this article? Let me know by contacting me <Link to="/contact" title="contact page">here</Link> or following me on <a href="https://github.com/ibrahimaq" title="Github account">Github</a> or <a href="https://www.linkedin.com/in/ibrahimaq/" title="Linkedin account">LinkedIn</a>.</p>
