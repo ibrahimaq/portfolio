@@ -10,6 +10,9 @@ html {
     @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto;
 }
 
+p {
+    @apply text-font-greylight;
+}
 /* .deckgo-highlight-code-carbon{
     
     width: 500px;
@@ -26,4 +29,22 @@ html {
     --deckgo-highlight-code-container-width: 500px;
     --deckgo-highlight-code-scroll: scroll !important;
    
+} */
+/* 
+// CODE BLOCK CUSTOM PROPERTIES //
+:root{
+    --deckgo-highlight-code-carbon-toolbar-display: none;
+    --deckgo-highlight-code-carbon-box-shadow: rgba(0, 0, 0, 0.55) 0 6px 10px;
+    --deckgo-highlight-code-scroll: scroll !important;
+    --deckgo-highlight-code-container-width: 400px;
+    
+   
+}
+
+.markdown-code-block{
+    margin: 1.75rem 0;
+  
+    p{
+        margin: 1rem 0;
+    }
 } */

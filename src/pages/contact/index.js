@@ -2,7 +2,7 @@ import React from "react";
 import ContactForm from "../../components/contact-form/ContactForm"
 import Layout from "../../components/layout/Layout";
 import Seo from "../../components/Seo/Seo";
-import * as styles from "./styles.module.scss"
+
 const Contact = () => {
 
     return ( 
@@ -14,7 +14,7 @@ const Contact = () => {
             ogType={"website"}
             // ogUrl={`/contact`}
             />
-            <h1 className={styles.title}>Contact</h1>
+            <h1>Contact</h1>
             <ContactForm />
         </Layout>
      );
