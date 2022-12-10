@@ -10,10 +10,11 @@ module.exports = {
         'blackBg': '#262932',
         'greyBg': '#EBECF0',
         'greylightBg': '#F9FAFC',
+        'greyBg-dark': '#EAECEF',
         'white': '#FFFFFF',
         'font-greydark': '#545456',
         'font-greylight': '#E0E0E0',
-        'blue': '5a9eaf',
+        'blue': '#5a9eaf',
         'pink': '#E77AA6',
       }
       // typography: {

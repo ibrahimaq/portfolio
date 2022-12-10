@@ -5,6 +5,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Seo from "../components/Seo/Seo";
 import Intro from "../components/homepage/Intro"
 import RecentBlogs from "../components/blogs/RecentBlogs"
+import FloatingContactIcon from "../components/FloatingContactIcon";
+import FindMe from "../components/FindMe";
 
 
 export default function Home() {
@@ -27,11 +29,11 @@ export default function Home() {
       <Seo 
       title="Home" description={description} 
       ogType={"profile"}
-      
-      
       />
+      {/* <FloatingContactIcon /> */}
       <Intro />
       <RecentBlogs />
+      <FindMe />
 
       
     </Layout>
