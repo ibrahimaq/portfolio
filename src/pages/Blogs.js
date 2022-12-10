@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../../components/layout/Layout"
+import Layout from "../components/layout/Layout"
 import { GatsbyImage} from "gatsby-plugin-image"
-import Seo from "../../components/Seo/Seo"
+import Seo from "../components/Seo/Seo"
 
 
 const Index = ({ data }) => {
@@ -19,7 +19,10 @@ const Index = ({ data }) => {
       
       
       />
-     <h1>ALL BLOGS HERE</h1>
+     <section>
+      <h1></h1>
+     </section>
+
     </Layout>
   )
 }

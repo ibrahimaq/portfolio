@@ -2,17 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* html {
     font-family: 'Karla', sans-serif;
-    /* @apply bg-blackBg */
-}
+    
+} */
 .content-container {
     @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto;
 }
 
-p {
-    @apply text-font-greylight;
+h1 {
+    @apply text-3xl;
 }
+
+h2 {
+    @apply text-3xl sm:text-2xl;
+}
+
+p {
+    @apply text-font-greydark;
+}
+
+a {
+    @apply hover:underline hover:underline-offset-4;
+}
+
+.email, .twitter, .linkedin {
+    @apply text-center opacity-0 transition-all duration-500;
+}
+
+.floating-icon:hover .email, .floating-icon:hover .twitter, .floating-icon:hover .linkedin {
+    opacity: 1;
+    background-color: aqua;
+    margin-bottom: 40px;
+}
+
+.floating-icon:hover .icons-container div:last-child {
+    margin-bottom: 80px !important;
+}
+
 /* .deckgo-highlight-code-carbon{
     
     width: 500px;
