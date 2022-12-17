@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "gatsby";
 
 const FindMe = () => {
     return ( 
         <section className="bg-greyBg-dark">
-            <div className="content-container py-20">
+            <div className="content-container">
                 <h2 className="text-gray-600 mb-10">Find me</h2>
                 <div className="flex flex-col md:flex-row">
                     <ul>
                         {contactLinks.map((item, i) => {
                             return (
-                                <>
+                                <Fragment key={i}>
                                 {item.link.includes('/contact') ? 
-                                    <li>
+                                    <li key={i}>
                                         <Link 
                                             to={item.link} 
                                             className="text-blue hover:underline hover:underline-offset-4"
@@ -20,7 +20,7 @@ const FindMe = () => {
                                         </Link>
                                     </li>
                                     :
-                                    <li>
+                                    <li key={i}>
                                         <a 
                                             href={item.link}
                                             className="text-blue hover:underline hover:underline-offset-4"
@@ -28,7 +28,7 @@ const FindMe = () => {
                                         </a>
                                     </li>
                                 }
-                                </>
+                                </Fragment>
                             )
                         })}
                     </ul>
