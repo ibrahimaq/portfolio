@@ -3,50 +3,59 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout/Layout"
 import { GatsbyImage} from "gatsby-plugin-image"
 import Seo from "../components/Seo/Seo"
+import Card from "../components/cards/Card"
+import AllCards from "../components/cards/AllCards"
 
 
-const Index = ({ data }) => {
+const Blogs = (query) => {
 
-  const blogs = data.allContentfulBlogPost.edges
+  console.log(query)
+  const data = query?.data?.allContentfulBlog?.nodes;
 
   return (
     <Layout>
       <Seo
-      title="Blogs | Ibrahim Al-Quraishi"
-      description={"Welcome to my blogs section! Here you'll find all technical and non-technical blogs about my journey into web development."} 
-      ogType={"Blogs"}
-      // ogUrl={"/blogs"}
-      
-      
+        title="Blogs | Ibrahim Al-Quraishi"
+        description={"Welcome to my blogs section! Here you'll find all technical and non-technical blogs about my journey into web development."}
+        ogType={"Blogs"} ogUrl={undefined} ogImage={undefined}      // ogUrl={"/blogs"}
       />
-     <section>
-      <h1></h1>
-     </section>
 
+      <section className="bg-greyBg">
+          <div className="content-container">
+            <h1>Blogs</h1>
+          </div>
+      </section>
+      
+      <section className="bg-greylightBg">
+          <div className="content-container">
+            <AllCards data={data} />
+          </div>
+      </section>
     </Layout>
   )
 }
 
-export default Index
+export default Blogs
 
-export const query = graphql`query BlogsPage {
-  allContentfulBlogPost(sort: {date: DESC}) {
-    edges {
-      node {
-        title
-        slug
-        date(formatString: "Do MMMM YYYY")
+export const query = graphql`
+{
+  allContentfulBlog(sort: {date: DESC}) {
+    nodes {
+      featuredImage {
+        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
         id
-        image {
-          gatsbyImageData(
-            placeholder: BLURRED
-            layout: CONSTRAINED
-            quality: 100
-            aspectRatio: 2
-          )
-          title
+      }
+      markdown {
+        childMarkdownRemark {
+          timeToRead
+          frontmatter {
+            title
+            tags
+            slug
+          }
         }
       }
     }
   }
-}`
+}
+`

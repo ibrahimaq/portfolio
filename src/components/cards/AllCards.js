@@ -4,8 +4,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Button from "../Button";
 import Card from "./Card";
 
-const RecentCards = ({data}) => {
-    type data = [];
+
+const AllCards = ({data}) => {
+
 
     // const [isTablet, setIsTablet] = useState<Boolean | null>(null);
 
@@ -23,16 +24,16 @@ const RecentCards = ({data}) => {
     //     return () => window.removeEventListener('resize', resize);
     // }, []);
 
-    
+
 
     return ( 
         // Desktop cards in a row
         <>
         {data && 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {data.map(blog => {
+            {data.map((cardData, i) => {
                 return (
-                    <Card blog={blog} />
+                    <Card key={i} data={cardData} />
                 )
             })}
         </div>
@@ -80,5 +81,5 @@ const RecentCards = ({data}) => {
      );
 }
  
-export default RecentCards;
+export default AllCards;
 

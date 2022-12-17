@@ -12,8 +12,8 @@ const Header = () => {
   return (
 
     <header className='w-full bg-blackBg relative overflow-hidden'>
-      <div className='content-container flex flex-row justify-between items-center'>
-        <Link to="/" className='text-font-greylight text-2xl no-underline' title="Home page">I Q</Link>
+      <div className='content-container !py-0 flex flex-row justify-between items-center'>
+        <Link to="/" className='text-font-greylight text-2xl !no-underline' title="Home page">I Q</Link>
 
         {/* Desktop */}
 
@@ -22,7 +22,7 @@ const Header = () => {
               {navLinks.map((item, i) => (
                 <li key={i} className='ml-5'>
                   <Link to={item.link}
-                    className='text-font-greylight no-underline block my-5 sm:my-10 relative'
+                    className='text-font-greylight !no-underline block my-5 sm:my-10 relative'
                     activeClassName="text-white before:content-['▴'] before:block before:absolute 
                                     before:top-3/4 before:left-1/2 before:-translate-x-1/2"
                   >{item.label}</Link>

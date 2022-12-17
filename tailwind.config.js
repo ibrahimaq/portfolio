@@ -16,21 +16,56 @@ module.exports = {
         'font-greylight': '#E0E0E0',
         'blue': '#5a9eaf',
         'pink': '#E77AA6',
-      }
-      // typography: {
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+          //   maxWidth: '1200px'
+          // }
+            a: {
+              textUnderlineOffset: '4px',
+            },
+            blockquote: {
+              maxWidth: "600px",
+              margin: "0 20px",
+              backgroundColor: theme('colors.greyBg'),
+              borderLeftColor: theme('colors.font-greydark')
+            },
+            'blockquote p:first-of-type::before': {
+              content: '',
+            },
+            code: {
+              margin: '0 5px',
+            },
+            'code::before': {
+              content: '',
+            },
+            'code::after': {
+              content: '',
+            },
+            'li::marker': {
+              color: theme('colors.blue')
+            }
+            
+          
+          }
+        }
+      })
+    },
+      //  typography: {
       //       DEFAULT: {
       //           css: {
-      //               pre: null,
-      //               code: null,
-      //               'code::before': null,
-      //               'code::after': null,
-      //               'pre code': null,
-      //               'pre code::before': null,
-      //               'pre code::after': null,
+      //             maxWidth: '1200px',
+      //               // pre: null,
+      //               // code: null,
+      //               // 'code::before': null,
+      //               // 'code::after': null,
+      //               // 'pre code': null,
+      //               // 'pre code::before': null,
+      //               // 'pre code::after': null,
       //           },  
       //       },
       //   },
-    },
   },
   plugins: [
     require('@tailwindcss/typography'),

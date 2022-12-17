@@ -7,7 +7,7 @@
     
 } */
 .content-container {
-    @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto;
+    @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto py-20;
 }
 
 h1 {
@@ -23,7 +23,11 @@ p {
 }
 
 a {
-    @apply hover:underline hover:underline-offset-4;
+    @apply hover:underline hover:underline-offset-4 hover:decoration-2;
+}
+
+.blog h1 {
+    @apply md:max-w-[600px];
 }
 
 .email, .twitter, .linkedin {
@@ -39,6 +43,14 @@ a {
 .floating-icon:hover .icons-container div:last-child {
     margin-bottom: 80px !important;
 }
+
+.prose code {
+    @apply bg-[#282a36] text-white px-2 py-1 rounded-[5px];
+}
+
+/* .prose code {
+    display: inline-block;
+} */
 
 /* .deckgo-highlight-code-carbon{
     
@@ -57,21 +69,25 @@ a {
     --deckgo-highlight-code-scroll: scroll !important;
    
 } */
-/* 
-// CODE BLOCK CUSTOM PROPERTIES //
-:root{
+
+/* CODE BLOCK CUSTOM PROPERTIES  */
+/* :root {
     --deckgo-highlight-code-carbon-toolbar-display: none;
     --deckgo-highlight-code-carbon-box-shadow: rgba(0, 0, 0, 0.55) 0 6px 10px;
     --deckgo-highlight-code-scroll: scroll !important;
-    --deckgo-highlight-code-container-width: 400px;
-    
-   
+    --deckgo-highlight-code-container-width: 400px !important;  
+    --deckgo-highlight-code-container-width: 400px !important;
+} */
+.deckgo-highlight-code-carbon {
+    @apply mx-1 sm:mx-4 shadow-md text-sm;
 }
 
-.markdown-code-block{
+
+
+/* .markdown-code-block{
     margin: 1.75rem 0;
   
     p{
         margin: 1rem 0;
     }
-} */
+}  */
