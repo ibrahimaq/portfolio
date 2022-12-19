@@ -1,16 +1,52 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React, { useEffect, useState } from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
-import { GatsbyImage} from "gatsby-plugin-image"
 import Seo from "../components/Seo/Seo"
-import Card from "../components/cards/Card"
+
 import AllCards from "../components/cards/AllCards"
+import SearchBlogs from "../components/SearchBlogs"
 
 
 const Blogs = (query) => {
-
-  console.log(query)
   const data = query?.data?.allContentfulBlog?.nodes;
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [blogs, setBlogs] = useState(data);
+  
+  useEffect(() => {
+
+   
+    const searchBlogs = () => {
+        const searchResult = data.filter(blog => 
+        blog.markdown.childMarkdownRemark.frontmatter.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      return searchResult
+    }
+
+    if (searchTerm.length > 3) {
+      setBlogs(searchBlogs())
+    } else {
+      setBlogs(data);
+    }
+    // if (searchResult.length > 1){
+    //   setBlogs(searchResult)
+    //   console.log('more than one: ', searchResult)
+    // } else if (searchResult.length === 1) {
+    //   console.log('one blog found: ', searchResult)
+    // } else {
+    //   console.log('none found: ', searchResult)
+    // }
+    // data.filter(blog=> {
+    //   if (searchTerm.length > 3 && blog.markdown.childMarkdownRemark.frontmatter.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+    //     setBlogs(blog)
+    //   } else if (searchTerm === '' || null) {
+    //     setBlogs(data)
+    //   }
+    // })
+    // console.log(blogs)
+}, [searchTerm])
+
+  
 
   return (
     <Layout>
@@ -27,8 +63,13 @@ const Blogs = (query) => {
       </section>
       
       <section className="bg-greylightBg">
-          <div className="content-container">
-            <AllCards data={data} />
+          <div className="content-container min-h-screen">
+            <SearchBlogs setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+            {blogs.length > 0 ? 
+              <AllCards data={blogs} /> 
+              :
+              <p className="text-center mt-10">No blogs found :(</p>
+            }
           </div>
       </section>
     </Layout>
@@ -41,9 +82,10 @@ export const query = graphql`
 {
   allContentfulBlog(sort: {date: DESC}) {
     nodes {
+      id
+      date(formatString: "Do MMM YYYY")
       featuredImage {
         gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-        id
       }
       markdown {
         childMarkdownRemark {

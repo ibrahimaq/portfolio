@@ -19,7 +19,7 @@ const Card = ({data}) => {
 
                         <div className='p-5 relative flex flex-col h-full'>
                             <Link to={`/blogs/${data.markdown.childMarkdownRemark.frontmatter.slug}`} className="">
-                                <p className="text-sm absolute bg-white -top-[28px] left-0 px-4 py-2">27th Jan 2022</p>
+                                <p className="text-sm absolute bg-white -top-[28px] left-0 px-4 py-2">{data.date}</p>
                                 <h3 className="font-bold text-lg text-font-greydark">{data.markdown.childMarkdownRemark.frontmatter.title}</h3>
                             </Link>
                         

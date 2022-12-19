@@ -32,7 +32,7 @@ const Seo = ({title, description, ogUrl, ogType, ogImage}) => {
 
         const logo = contentfulLogo.metaImage;
         const logoSrc = getSrc(logo);
-        console.log(logoSrc)
+       
     
     // const metaDescription = descrition || site.Metadata.description;
 
