@@ -14,36 +14,18 @@ const Blogs = (query) => {
   const [blogs, setBlogs] = useState(data);
   
   useEffect(() => {
-
-   
     const searchBlogs = () => {
         const searchResult = data.filter(blog => 
         blog.markdown.childMarkdownRemark.frontmatter.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
       return searchResult
     }
-
     if (searchTerm.length > 3) {
       setBlogs(searchBlogs())
     } else {
       setBlogs(data);
     }
-    // if (searchResult.length > 1){
-    //   setBlogs(searchResult)
-    //   console.log('more than one: ', searchResult)
-    // } else if (searchResult.length === 1) {
-    //   console.log('one blog found: ', searchResult)
-    // } else {
-    //   console.log('none found: ', searchResult)
-    // }
-    // data.filter(blog=> {
-    //   if (searchTerm.length > 3 && blog.markdown.childMarkdownRemark.frontmatter.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-    //     setBlogs(blog)
-    //   } else if (searchTerm === '' || null) {
-    //     setBlogs(data)
-    //   }
-    // })
-    // console.log(blogs)
+  
 }, [searchTerm])
 
   
