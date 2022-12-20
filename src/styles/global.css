@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    @apply hover:outline hover:outline-sky-600;
-}
-
 /* html {
     font-family: 'Karla', sans-serif;
     
