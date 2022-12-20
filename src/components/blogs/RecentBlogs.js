@@ -3,6 +3,7 @@ import {graphql, Link, useStaticQuery} from 'gatsby'
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Button from "../Button";
 import RecentCards from "../cards/AllCards";
+import ArrowRight from '../../assets/icons/ArrowRight'
 
 
 const RecentBlogs = () => {
@@ -44,7 +45,7 @@ const RecentBlogs = () => {
             {allBlogs && 
               <RecentCards data={allBlogs.slice(0,3)} />
             }
-            <Button link="/blogs" label="View all blogs" className="mt-12 block !w-full py-4 md:!w-[350px] sm:!mx-auto" />
+            <Button link="/blogs" label="View all blogs" className="mt-12 block !w-full py-4 md:!w-[350px] sm:mx-auto" />
           </div>
         </section>
      );
