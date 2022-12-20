@@ -8,7 +8,7 @@ const MagnifyingGlass = ({ stroke, customClass }) => {
             viewBox="0 0 24 24"
             // width='30px'
             strokeWidth={1.5}
-            stroke="#545456"
+            stroke={stroke || '#545456'}
             className={customClass}
         >
             <path
