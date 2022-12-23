@@ -15,7 +15,7 @@ const FindMe = () => {
                                     <li key={i}>
                                         <Link 
                                             to={item.link} 
-                                            className="text-blue hover:underline hover:underline-offset-4"
+                                            className="text-blue-accent hover:underline hover:underline-offset-4"
                                             >{item.label}
                                         </Link>
                                     </li>
@@ -23,7 +23,7 @@ const FindMe = () => {
                                     <li key={i}>
                                         <a 
                                             href={item.link}
-                                            className="text-blue hover:underline hover:underline-offset-4"
+                                            className="text-blue-accent hover:underline hover:underline-offset-4"
                                             >{item.label}
                                         </a>
                                     </li>

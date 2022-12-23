@@ -6,6 +6,11 @@
     font-family: 'Karla', sans-serif;
     
 } */
+
+.box-shadow {
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+    background: #fff;
+}
 .content-container {
     @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto py-20;
 }
@@ -15,7 +20,7 @@ h1 {
 }
 
 h2 {
-    @apply text-3xl sm:text-2xl;
+    @apply sm:text-3xl text-2xl;
 }
 
 p {
@@ -79,7 +84,7 @@ a {
     --deckgo-highlight-code-container-width: 400px !important;
 } */
 .deckgo-highlight-code-carbon {
-    @apply mx-1 sm:mx-4 shadow-md text-sm;
+    @apply mx-1 sm:mx-4 shadow-md text-sm md:text-base;
 }
 
 

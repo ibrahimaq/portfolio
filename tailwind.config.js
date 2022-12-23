@@ -3,6 +3,7 @@ module.exports = {
   content: [  
     "./src/pages/**/*.{js,jsx,ts,tsx}",
     './src/components/**/*.{js, jsx,ts,tsx}',
+    './src/templates/**/*.{js, jsx,ts,tsx}'
   ],
   theme: {
     extend: {
@@ -14,8 +15,8 @@ module.exports = {
         'white': '#FFFFFF',
         'font-greydark': '#545456',
         'font-greylight': '#E0E0E0',
-        'blue': '#5a9eaf',
-        'pink': '#E77AA6',
+        'blue-accent': '#5a9eaf',
+        // 'pink': '#E77AA6',
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -26,10 +27,13 @@ module.exports = {
               textUnderlineOffset: '4px',
             },
             blockquote: {
-              maxWidth: "600px",
+              // maxWidth: "600px",
               margin: "0 20px",
-              backgroundColor: theme('colors.greyBg'),
-              borderLeftColor: theme('colors.font-greydark')
+              backgroundColor: theme('colors.pink.50'),
+              borderLeftColor: theme('colors.pink.500'),
+              paddingTop: '1px',
+              paddingBottom: '1px',
+              paddingRight: '15px',
             },
             'blockquote p:first-of-type::before': {
               content: '',
@@ -44,7 +48,7 @@ module.exports = {
               content: '',
             },
             'li::marker': {
-              color: theme('colors.blue')
+              color: theme('colors.pink.500')
             }
             
           
