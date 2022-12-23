@@ -13,7 +13,7 @@ const Footer = () => {
                <div className="flex flex-row">
                {socialIcons.map((item, i) => {
                   return (
-                     <a key={i} href={item.link} title={item.name} className='ml-3 cursor-pointer block border-b border-b-blue pb-2'>
+                     <a key={i} href={item.link} title={item.name} className='ml-3 cursor-pointer block border-b border-b-pink-500 pb-2'>
                         {item.icon}
                      </a>
                   )

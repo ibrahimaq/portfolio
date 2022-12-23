@@ -15,7 +15,6 @@ const RecentBlogs = () => {
           date(formatString: "Do MMM YYYY")
           markdown {
             childMarkdownRemark {
-              html
               frontmatter {
                 title
                 slug

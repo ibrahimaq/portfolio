@@ -60,7 +60,7 @@ const ContactForm = ({customClass}) => {
         console.log("SUCCESS! ", res.status, res.text)
         // setSubmitSuccess(true);
         // setShowAlert(false);
-        navigate("/form-submitted")
+        navigate("/thank-you")
       })
 
       .catch(err => {

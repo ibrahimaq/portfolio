@@ -6,11 +6,21 @@ exports.createPages = async ({graphql, actions}) =>{
         allContentfulBlog { 
           nodes {
             slug
+            markdown {
+              childMarkdownRemark {
+                frontmatter {
+                  tags
+                }
+              }
+            }
           }
         }
       }
       
-    `);
+    `)
+
+
+    
     //absolute path to template
     const templatePath = path.resolve("./src/templates/blog-template.js");
     //cycling through nodes to create pages
@@ -19,10 +29,22 @@ exports.createPages = async ({graphql, actions}) =>{
             path: "/blogs/" + node.slug,
             component: templatePath,
             context: {
-                slug: node.slug
+                slug: node.slug,
+                relatedBlogsByTags: node.markdown.childMarkdownRemark.frontmatter.tags,
             }
         })
     })
+
+    // pages created by tags
+    // const templateTagsPath = path.resolve("./src/templates/tags.js");
+    // data.allContentfulBlog.nodes.forEach(node => {
+    //   node.markdown.childMarkdownRemark.frontMatter.tags.forEach(tag => {
+    //     actions.createPage({
+    //       path: "/tags/" + tag,
+    //       component: templateTagsPath,
+    //     })
+    //   })
+    // })
 }
 
 // exports.createSchemaCustomization = ({actions}) => {
