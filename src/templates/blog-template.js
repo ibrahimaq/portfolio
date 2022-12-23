@@ -9,6 +9,7 @@ import RecentBlogs from "../components/blogs/RecentBlogs"
 import {camelCase, startCase} from 'lodash';
 import Card from "../components/cards/Card"
 import AllCards from "../components/cards/AllCards"
+import TagsList from "../components/TagsList"
 
 
 const BlogTemplate = ({ data }) => {
@@ -17,10 +18,7 @@ const BlogTemplate = ({ data }) => {
 
   const relatedBlogs = data?.relatedBlogs?.nodes;
 
-  console.log(relatedBlogs)
-
- console.log(data)
- const blog = data.contentfulBlog;
+  const blog = data.contentfulBlog;
 
 
   // const heroImage = getImage(image);
@@ -46,11 +44,7 @@ const BlogTemplate = ({ data }) => {
               <Book fill='#545456' width='20px' customClass='inline-block' />
               <p className="ml-2">{blog.markdown.childMarkdownRemark.timeToRead} mins read</p>
             </div>
-            <ul className="flex flex-row">
-              {blog.markdown.childMarkdownRemark.frontmatter.tags.map((tag, i) => (
-                <li className="ml-5 py-1 px-2 text-indigo-500 bg-white rounded-lg">#{camelCase(tag)}</li>
-              ))}
-            </ul>
+            <TagsList tags={blog.markdown.childMarkdownRemark.frontmatter.tags} />
             {/* <GatsbyImage 
               image={blog.featuredImage.gatsbyImageData} 
               alt={blog.featuredImage.title}  
@@ -74,7 +68,7 @@ const BlogTemplate = ({ data }) => {
         <div className="content-container">
           <h2 className="mb-5">Related Blogs</h2>
 
-            {relatedBlogs.length > 1 && <AllCards data={relatedBlogs.slice(0,3)} />
+            {relatedBlogs.length > 1 && <AllCards data={relatedBlogs} />
             }
 
         </div>
@@ -107,6 +101,7 @@ query ($slug: String!, $relatedBlogsByTags: [String!]!) {
     }
   }
   relatedBlogs: allContentfulBlog(
+    limit: 3,
     filter: {childrenContentfulBlogMarkdownTextNode: {elemMatch: {childrenMarkdownRemark: {elemMatch: {frontmatter: {tags: {in: $relatedBlogsByTags}}}}}}}
   ) {
     nodes {
@@ -116,7 +111,7 @@ query ($slug: String!, $relatedBlogsByTags: [String!]!) {
       markdown {
         childMarkdownRemark {
           frontmatter {
-            title
+            title 
             slug
             tags
           }

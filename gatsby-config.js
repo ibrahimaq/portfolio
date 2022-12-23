@@ -85,6 +85,7 @@ module.exports = {
     },
     
   ],
+  trailingSlash: "ignore",
 }
 
 //`gatsby-transformer-sharp`,
