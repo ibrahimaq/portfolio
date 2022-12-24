@@ -9,35 +9,11 @@ import SearchBlogs from "../components/SearchBlogs"
 
 const Blogs = (query) => {
   const data = query?.data?.allContentfulBlog?.nodes;
-  console.log(data)
 
   const [searchTerm, setSearchTerm] = useState('');
   const [blogs, setBlogs] = useState(data);
 
-  const [tags, setTags] = useState([]);
-  const [activeTag, setActiveTag] = useState('');
 
-
-  const getAllTags = () => {
-    let arrTags = [];
-    data.forEach(node => 
-      node.markdown.childMarkdownRemark.frontmatter.tags.slice(0,3)
-      .forEach(tag => arrTags.push(tag))
-    )
-    
-
-
-    setTags(arrTags);
-    
-  }
-  
-  useEffect(() => {
-    console.log(tags)
-  }, [tags])
-
-  useEffect(() => {
-    getAllTags();
-  }, [])
 
   useEffect(() => {
     const searchBlogs = () => {
@@ -63,13 +39,6 @@ const Blogs = (query) => {
         description={"Welcome to my blogs section! Here you'll find all technical and non-technical blogs about my journey into web development."}
         ogType={"Blogs"} ogUrl={undefined} ogImage={undefined}      // ogUrl={"/blogs"}
       />
-      {/* <button onClick={getAllTags}>Get Tags</button> */}
-      {/* {tags && tags.map((arr) => (
-        arr.map(tag => (
-          <button>{tag}</button>
-        ))
-        
-      ) )} */}
 
       <section className="bg-greyBg">
           <div className="content-container">

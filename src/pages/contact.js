@@ -17,8 +17,8 @@ const Contact = () => {
             // ogUrl={`/contact`}
             />
             <div className="content-container !py-0 sm:px-0">
-                <div className="grid md:grid-cols-12 min-h-screen">
-                    <div className="md:col-span-5 flex flex-col mt-10 md:mt-20">
+                <div className="grid md:grid-cols-12">
+                    <div className="md:col-span-5 flex flex-col my-14 md:my-20">
                         <h1>Let's partner up</h1>
                         <p className="mt-2 mb-5">We can make it work, together.</p>
                         <ContactForm />

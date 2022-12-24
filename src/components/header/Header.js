@@ -67,7 +67,7 @@ const Header = () => {
 
 export default Header
 
-const navLinks = [
+export const navLinks = [
   {
     label: 'Home',
     link: '/'

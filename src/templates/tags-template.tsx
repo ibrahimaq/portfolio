@@ -3,20 +3,29 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import Layout from "../components/layout/Layout";
 import TagsList from "../components/TagsList";
 import {kebabCase, camelCase} from 'lodash'
+import AllCards from "../components/cards/AllCards";
+
 
 
 const TagsPage = () => {
-    const [activeTag, setActiveTag] = useState(null);
-    const [numberOfTaggedBlogs, setNumberOfTaggedBlogs] = useState(null)
+    const [activeTag, setActiveTag] = useState<string>('');
+    const [numberOfTaggedBlogs, setNumberOfTaggedBlogs] = useState<number>(0)
+    const [taggedBlogs, setTaggedBlogs] = useState<any>(null)
     const data = useStaticQuery(graphql`
     {
         allContentfulBlog {
           nodes {
             id
+            date(formatString: "Do MMM YYYY")
+            featuredImage {
+              title
+              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, aspectRatio: 2, quality: 70)
+            }
             markdown {
               childMarkdownRemark {
                 frontmatter {
                   tags
+                  title
                 }
               }
             }
@@ -25,8 +34,8 @@ const TagsPage = () => {
       }
     `)
 
-    let uniqueTags = [];
-    data?.allContentfulBlog?.nodes?.forEach(node => {
+    let uniqueTags: string[] = [];
+    data?.allContentfulBlog?.nodes?.forEach((node: { markdown: { childMarkdownRemark: { frontmatter: { tags: string[]; }; }; }; }) => {
         node.markdown.childMarkdownRemark.frontmatter.tags.forEach(tag => {
             if (uniqueTags.includes(tag)) {
                 return
@@ -36,23 +45,25 @@ const TagsPage = () => {
         })
     })
 
-    const getTagSlugFromUrl = (path) => {
+    const getTagSlugFromUrl = (path: string) => {
       //returns last part of url where the slug is the tag
       const indexOfLastSlash = path.lastIndexOf('/');
       const tagSlug = path.slice(indexOfLastSlash + 1);
       return tagSlug
     }
 
-    const getNumberOfTaggedBlogs = () => {
+    const getArrOfBlogsByTag = () => {
       // returns 
-      let taggedBlogsArr = [];
-      data.allContentfulBlog.nodes.forEach((node, i)=> {
-        node.markdown.childMarkdownRemark.frontmatter.tags.filter(tag => 
-            kebabCase(tag) === activeTag ? taggedBlogsArr.push(camelCase(tag)) : null
-        )
+      let taggedBlogsArr = Array();
+      data.allContentfulBlog.nodes.forEach((node: any) => {
+        node.markdown.childMarkdownRemark.frontmatter.tags.forEach((tag: string) =>  {
+          if (kebabCase(tag) === activeTag) {
+            taggedBlogsArr.push(node)
+          }
+        })
       })
-      console.log(taggedBlogsArr);
-      return taggedBlogsArr.length;
+      ;
+      return taggedBlogsArr;
     }
 
     useEffect(() => {
@@ -60,12 +71,15 @@ const TagsPage = () => {
     }, [])
 
     useEffect(() => {
-        console.log(getNumberOfTaggedBlogs())
-        setNumberOfTaggedBlogs(getNumberOfTaggedBlogs());
+        console.log(getArrOfBlogsByTag())
+        setNumberOfTaggedBlogs(getArrOfBlogsByTag().length);
+        setTaggedBlogs(getArrOfBlogsByTag())
+
     }, [activeTag])
 
     return ( 
         <Layout>
+          <div className="bg-greyBg-dark">
             <div className="content-container">
               <h1 className="text-center text-base md:text-lg">
               {numberOfTaggedBlogs} blog{numberOfTaggedBlogs<2? '' : 's'} tagged
@@ -75,8 +89,9 @@ const TagsPage = () => {
                     <TagsList tags={uniqueTags} activeTag={activeTag} wrapperClass='mt-5' />
                 }
             </div>
-            <section>
-
+            </div>
+            <section className="content-container">
+                {taggedBlogs && <AllCards data={taggedBlogs} />}
             </section>
         </Layout>
      );
