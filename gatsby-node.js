@@ -38,7 +38,7 @@ exports.createPages = async ({graphql, actions}) =>{
 
     // pages created by tags
     let uniqueTags = [];
-    const templateTagsPath = path.resolve("./src/templates/tags-template.js");
+    const templateTagsPath = path.resolve("./src/templates/tags-template.tsx");
     data.allContentfulBlog.nodes.forEach(node => {
       node.markdown.childMarkdownRemark.frontmatter.tags.forEach(tag => {
         if (uniqueTags.includes(tag)) {

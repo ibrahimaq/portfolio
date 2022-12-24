@@ -4,8 +4,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Button from "../Button";
 import Card from "./Card";
 
-
-const AllCards = ({data}) => {
+interface propType {
+    data: []
+}
+const AllCards = ({data}: propType) => {
    
 
     return ( 

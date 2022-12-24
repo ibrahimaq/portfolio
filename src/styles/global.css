@@ -69,11 +69,14 @@ a {
     width: 300px;
 } */
 
-/* :root{
-    --deckgo-highlight-code-container-width: 500px;
-    --deckgo-highlight-code-scroll: scroll !important;
-   
-} */
+@media (max-width: 800px) {
+    :root{
+        --deckgo-highlight-code-container-width: 800px;
+        --deckgo-highlight-code-scroll: scroll;
+       
+    } 
+}
+
 
 /* CODE BLOCK CUSTOM PROPERTIES  */
 /* :root {
