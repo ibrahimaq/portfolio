@@ -13,7 +13,7 @@ const TagsPage = () => {
     const [taggedBlogs, setTaggedBlogs] = useState<any>(null)
     const data = useStaticQuery(graphql`
     {
-        allContentfulBlog {
+        allContentfulBlog(sort: {date: DESC}) {
           nodes {
             id
             date(formatString: "Do MMM YYYY")
@@ -26,6 +26,7 @@ const TagsPage = () => {
                 frontmatter {
                   tags
                   title
+                  slug
                 }
               }
             }
