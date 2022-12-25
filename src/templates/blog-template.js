@@ -1,13 +1,10 @@
-import { Link, graphql } from "gatsby"
-import React, {useState} from "react"
+import { graphql } from "gatsby"
+import React from "react"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
-import { getImage, GatsbyImage, getSrc } from "gatsby-plugin-image"
+import { getSrc } from "gatsby-plugin-image"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Book from "../assets/icons/Book"
-import RecentBlogs from "../components/blogs/RecentBlogs"
-import {camelCase, startCase} from 'lodash';
-import Card from "../components/cards/Card"
 import AllCards from "../components/cards/AllCards"
 import TagsList from "../components/TagsList"
 
@@ -20,20 +17,20 @@ const BlogTemplate = ({ data }) => {
 
   const blog = data.contentfulBlog;
 
-
-  // const heroImage = getImage(image);
-  // // image for SEO
-  // const heroImageSrc = getSrc(heroImage);
+  // for SEO
+  const title = blog.markdown.childMarkdownRemark.frontmatter.title;
+  const description = blog.markdown.childMarkdownRemark.excerpt;
+  const ogImage = getSrc(blog.featuredImage);
 
 
   return (
     <Layout>
       <Seo 
-      title={''} 
-      description={''}
+      title={title} 
+      description={description}
       ogType={"article"}
+      ogImage={ogImage}
       // ogUrl={`blogs/${slug}`}
-      // ogImage={heroImageSrc}
       />
       <article className="blog">
         <header className="bg-greyBg-dark">
