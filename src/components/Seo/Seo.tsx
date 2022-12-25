@@ -1,10 +1,16 @@
 import React from "react"
-import {Helmet} from "react-helmet";
+import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import {getSrc} from "gatsby-plugin-image"
 
+interface propType {
+  title?: string,
+  description?: string,
+  ogType?: 'website' | 'article' | 'profile',
+  ogImage?: string,
+}
 
-const Seo = ({title, description, ogUrl, ogType, ogImage}) => {
+const Seo = ({title, description, ogType, ogImage}: propType) => {
     const {site, contentfulLogo} = useStaticQuery(
        graphql`
        {
@@ -16,7 +22,7 @@ const Seo = ({title, description, ogUrl, ogType, ogImage}) => {
             description
           }
         }
-        contentfulLogo {
+        contentfulLogo(metaImage: {title: {eq: "black logo"}}) {
           metaImage {
             gatsbyImageData
           }

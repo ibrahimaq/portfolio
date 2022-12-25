@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import Layout from "../components/layout/Layout";
+import Seo from "../components/Seo/Seo";
 import TagsList from "../components/TagsList";
 import {kebabCase, camelCase} from 'lodash'
 import AllCards from "../components/cards/AllCards";
@@ -80,6 +81,12 @@ const TagsPage = () => {
 
     return ( 
         <Layout>
+          <Seo 
+          title={`#${camelCase(activeTag)} blogs`} 
+          description={`Here you will find all blogs tagged with #${activeTag}`}
+          ogType="article"
+          // ogUrl={`blogs/${slug}`}
+          />
           <div className="bg-greyBg-dark">
             <div className="content-container">
               <h1 className="text-center text-base md:text-lg">
