@@ -22,7 +22,7 @@ const Blogs = (query) => {
       )
       return searchResult
     }
-    if (searchTerm.length > 3) {
+    if (searchTerm.length > 2) {
       setBlogs(searchBlogs())
     } else {
       setBlogs(data);

@@ -5,7 +5,7 @@ import Seo from "../components/Seo/Seo";
 import TagsList from "../components/TagsList";
 import {kebabCase, camelCase} from 'lodash'
 import AllCards from "../components/cards/AllCards";
-
+import { getSlugFromUrl } from "../helpers";
 
 
 const TagsPage = () => {
@@ -47,12 +47,6 @@ const TagsPage = () => {
         })
     })
 
-    const getTagSlugFromUrl = (path: string) => {
-      //returns last part of url where the slug is the tag
-      const indexOfLastSlash = path.lastIndexOf('/');
-      const tagSlug = path.slice(indexOfLastSlash + 1);
-      return tagSlug
-    }
 
     const getArrOfBlogsByTag = () => {
       // returns 
@@ -69,7 +63,7 @@ const TagsPage = () => {
     }
 
     useEffect(() => {
-        setActiveTag(getTagSlugFromUrl(window.location.pathname));
+        setActiveTag(getSlugFromUrl(window.location.pathname));
     }, [])
 
     useEffect(() => {

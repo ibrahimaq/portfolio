@@ -10,7 +10,7 @@ interface propType {
 const TagsList = ({ tags, activeTag, wrapperClass }: propType) => {
 
     return (
-        <ul className={`flex flex-row flex-wrap ${wrapperClass && wrapperClass}`}>
+        <ul className={`flex flex-row flex-wrap justify-center ${wrapperClass && wrapperClass}`}>
             {tags.map((tag, i) => (
                 <li key={i} className="ml-5 mt-1">
                     <Link 

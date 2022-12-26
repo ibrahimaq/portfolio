@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
 import { getSrc } from "gatsby-plugin-image"
@@ -7,20 +7,42 @@ import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/
 import Book from "../assets/icons/Book"
 import AllCards from "../components/cards/AllCards"
 import TagsList from "../components/TagsList"
-
+import { getSlugFromUrl } from "../helpers"
 
 const BlogTemplate = ({ data }) => {
+  const [filteredBlogs, setFilteredBlogs] = useState(null);
   // code block highlighter
   deckDeckGoHighlightElement();
 
   const relatedBlogs = data?.relatedBlogs?.nodes;
+  // remove displayed blog from related blogs
+  const removeSameBlog = (blogs, slug) => {
+    const filteredBlogs = blogs.filter( blog => 
+      blog.markdown.childMarkdownRemark.frontmatter.slug !== slug
+    )
+    return filteredBlogs
+  }
+
 
   const blog = data.contentfulBlog;
-
   // for SEO
   const title = blog.markdown.childMarkdownRemark.frontmatter.title;
   const description = blog.markdown.childMarkdownRemark.excerpt;
   const ogImage = getSrc(blog.featuredImage);
+
+  useEffect(() => {
+    const links = document.querySelectorAll(".blog-template a");
+      links.forEach(link => {
+        if (link.hostname != window.location.hostname) {
+          link.setAttribute("rel", "nofollow");
+          link.setAttribute("target", "_blank");
+        }
+      })
+
+    const slug = getSlugFromUrl(window.location.pathname);
+    setFilteredBlogs(removeSameBlog(relatedBlogs, slug));
+
+  }, []);
 
 
   return (
@@ -32,7 +54,7 @@ const BlogTemplate = ({ data }) => {
       ogImage={ogImage}
       // ogUrl={`blogs/${slug}`}
       />
-      <article className="blog">
+      <article className="blog-template">
         <header className="bg-greyBg-dark">
           <div className="content-container flex flex-col items-center">
             <p>Published {blog.date}</p>
@@ -49,10 +71,10 @@ const BlogTemplate = ({ data }) => {
           </div>
         </header>
         <div className="content-container">
-          <section className="prose lg:prose-xl max-w-none mx-auto prose-h2:text-font-greydark prose-code:whitespace-nowrap">
+          <section className="prose lg:prose-xl max-w-none mx-auto prose-h2:text-blue-accent prose-code:whitespace-nowrap prose-a:decoration-blue-accent">
             <div dangerouslySetInnerHTML={{__html: blog.markdown.childMarkdownRemark.html}} />
           </section>
-          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto mt-20">
+          <section className="prose lg:prose-xl max-w-none mx-auto mt-20">
             <h2 className="text-pink-500 !mb-5">Thank you for reading. Let's connect!</h2>
             <p>Feel free to connect on{" "}
               <a href='https://twitter.com/ibrahimaq30' className="text-pink-500">Twitter</a> 
@@ -61,15 +83,14 @@ const BlogTemplate = ({ data }) => {
           </section>
         </div>
       </article>
-      <section className="bg-greylightBg">
-        <div className="content-container">
-          <h2 className="mb-5">Related Blogs</h2>
-
-            {relatedBlogs.length > 1 && <AllCards data={relatedBlogs} />
-            }
-
-        </div>
-      </section>
+      {filteredBlogs && 
+        <section className="bg-greylightBg">
+          <div className="content-container">
+            <h2 className="mb-5">Related {filteredBlogs.length > 1 ? 'blogs' : 'blog'}</h2>
+              <AllCards data={filteredBlogs} />
+          </div>
+        </section>
+      }
     </Layout>
   )
 }
