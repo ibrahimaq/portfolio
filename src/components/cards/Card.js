@@ -10,17 +10,17 @@ const Card = ({data}) => {
             <>
                 {data && 
                     <div key={data.id} className='flex flex-col overflow-hidden rounded-md shadow-lg hover:shadow-sm h-full '>
-                        <Link to={`/blogs/${data.markdown.childMarkdownRemark.frontmatter.slug}`} className="block">
+                        <Link to={`/blogs/${data.markdown.childMarkdownRemark.frontmatter.slug}`} className="block relative">
                             <GatsbyImage
                             image={data.featuredImage.gatsbyImageData}
                             alt=''
                             className="h-[200px]"
                             />
+                            <p className="text-sm absolute bottom-0 bg-white left-0 px-4 py-2">{data.date}</p>
                         </Link>
 
                         <div className='p-5 relative flex flex-col h-full'>
                             <Link to={`/blogs/${data.markdown.childMarkdownRemark.frontmatter.slug}`} className="hover:no-underline">
-                                <p className="text-sm absolute bg-white -top-[28px] left-0 px-4 py-2">{data.date}</p>
                                 <h3 className="font-bold text-lg text-font-greydark">{data.markdown.childMarkdownRemark.frontmatter.title}</h3>
                             </Link>
                         
