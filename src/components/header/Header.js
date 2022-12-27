@@ -73,6 +73,10 @@ export const navLinks = [
     link: '/'
   },
   {
+    label: 'About',
+    link: '/about'
+  },
+  {
     label: 'Blogs',
     link: '/blogs'
   },

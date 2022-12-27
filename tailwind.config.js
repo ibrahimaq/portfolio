@@ -15,8 +15,8 @@ module.exports = {
         'white': '#FFFFFF',
         'font-greydark': '#545456',
         'font-greylight': '#E0E0E0',
-        'blue-accent': '#5a9eaf',
-        // 'pink': '#E77AA6',
+        'accent-1': '#5a9eaf',
+        'accent-2': '#D96299',
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -30,7 +30,7 @@ module.exports = {
               // maxWidth: "600px",
               margin: "0 20px",
               backgroundColor: theme('colors.pink.50'),
-              borderLeftColor: theme('colors.pink.500'),
+              borderLeftColor: theme('colors.accent-2'),
               paddingTop: '1px',
               paddingBottom: '1px',
               paddingRight: '15px',
@@ -48,7 +48,7 @@ module.exports = {
               content: '',
             },
             'li::marker': {
-              color: theme('colors.pink.500')
+              color: theme('colors.accent-1')
             }
             
           

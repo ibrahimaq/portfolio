@@ -60,6 +60,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`, //name of instance - call it anything but usually same as folder
+        path: `${__dirname}/src/content/`, //name folder to look in
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

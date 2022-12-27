@@ -17,7 +17,7 @@ const Footer = () => {
                      key={i} 
                      href={item.link} 
                      title={item.name} 
-                     className='relative ml-3 cursor-pointer block border-b border-b-blue-accent pb-2 px-1 z-[1] transition-all duration-300 before:content-[" "] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0 before:bg-blue-accent  before:z-[-1] before:hover:h-full before:transition-all before:duration-300'
+                     className='relative ml-3 cursor-pointer block border-b border-b-accent-1 pb-2 px-1 z-[1] transition-all duration-300 before:content-[" "] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0 before:bg-accent-1  before:z-[-1] before:hover:h-full before:transition-all before:duration-300'
                      >
                         {item.icon}
                      </a>
@@ -26,6 +26,7 @@ const Footer = () => {
                })}
                </div>
             </div>
+            <p className="mt-5 text-center"><a href="https://www.gatsbyjs.com/">Gatsby</a> | <a href="https://www.contentful.com/">Contentful</a></p>
          </div>
 
       </footer>
