@@ -72,7 +72,7 @@ const BlogTemplate = ({ data }) => {
           </div>
         </header>
         <div className="content-container">
-          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto  prose-code:whitespace-nowrap prose-a:decoration-accent-1">
+          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-font-greydark  prose-code:whitespace-nowrap prose-a:decoration-accent-1">
             <div dangerouslySetInnerHTML={{__html: blog.markdown.childMarkdownRemark.html}} />
           </section>
           <ThanksForReading />

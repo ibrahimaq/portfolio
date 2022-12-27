@@ -35,7 +35,7 @@ const Card = ({data}) => {
                                     className='ml-1'
                                     >
                                         <Link to={`/tags/${kebabCase(tag)}`} 
-                                        className="text-accent-1 text-sm cursor-pointer relative hover:!no-underline hover:bg-accent-1 hover:!text-white transition-all duration-300 before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full  before:bg-accent-1 before:transition-all before:duration-300 before:h-0 hover:before:h-full z-[2] before:z-[-1] ">
+                                        className="text-accent-1 text-sm cursor-pointer relative hover:!no-underline hover:bg-accent-1 hover:!text-white transition-all duration-300 before:content-[''] before:absolute before:top-0 before:left-0 before:w-0 before:h-full  before:bg-accent-1 before:transition-all before:duration-300 hover:before:w-full z-[2] before:z-[-1] ">
                                             #{camelCase(tag)}
                                         </Link>
                                     </li> 

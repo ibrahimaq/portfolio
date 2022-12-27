@@ -9,7 +9,7 @@ const Footer = () => {
       <footer className='bg-blackBg'>
          <div className="content-container">
             <div className="flex flex-row sm:flex-row justify-between">
-               <p className="mt-auto">{`© ${new Date().getFullYear()}`}</p>
+               <p className="mt-auto"><a href="https://www.gatsbyjs.com/">Gatsby</a> | <a href="https://www.contentful.com/">Contentful</a></p>
                <div className="flex flex-row">
                {socialIcons.map((item, i) => {
                   return (
@@ -26,7 +26,6 @@ const Footer = () => {
                })}
                </div>
             </div>
-            <p className="mt-5 text-center"><a href="https://www.gatsbyjs.com/">Gatsby</a> | <a href="https://www.contentful.com/">Contentful</a></p>
          </div>
 
       </footer>
