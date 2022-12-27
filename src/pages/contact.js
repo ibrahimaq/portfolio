@@ -19,8 +19,7 @@ const Contact = () => {
             <div className="content-container !py-0 sm:px-0">
                 <div className="grid md:grid-cols-12">
                     <div className="md:col-span-5 flex flex-col my-14 md:my-20">
-                        <h1>Let's partner up</h1>
-                        <p className="mt-2 mb-5">We can make it work, together.</p>
+                        <h1 className="mb-5">Get in touch.</h1>
                         <ContactForm />
                     </div>
                     <div className="hidden md:block md:col-span-1"></div>

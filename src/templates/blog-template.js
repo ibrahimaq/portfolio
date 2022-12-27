@@ -8,6 +8,7 @@ import Book from "../assets/icons/Book"
 import AllCards from "../components/cards/AllCards"
 import TagsList from "../components/TagsList"
 import { getSlugFromUrl } from "../helpers"
+import ThanksForReading from "../components/ThanksForReading"
 
 const BlogTemplate = ({ data }) => {
   const [filteredBlogs, setFilteredBlogs] = useState(null);
@@ -61,7 +62,7 @@ const BlogTemplate = ({ data }) => {
             <h1 className="text-center mt-5">{blog.markdown.childMarkdownRemark.frontmatter.title}</h1>
             <div className="flex items-center my-5 gap-2">
               <Book fill='#545456' width='20px' customClass='inline-block' />
-              <p className="ml-2">{blog.markdown.childMarkdownRemark.timeToRead} mins read</p>
+              <p>{blog.markdown.childMarkdownRemark.timeToRead} min read</p>
             </div>
             <TagsList tags={blog.markdown.childMarkdownRemark.frontmatter.tags} />
             {/* <GatsbyImage 
@@ -71,16 +72,10 @@ const BlogTemplate = ({ data }) => {
           </div>
         </header>
         <div className="content-container">
-          <section className="prose lg:prose-xl max-w-none mx-auto prose-h2:text-blue-accent prose-code:whitespace-nowrap prose-a:decoration-blue-accent">
+          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto  prose-code:whitespace-nowrap prose-a:decoration-accent-1">
             <div dangerouslySetInnerHTML={{__html: blog.markdown.childMarkdownRemark.html}} />
           </section>
-          <section className="prose lg:prose-xl max-w-none mx-auto mt-20">
-            <h2 className="text-pink-500 !mb-5">Thank you for reading. Let's connect!</h2>
-            <p>Feel free to connect on{" "}
-              <a href='https://twitter.com/ibrahimaq30' className="text-pink-500">Twitter</a> 
-              {" "}or{" "} 
-              <a href="https://www.linkedin.com/in/ibrahimaq/" className="text-pink-500">LinkedIn</a></p>
-          </section>
+          <ThanksForReading />
         </div>
       </article>
       {filteredBlogs && 

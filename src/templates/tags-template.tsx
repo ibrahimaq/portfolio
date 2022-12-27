@@ -85,7 +85,7 @@ const TagsPage = () => {
             <div className="content-container">
               <h1 className="text-center text-base md:text-lg">
               {numberOfTaggedBlogs} blog{numberOfTaggedBlogs<2? '' : 's'} tagged
-                <span className="block bg-pink-300 w-fit mx-auto text-2xl md:text-3xl px-3 py-1 mt-2 rounded-lg">#{camelCase(activeTag)}</span>
+                <span className="block w-fit mx-auto text-2xl md:text-3xl px-3 py-1 mt-2 rounded-lg">#{camelCase(activeTag)}</span>
               </h1>
                 {data && uniqueTags.length > 0 && 
                     <TagsList tags={uniqueTags} activeTag={activeTag} wrapperClass='mt-5' />
