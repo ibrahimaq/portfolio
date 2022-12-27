@@ -12,7 +12,7 @@ const TagsList = ({ tags, activeTag, wrapperClass }: propType) => {
     return (
         <ul className={`flex flex-row flex-wrap justify-center ${wrapperClass && wrapperClass}`}>
             {tags.map((tag, i) => (
-                <li key={i} className="ml-5 mt-1">
+                <li key={i} className="mx-2 mt-1">
                     <Link 
                     to={`/tags/${kebabCase(tag)}`}
                     className={`
