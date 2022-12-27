@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
 
 import AllCards from "../components/cards/AllCards"
-import SearchBlogs from "../components/SearchBlogs"
+// import SearchBlogs from "../components/SearchBlogs"
 
 
 const Blogs = (query) => {
@@ -48,7 +48,7 @@ const Blogs = (query) => {
       
       <section className="bg-greylightBg">
           <div className="content-container min-h-screen">
-            <SearchBlogs setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+            {/* <SearchBlogs setSearchTerm={setSearchTerm} searchTerm={searchTerm} /> */}
             {blogs.length > 0 ? 
               <AllCards data={blogs} /> 
               :

@@ -17,7 +17,7 @@ const TagsList = ({ tags, activeTag, wrapperClass }: propType) => {
                     to={`/tags/${kebabCase(tag)}`}
                     className={`
                         block w-full h-full py-1 px-2 bg-white rounded-lg hover:no-underline
-                        ${activeTag === kebabCase(tag) ? 'text-pink-500' : 'text-accent-1'}
+                        ${activeTag === kebabCase(tag) ? 'text-accent-2' : 'text-accent-1'}
                         `}
                     >
                         #{camelCase(tag)}

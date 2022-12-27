@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import ThanksForReading from "../components/ThanksForReading";
+import Seo from "../components/Seo/Seo";
 
 
 const About = () => {
@@ -19,6 +20,11 @@ const About = () => {
 
     return (
         <Layout>
+            <Seo 
+            title="About me" 
+            description={query.file.childMarkdownRemark.excerpt} 
+            ogType="profile"
+            />
             <div className="bg-greyBg-dark">
                 <section className="content-container">
                     <h1>About me</h1>
