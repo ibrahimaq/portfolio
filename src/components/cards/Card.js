@@ -9,7 +9,7 @@ const Card = ({data}) => {
     return ( 
             <>
                 {data && 
-                    <div key={data.id} className='flex flex-col overflow-hidden rounded-md shadow-lg hover:shadow-sm h-full '>
+                    <div key={data.id} className='flex flex-col overflow-hidden rounded-md shadow-lg h-full '>
                         <Link to={`/blogs/${data.markdown.childMarkdownRemark.frontmatter.slug}`} className="block relative">
                             <GatsbyImage
                             image={data.featuredImage.gatsbyImageData}

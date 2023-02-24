@@ -9,7 +9,7 @@ const Footer = () => {
       <footer className='bg-blackBg'>
          <div className="content-container">
             <div className="flex flex-row sm:flex-row justify-between">
-               <p className="mt-auto"><a href="https://www.gatsbyjs.com/">Gatsby</a> | <a href="https://www.contentful.com/">Contentful</a></p>
+               <p className="mt-auto"><a href="https://www.gatsbyjs.com/" target='_blank'>Gatsby</a> | <a href="https://www.contentful.com/" target='_blank'>Contentful</a></p>
                <div className="flex flex-row">
                {socialIcons.map((item, i) => {
                   return (
@@ -17,6 +17,7 @@ const Footer = () => {
                      key={i} 
                      href={item.link} 
                      title={item.name} 
+                     target='_blank'
                      className='relative ml-3 cursor-pointer block border-b border-b-accent-1 pb-2 px-1 z-[1] transition-all duration-300 before:content-[" "] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0 before:bg-accent-1  before:z-[-1] before:hover:h-full before:transition-all before:duration-300'
                      >
                         {item.icon}
@@ -51,6 +52,7 @@ const socialIcons = [
    },
    {
       name: 'Github',
-      icon: <Github stroke={stroke} customClass={customClass} />
+      icon: <Github stroke={stroke} customClass={customClass} />,
+      link: 'https://github.com/ibrahimaq'
    }
 ]
