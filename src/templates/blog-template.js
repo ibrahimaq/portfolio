@@ -34,7 +34,7 @@ const BlogTemplate = ({ data }) => {
   useEffect(() => {
     const links = document.querySelectorAll(".blog-template a");
       links.forEach(link => {
-        if (link.hostname != window.location.hostname) {
+        if (link.hostname !== window.location.hostname) {
           link.setAttribute("rel", "nofollow");
           link.setAttribute("target", "_blank");
         }
@@ -78,13 +78,15 @@ const BlogTemplate = ({ data }) => {
           <ThanksForReading />
         </div>
       </article>
-      {filteredBlogs && 
+      {filteredBlogs && filteredBlogs.length > 0 ?
         <section className="bg-greylightBg">
           <div className="content-container">
             <h2 className="mb-5">Related {filteredBlogs.length > 1 ? 'blogs' : 'blog'}</h2>
               <AllCards data={filteredBlogs} />
           </div>
         </section>
+        :
+        null
       }
     </Layout>
   )

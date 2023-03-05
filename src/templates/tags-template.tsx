@@ -67,7 +67,6 @@ const TagsPage = () => {
     }, [])
 
     useEffect(() => {
-        console.log(getArrOfBlogsByTag())
         setNumberOfTaggedBlogs(getArrOfBlogsByTag().length);
         setTaggedBlogs(getArrOfBlogsByTag())
 

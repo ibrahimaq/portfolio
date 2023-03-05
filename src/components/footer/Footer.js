@@ -6,31 +6,46 @@ import Github from "../../assets/icons/Github";
 
 const Footer = () => {
    return (
-      <footer className='bg-blackBg'>
-         <div className="content-container">
-            <div className="flex flex-row sm:flex-row justify-between">
-               <p className="mt-auto"><a href="https://www.gatsbyjs.com/" target='_blank'>Gatsby</a> | <a href="https://www.contentful.com/" target='_blank'>Contentful</a></p>
-               <div className="flex flex-row">
-               {socialIcons.map((item, i) => {
-                  return (
-                     <a 
-                     key={i} 
-                     href={item.link} 
-                     title={item.name} 
-                     target='_blank'
-                     className='relative ml-3 cursor-pointer block border-b border-b-accent-1 pb-2 px-1 z-[1] transition-all duration-300 before:content-[" "] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0 before:bg-accent-1  before:z-[-1] before:hover:h-full before:transition-all before:duration-300'
-                     >
-                        {item.icon}
-                     </a>
-                  )
-
-               })}
-               </div>
-            </div>
+     <footer className="bg-blackBg">
+       <div className="content-container">
+         <div className="flex flex-row sm:flex-row justify-between">
+           <p className="mt-auto">
+             <a
+               href="https://www.gatsbyjs.com/"
+               target="_blank"
+               rel="noreferrer"
+             >
+               Gatsby
+             </a>{" "}
+             |{" "}
+             <a
+               href="https://www.contentful.com/"
+               target="_blank"
+               rel="noreferrer"
+             >
+               Contentful
+             </a>
+           </p>
+           <div className="flex flex-row">
+             {socialIcons.map((item, i) => {
+               return (
+                 <a
+                   key={i}
+                   href={item.link}
+                   title={item.name}
+                   target="_blank"
+                   rel="noreferrer"
+                   className='relative ml-3 cursor-pointer block border-b border-b-accent-1 pb-2 px-1 z-[1] transition-all duration-300 before:content-[" "] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0 before:bg-accent-1  before:z-[-1] before:hover:h-full before:transition-all before:duration-300'
+                 >
+                   {item.icon}
+                 </a>
+               )
+             })}
+           </div>
          </div>
-
-      </footer>
-   );
+       </div>
+     </footer>
+   )
 }
 
 export default Footer;
