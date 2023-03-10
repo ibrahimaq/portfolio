@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
-import Layout from "../components/layout/Layout";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import ThanksForReading from "../components/ThanksForReading";
-import Seo from "../components/Seo/Seo";
-
+import React from "react"
+import Layout from "../components/layout/Layout"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import ThanksForReading from "../components/ThanksForReading"
+import Seo from "../components/Seo/Seo"
 
 const About = () => {
     const query = useStaticQuery(graphql`
     {
-        file(childMarkdownRemark: {frontmatter: {title: {eq: "about me"}}}) {
-            childMarkdownRemark {
-                html
-                excerpt
-            }
+      file(
+        childMarkdownRemark: { frontmatter: { title: { eq: "about me" } } }
+      ) {
+        childMarkdownRemark {
+          html
+          excerpt
         }
+      }
     }
-    
-    `)
+  `)
 
     return (
         <Layout>
-            <Seo 
-            title="About me" 
-            description={query.file.childMarkdownRemark.excerpt} 
-            ogType="profile"
+            <Seo
+                title="About me"
+                description={query.file.childMarkdownRemark.excerpt}
+                ogType="profile"
             />
             <div className="bg-greyBg-dark">
                 <section className="content-container">
@@ -31,13 +31,16 @@ const About = () => {
                 </section>
             </div>
             <article className="content-container">
-                    <div className="prose lg:prose-xl about" dangerouslySetInnerHTML={{__html: query.file.childMarkdownRemark.html}} />
-                    <ThanksForReading />
+                <div
+                    className="prose lg:prose-xl prose-headings:text-font-greydark about"
+                    dangerouslySetInnerHTML={{
+                        __html: query.file.childMarkdownRemark.html,
+                    }}
+                />
+                <ThanksForReading />
             </article>
-
         </Layout>
-
-    );
+    )
 }
 
-export default About;
+export default About

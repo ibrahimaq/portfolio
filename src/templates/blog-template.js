@@ -48,23 +48,27 @@ const BlogTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <Seo 
-      title={title} 
-      description={description}
-      ogType={"article"}
-      ogImage={ogImage}
-      // ogUrl={`blogs/${slug}`}
+      <Seo
+        title={title}
+        description={description}
+        ogType={"article"}
+        ogImage={ogImage}
+        // ogUrl={`blogs/${slug}`}
       />
       <article className="blog-template">
         <header className="bg-greyBg-dark">
           <div className="content-container flex flex-col items-center">
             <p>Published {blog.date}</p>
-            <h1 className="text-center mt-5">{blog.markdown.childMarkdownRemark.frontmatter.title}</h1>
+            <h1 className="text-center mt-5">
+              {blog.markdown.childMarkdownRemark.frontmatter.title}
+            </h1>
             <div className="flex items-center my-5 gap-2">
-              <Book fill='#545456' width='20px' customClass='inline-block' />
+              <Book fill="#545456" width="20px" customClass="inline-block" />
               <p>{blog.markdown.childMarkdownRemark.timeToRead} min read</p>
             </div>
-            <TagsList tags={blog.markdown.childMarkdownRemark.frontmatter.tags} />
+            <TagsList
+              tags={blog.markdown.childMarkdownRemark.frontmatter.tags}
+            />
             {/* <GatsbyImage 
               image={blog.featuredImage.gatsbyImageData} 
               alt={blog.featuredImage.title}  
@@ -72,22 +76,28 @@ const BlogTemplate = ({ data }) => {
           </div>
         </header>
         <div className="content-container">
-          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-font-greydark  prose-code:whitespace-nowrap prose-a:decoration-accent-1">
-            <div dangerouslySetInnerHTML={{__html: blog.markdown.childMarkdownRemark.html}} />
+          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-font-greydark  prose-code:whitespace-nowrap prose-a:decoration-accent-1
+                            prose-figcaption:text-center
+          ">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: blog.markdown.childMarkdownRemark.html,
+              }}
+            />
           </section>
           <ThanksForReading />
         </div>
       </article>
-      {filteredBlogs && filteredBlogs.length > 0 ?
+      {filteredBlogs && filteredBlogs.length > 0 ? (
         <section className="bg-greylightBg">
           <div className="content-container">
-            <h2 className="mb-5">Related {filteredBlogs.length > 1 ? 'blogs' : 'blog'}</h2>
-              <AllCards data={filteredBlogs} />
+            <h2 className="mb-5">
+              Related {filteredBlogs.length > 1 ? "blogs" : "blog"}
+            </h2>
+            <AllCards data={filteredBlogs} />
           </div>
         </section>
-        :
-        null
-      }
+      ) : null}
     </Layout>
   )
 }

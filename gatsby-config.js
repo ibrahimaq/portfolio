@@ -22,7 +22,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-postcss',
+    "gatsby-plugin-postcss",
 
     {
       resolve: `gatsby-source-contentful`,
@@ -77,13 +77,15 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 300,
+              maxWidth: 1000,
+              linkImagesToOriginal: true,
+              showCaptions: true,
+              wrapperStyle: "margin: 40px 0 10px;",
             },
           },
         ],
       },
     },
-    
   ],
   trailingSlash: "ignore",
 }
