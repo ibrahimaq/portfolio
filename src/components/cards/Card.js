@@ -27,12 +27,12 @@ const Card = ({data}) => {
                             <div className="mt-auto">
                             {/* <Button label='Live' link='/' className='inline-block mt-5'  /> */}
                                 <hr className="w-1/4 my-5 bg-font-greydark"/>
-                                <ul className="flex flex-row flex-wrap gap-2">
+                                <ul className="flex flex-row flex-wrap">
                                 {data.markdown.childMarkdownRemark.frontmatter.tags.slice(0,3).map((tag, i) => {
                                     return (
                                     <li 
                                     key={i}
-                                    className='ml-1'
+                                    className='mr-2'
                                     >
                                         <Link to={`/tags/${kebabCase(tag)}`} 
                                         className="text-accent-1 text-sm cursor-pointer relative hover:!no-underline hover:bg-accent-1 hover:!text-white transition-all duration-500 before:content-[''] before:absolute before:top-0 before:left-0 before:w-0 before:h-full  before:bg-accent-1 before:transition-all before:duration-300 hover:before:w-full z-[2] before:z-[-1] ">

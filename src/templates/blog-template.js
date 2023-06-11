@@ -62,8 +62,8 @@ const BlogTemplate = ({ data }) => {
             <h1 className="text-center mt-5">
               {blog.markdown.childMarkdownRemark.frontmatter.title}
             </h1>
-            <div className="flex items-center my-5 gap-2">
-              <Book fill="#545456" width="20px" customClass="inline-block" />
+            <div className="flex items-center my-5">
+              <Book fill="#545456" width="20px" customClass="inline-block mr-2" />
               <p>{blog.markdown.childMarkdownRemark.timeToRead} min read</p>
             </div>
             <TagsList
