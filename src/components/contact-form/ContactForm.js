@@ -2,9 +2,11 @@ import React from "react"
 import { useRef, useState, useEffect } from "react"
 import { navigate } from "gatsby"
 import emailjs from "@emailjs/browser"
+import ButtonSpinner from "../ButtonSpinner"
 
 const ContactForm = ({customClass}) => {
   // const [submitSuccess, setSubmitSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: null,
     email: null,
@@ -49,6 +51,7 @@ const ContactForm = ({customClass}) => {
   }, [formValidation.isSubmit])
 
   const submitForm = () => {
+    setLoading(true);
     emailjs
       .sendForm(
         `${process.env.GATSBY_EMAILJS_SERVICE_ID}`,
@@ -60,6 +63,7 @@ const ContactForm = ({customClass}) => {
         console.log("SUCCESS! ", res.status, res.text)
         // setSubmitSuccess(true);
         // setShowAlert(false);
+        setLoading(false);
         navigate("/thank-you")
       })
 
@@ -149,9 +153,11 @@ const ContactForm = ({customClass}) => {
       type="submit"
       value='Send'
       onClick={e => handleSubmit(e)}
-      className='px-3 py-3 mt-8 bg-blackBg text-greylightBg cursor-pointer'
+      className='px-3 py-3 mt-8 bg-blackBg text-greylightBg cursor-pointer flex justify-center items-center'
       >
-        Send Message
+        {loading && <ButtonSpinner />}
+        {!loading && 'Send Message'}
+        
       </button>
     </form>
   )
