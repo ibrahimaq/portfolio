@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { useState } from "react";
 const Header = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
 
   const handleSideMenu = () =>{

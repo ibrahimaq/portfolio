@@ -15,7 +15,7 @@ module.exports = {
       "Hi, I'm a frontend web developer in London. I enjoy building meaningful applications whilst sharing resources and blogging about my journey into web development",
     url: "https://ibrahimaq.com",
   },
-
+  graphqlTypegen: true,
   plugins: [
     "gatsby-transformer-remark",
     `gatsby-plugin-image`,

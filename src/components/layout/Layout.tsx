@@ -2,7 +2,10 @@ import React from "react"
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
 
-const Layout = ({ children }) => {
+interface ILayout {
+  children: React.ReactNode
+}
+const Layout = ({ children }: ILayout) => {
   return (
     <div className='overflow-hidden min-h-screen flex flex-col'>
       <Header />

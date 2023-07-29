@@ -3,7 +3,6 @@ import {graphql, Link, useStaticQuery} from 'gatsby'
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Button from "../Button";
 import RecentCards from "../cards/AllCards";
-import ArrowRight from '../../assets/icons/ArrowRight'
 
 
 const RecentBlogs = () => {

@@ -1,6 +1,9 @@
 import React from "react"
+import { IIconType } from "./ArrowRight"
 
-const MagnifyingGlass = ({ stroke, customClass }) => {
+type IMagnifyingGlass = Omit<IIconType, 'fill'>;
+
+const MagnifyingGlass = ({ stroke, customClass }: IMagnifyingGlass) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

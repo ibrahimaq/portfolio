@@ -10,16 +10,20 @@ import TagsList from "../components/TagsList"
 import { getSlugFromUrl } from "../helpers"
 import ThanksForReading from "../components/ThanksForReading"
 
-const BlogTemplate = ({ data }) => {
-  const [filteredBlogs, setFilteredBlogs] = useState(null);
+interface IBlogTemplate {
+  data: Queries.singleBlogQuery
+}
+
+const BlogTemplate = ({ data }: IBlogTemplate) => {
+  const [filteredBlogs, setFilteredBlogs] = useState<Queries.ContentfulBlog[] | null>(null);
   // code block highlighter
   deckDeckGoHighlightElement();
 
   const relatedBlogs = data?.relatedBlogs?.nodes;
   // remove displayed blog from related blogs
-  const removeSameBlog = (blogs, slug) => {
-    const filteredBlogs = blogs.filter( blog => 
-      blog.markdown.childMarkdownRemark.frontmatter.slug !== slug
+  const removeSameBlog = (blogs: Queries.ContentfulBlog[], slug: string) => {
+    const filteredBlogs = blogs.filter((blog: Queries.ContentfulBlog ) => 
+      blog?.markdown?.childMarkdownRemark?.frontmatter?.slug !== slug
     )
     return filteredBlogs
   }
@@ -27,13 +31,14 @@ const BlogTemplate = ({ data }) => {
 
   const blog = data.contentfulBlog;
   // for SEO
-  const title = blog.markdown.childMarkdownRemark.frontmatter.title;
-  const description = blog.markdown.childMarkdownRemark.excerpt;
-  const ogImage = getSrc(blog.featuredImage);
+  const title = blog?.markdown?.childMarkdownRemark?.frontmatter?.title;
+  const description = blog?.markdown?.childMarkdownRemark?.excerpt;
+  const ogImage = getSrc(blog?.featuredImage as any);
 
   useEffect(() => {
     const links = document.querySelectorAll(".blog-template a");
       links.forEach(link => {
+        // @ts-ignore
         if (link.hostname !== window.location.hostname) {
           link.setAttribute("rel", "nofollow");
           link.setAttribute("target", "_blank");
@@ -41,7 +46,7 @@ const BlogTemplate = ({ data }) => {
       })
 
     const slug = getSlugFromUrl(window.location.pathname);
-    setFilteredBlogs(removeSameBlog(relatedBlogs, slug));
+    setFilteredBlogs(removeSameBlog(relatedBlogs as Queries.ContentfulBlog[], slug));
 
   }, []);
 
@@ -49,25 +54,25 @@ const BlogTemplate = ({ data }) => {
   return (
     <Layout>
       <Seo
-        title={title}
-        description={description}
-        ogType={"article"}
+        title={title ? title : ''}
+        description={description? description : ''}
+        ogType='article'
         ogImage={ogImage}
         // ogUrl={`blogs/${slug}`}
       />
       <article className="blog-template">
         <header className="bg-greyBg-dark">
           <div className="content-container flex flex-col items-center">
-            <p>Published {blog.date}</p>
+            <p>Published {blog?.date}</p>
             <h1 className="text-center mt-5">
-              {blog.markdown.childMarkdownRemark.frontmatter.title}
+              {blog?.markdown?.childMarkdownRemark?.frontmatter?.title}
             </h1>
             <div className="flex items-center my-5">
               <Book fill="#545456" width="20px" customClass="inline-block mr-2" />
-              <p>{blog.markdown.childMarkdownRemark.timeToRead} min read</p>
+              <p>{blog?.markdown?.childMarkdownRemark?.timeToRead} min read</p>
             </div>
             <TagsList
-              tags={blog.markdown.childMarkdownRemark.frontmatter.tags}
+              tags={blog?.markdown?.childMarkdownRemark?.frontmatter?.tags as string[]}
             />
             {/* <GatsbyImage 
               image={blog.featuredImage.gatsbyImageData} 
@@ -81,7 +86,7 @@ const BlogTemplate = ({ data }) => {
           ">
             <div
               dangerouslySetInnerHTML={{
-                __html: blog.markdown.childMarkdownRemark.html,
+                __html: blog?.markdown?.childMarkdownRemark?.html as string,
               }}
             />
           </section>
@@ -105,7 +110,7 @@ const BlogTemplate = ({ data }) => {
 export default BlogTemplate
 
 export const query = graphql`
-query ($slug: String!, $relatedBlogsByTags: [String!]!) {
+query singleBlog ($slug: String!, $relatedBlogsByTags: [String!]!) {
   contentfulBlog(slug: {eq: $slug}) {
     id
     date(formatString: "Do MMM YYYY")

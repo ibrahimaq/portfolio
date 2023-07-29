@@ -4,7 +4,7 @@ import { navigate } from "gatsby"
 import emailjs from "@emailjs/browser"
 import ButtonSpinner from "../ButtonSpinner"
 
-const ContactForm = ({customClass}) => {
+const ContactForm = () => {
   // const [submitSuccess, setSubmitSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -109,7 +109,7 @@ const ContactForm = ({customClass}) => {
       ref={form}
       onSubmit={e => handleSubmit(e)}
       onChange={e => handleChange(e)}
-      className={`flex flex-col ${customClass}`}
+      className={`flex flex-col`}
     >
       <label htmlFor="formName" hidden>
         Name

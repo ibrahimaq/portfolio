@@ -3,7 +3,7 @@ import { camelCase, kebabCase } from "lodash"
 import { Link } from "gatsby"
 
 interface propType {
-    tags: string[],
+    tags?: string[],
     activeTag?: string,
     wrapperClass?: string,
 }
@@ -11,7 +11,7 @@ const TagsList = ({ tags, activeTag, wrapperClass }: propType) => {
 
     return (
         <ul className={`flex flex-row flex-wrap justify-center ${wrapperClass && wrapperClass}`}>
-            {tags.map((tag, i) => (
+            {tags && tags.map((tag, i) => (
                 <li key={i} className="mx-2 mt-1">
                     <Link 
                     to={`/tags/${kebabCase(tag)}`}

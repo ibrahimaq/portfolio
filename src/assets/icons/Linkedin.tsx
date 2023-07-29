@@ -1,6 +1,7 @@
 import React from "react"
+import { IIconType } from "./ArrowRight"
 
-const Linkedin = ({ stroke, fill, customClass }) => {
+const Linkedin = ({ stroke, fill, customClass }: IIconType) => {
     return (
         <svg
             className={customClass}

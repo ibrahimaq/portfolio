@@ -1,7 +1,11 @@
-import React from "react"
+import React, { SetStateAction } from "react"
 import MagnifyingGlass from "../assets/icons/MagnifyingGlass"
 
-const SearchBlogs = ({ searchTerm, setSearchTerm }) => {
+interface ISearchBlogs {
+    searchTerm: string;
+    setSearchTerm: React.Dispatch<SetStateAction<string>>
+}
+const SearchBlogs = ({ searchTerm, setSearchTerm }: ISearchBlogs) => {
     return (
         <div>
             <p className="text-xl md:text-2xl">Search for a blog</p>

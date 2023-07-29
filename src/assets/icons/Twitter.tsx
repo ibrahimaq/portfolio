@@ -1,6 +1,7 @@
 import React from "react"
+import { IIconType } from "./ArrowRight"
 
-const Twitter = ({ stroke, fill, customClass }) => {
+const Twitter = ({ stroke, fill, customClass }: IIconType) => {
     return (
         <svg
         className={customClass}

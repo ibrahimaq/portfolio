@@ -23,7 +23,7 @@ exports.createPages = async ({graphql, actions}) =>{
 
     
     //absolute path to template
-    const templatePath = path.resolve("./src/templates/blog-template.js");
+    const templatePath = path.resolve("./src/templates/blog-template.tsx");
     //cycling through nodes to create pages
     data.allContentfulBlog.nodes.forEach(node => {
         actions.createPage({

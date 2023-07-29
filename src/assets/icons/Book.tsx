@@ -1,6 +1,13 @@
 import React from "react"
 
-const Book = ({ fill, customClass, width }) => {
+
+interface IBook {
+  fill?: string;
+  customClass?: string
+  width?: string | number
+}
+
+const Book = ({ fill, customClass, width }: IBook) => {
   return (
     <div className={customClass}>
       <svg width={width} viewBox="0 0 24 24" >

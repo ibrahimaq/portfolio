@@ -1,6 +1,12 @@
 import React from "react"
 
-const Github = ({ stroke, fill, customClass }) => {
+export interface IIconType {
+    stroke?: string;
+    fill?: string
+    customClass?: string
+}
+
+const Github = ({ stroke, fill, customClass }: IIconType) => {
     return (
         <svg
             className={customClass}
