@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
 import NotFound from "../assets/NotFound"
-import { navLinks } from "../components/header/Header"
+import { navLinks } from "../components/Navbar"
 
 const Notfound = () => {
   return (

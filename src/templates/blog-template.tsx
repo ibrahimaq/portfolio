@@ -9,6 +9,8 @@ import AllCards from "../components/cards/AllCards"
 import TagsList from "../components/TagsList"
 import { getSlugFromUrl } from "../helpers"
 import ThanksForReading from "../components/ThanksForReading"
+import { useGlobalContext } from "../context/GlobalContext"
+import { themeClassBuilder } from "../tools/theme"
 
 interface IBlogTemplate {
   data: Queries.singleBlogQuery
@@ -18,6 +20,8 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
   const [filteredBlogs, setFilteredBlogs] = useState<Queries.ContentfulBlog[] | null>(null);
   // code block highlighter
   deckDeckGoHighlightElement();
+
+  const { color } = useGlobalContext();
 
   const relatedBlogs = data?.relatedBlogs?.nodes;
   // remove displayed blog from related blogs
@@ -60,7 +64,7 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
         ogImage={ogImage}
         // ogUrl={`blogs/${slug}`}
       />
-      <article className="blog-template">
+      <article className="">
         <header className="bg-greyBg-dark">
           <div className="content-container flex flex-col items-center">
             <p>Published {blog?.date}</p>
@@ -81,9 +85,9 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
           </div>
         </header>
         <div className="content-container">
-          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-font-greydark  prose-code:whitespace-nowrap prose-a:decoration-accent-1
-                            prose-figcaption:text-center
-          ">
+          <section className={`prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-darkFont prose-code:whitespace-nowrap prose-a:decoration-accent-1
+                            prose-figcaption:text-center prose-li:marker:text-${color}-600
+          `}>
             <div
               dangerouslySetInnerHTML={{
                 __html: blog?.markdown?.childMarkdownRemark?.html as string,

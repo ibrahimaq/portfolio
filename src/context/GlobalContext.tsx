@@ -3,8 +3,8 @@ import { changeToDark, changeToLight } from "../tools/tools";
 
 
 interface GlobalContextType {
-    activeOverlay: boolean,
-    setActiveOverlay: Dispatch<SetStateAction<boolean | false>>
+    overlay: boolean,
+    setOverlay: Dispatch<SetStateAction<boolean | false>>
     formIsSubmitted: boolean | null,
     setFormIsSubmitted: Dispatch<SetStateAction<boolean | null>>,
     color?: string;
@@ -14,9 +14,9 @@ interface GlobalContextType {
     
 }
 export const GlobalContext = createContext<GlobalContextType>({
-    activeOverlay: false,
-    setActiveOverlay: function (value: SetStateAction<boolean>): void {
-        throw new Error("setActiveOverlay not implemented.");
+    overlay: false,
+    setOverlay: function (value: SetStateAction<boolean>): void {
+        throw new Error("setOverlay not implemented.");
     },
     setFormIsSubmitted: function (): void {
         throw new Error("setFormIsSubmitted function not implemented.");
@@ -34,7 +34,7 @@ interface Props {
 
 }
 export const GlobalContextProvider = ({children}: Props) => {
-    const [activeOverlay, setActiveOverlay] = useState<boolean>(false)
+    const [overlay, setOverlay] = useState<boolean>(false)
     const [formIsSubmitted, setFormIsSubmitted] = useState<boolean | null>(null)
     const [color, setColor] = useState<string>('');
     const [darkTheme, setDarkTheme] = useState<boolean>(false);
@@ -42,6 +42,7 @@ export const GlobalContextProvider = ({children}: Props) => {
     const setTheme = (themeColor: string) => {
       localStorage.setItem(localStorageKeyName, themeColor);
       setColor(themeColor)
+      console.log(themeColor)
 
   }
 
@@ -72,7 +73,7 @@ export const GlobalContextProvider = ({children}: Props) => {
 
 
     return (
-        <GlobalContext.Provider value={{activeOverlay, setActiveOverlay, formIsSubmitted, setFormIsSubmitted, color, setTheme, darkTheme, setDarkTheme}}>
+        <GlobalContext.Provider value={{overlay, setOverlay, formIsSubmitted, setFormIsSubmitted, color, setTheme, darkTheme, setDarkTheme}}>
             {children}
         </GlobalContext.Provider>
     )

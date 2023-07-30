@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Button from "../Button";
+import Button from "../Buttons/Button";
 import Card from "./Card";
 
 interface IAllCards {

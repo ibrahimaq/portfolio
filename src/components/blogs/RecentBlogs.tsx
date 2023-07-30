@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import {graphql, Link, useStaticQuery} from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-import Button from "../Button";
+import Button from "../Buttons/Button";
 import RecentCards from "../cards/AllCards";
+import SectionTitle from "../SectionTitle";
 
 
 const RecentBlogs = () => {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
       allContentfulBlog(sort: {date: DESC}, limit: 3) {
         nodes {
@@ -32,21 +33,24 @@ const RecentBlogs = () => {
     `)
 
 
-    const allBlogs = data?.allContentfulBlog?.nodes;
+  const allBlogs = data.allContentfulBlog.nodes
 
-    deckDeckGoHighlightElement();
+  deckDeckGoHighlightElement();
 
-    return ( 
-        <section className="bg-greylightBg">
-          <div className="content-container">
-            <h2 className="mb-10">Recent Blogs</h2>
-            {allBlogs && 
-              <RecentCards data={allBlogs.slice(0,3)} />
-            }
-            <Button link="/blogs" label="View all blogs" className="mt-12 block !w-full py-4 md:!w-[350px] sm:mx-auto" />
-          </div>
-        </section>
-     );
+  return (
+    <section className="bg-greylightBg">
+      <div className="content-container">
+        <SectionTitle title="Recent blogs" />
+        {/* <h2 className="mb-10">Recent Blogs</h2> */}
+        <div className="mt-[30px]">
+          {allBlogs &&
+            <RecentCards data={allBlogs.slice(0, 3)} />
+          }
+        </div>
+        <Button link="/blogs" label="View all blogs" className="mt-12 block !w-full py-4 md:!w-[350px] sm:mx-auto" />
+      </div>
+    </section>
+  );
 }
- 
+
 export default RecentBlogs;

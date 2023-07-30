@@ -2,7 +2,7 @@ import React from "react"
 import { useRef, useState, useEffect } from "react"
 import { navigate } from "gatsby"
 import emailjs from "@emailjs/browser"
-import ButtonSpinner from "../ButtonSpinner"
+import ButtonSpinner from "../Buttons/ButtonSpinner"
 
 const ContactForm = () => {
   // const [submitSuccess, setSubmitSuccess] = useState(null);
