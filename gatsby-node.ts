@@ -1,6 +1,9 @@
-const path = require("path");
+
+// const path = require("path");
+import path from 'path'
 const _ = require("lodash")
 
+//@ts-ignore
 exports.createPages = async ({graphql, actions}) =>{
     const {data} = await graphql(`
     query GetSlugsQuery {
@@ -25,7 +28,8 @@ exports.createPages = async ({graphql, actions}) =>{
     //absolute path to template
     const templatePath = path.resolve("./src/templates/blog-template.tsx");
     //cycling through nodes to create pages
-    data.allContentfulBlog.nodes.forEach(node => {
+    //@ts-ignore
+    data.allContentfulBlog.nodes.forEach((node) => {
         actions.createPage({
             path: "/blogs/" + node.slug,
             component: templatePath,
@@ -37,10 +41,12 @@ exports.createPages = async ({graphql, actions}) =>{
     })
 
     // pages created by tags
-    let uniqueTags = [];
+    let uniqueTags: string[] = [];
     const templateTagsPath = path.resolve("./src/templates/tags-template.tsx");
+
+    //@ts-ignore
     data.allContentfulBlog.nodes.forEach(node => {
-      node.markdown.childMarkdownRemark.frontmatter.tags.forEach(tag => {
+      node.markdown.childMarkdownRemark.frontmatter.tags.forEach((tag: string) => {
         if (uniqueTags.includes(tag)) {
           return
         } else {

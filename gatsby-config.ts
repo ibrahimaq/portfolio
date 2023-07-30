@@ -3,6 +3,15 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+// @ts-check
+
+// /**
+//  * @type {import('gatsby').GatsbyConfig}
+//  */
+// const gatsbyConfig = {}
+
+// module.exports = gatsbyConfig
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })

@@ -7,28 +7,31 @@
     
 } */
 
-.box-shadow {
+/* .box-shadow {
     box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
     background: #fff;
-}
+} */
+
 .content-container {
     @apply px-4 sm:w-4/5 xl:w-[1200px] mx-auto py-20;
 }
 
-h1 {
-    @apply text-3xl;
-}
-
-h2 {
-    @apply sm:text-3xl text-2xl;
-}
-
-p {
-    @apply text-font-greydark;
-}
-
-a {
-    @apply hover:underline hover:underline-offset-4 hover:decoration-2;
+@layer base {
+    h1 {
+        @apply text-3xl;
+    }
+    
+    h2 {
+        @apply sm:text-3xl text-2xl;
+    }
+    
+    p {
+        @apply text-font-greydark;
+    }
+    
+    a {
+        @apply hover:underline hover:underline-offset-4 hover:decoration-2;
+    }
 }
 
 .blog h1 {
@@ -39,15 +42,6 @@ a {
     @apply text-center opacity-0 transition-all duration-500;
 }
 
-.floating-icon:hover .email, .floating-icon:hover .twitter, .floating-icon:hover .linkedin {
-    opacity: 1;
-    background-color: aqua;
-    margin-bottom: 40px;
-}
-
-.floating-icon:hover .icons-container div:last-child {
-    margin-bottom: 80px !important;
-}
 
 .prose code {
     @apply bg-[#282a36] text-white px-1 py-[2px] rounded-[4px];
