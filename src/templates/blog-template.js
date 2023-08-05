@@ -76,8 +76,8 @@ const BlogTemplate = ({ data }) => {
           </div>
         </header>
         <div className="content-container">
-          <section className="prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-font-greydark  prose-code:whitespace-nowrap prose-a:decoration-accent-1
-                            prose-figcaption:text-center
+          <section className="prose prose-lg lg:prose-xl mx-auto prose-headings:text-font-greydark prose-code:font-medium prose-code:!text-base prose-code:whitespace-nowrap prose-a:decoration-accent-1
+                            prose-figcaption:text-center prose-blockquote:font-light 
           ">
             <div
               dangerouslySetInnerHTML={{

@@ -50,7 +50,7 @@ a {
 }
 
 .prose code {
-    @apply bg-[#282a36] text-white px-1 py-[2px] rounded-[4px];
+    @apply bg-gray-200 text-gray-800 px-1 py-[2px] rounded-[3px];
 }
 
 /* .prose code {
@@ -69,13 +69,10 @@ a {
     width: 300px;
 } */
 
-@media (max-width: 800px) {
-    :root{
-        --deckgo-highlight-code-container-width: 800px;
-        --deckgo-highlight-code-scroll: scroll;
-       
-    } 
-}
+:root{
+    --deckgo-highlight-code-white-space: nowrap;
+} 
+
 
 
 /* CODE BLOCK CUSTOM PROPERTIES  */
@@ -83,11 +80,10 @@ a {
     --deckgo-highlight-code-carbon-toolbar-display: none;
     --deckgo-highlight-code-carbon-box-shadow: rgba(0, 0, 0, 0.55) 0 6px 10px;
     --deckgo-highlight-code-scroll: scroll !important;
-    --deckgo-highlight-code-container-width: 400px !important;  
-    --deckgo-highlight-code-container-width: 400px !important;
+    --deckgo-highlight-code-container-width: 100% !important;  
 } */
 .deckgo-highlight-code-carbon {
-    @apply mx-1 sm:mx-4 shadow-md text-sm md:text-base;
+    @apply mx-1 sm:mx-4 shadow-lg text-sm md:text-base;
 }
 
 
