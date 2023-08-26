@@ -11,6 +11,9 @@ import { getSlugFromUrl } from "../helpers"
 import ThanksForReading from "../components/ThanksForReading"
 import { useGlobalContext } from "../context/GlobalContext"
 import { themeClassBuilder } from "../tools/theme"
+import Container from "../components/Container"
+import SectionTitle from "../components/SectionTitle"
+import { getLiMarkerStyle } from "../tools/theme"
 
 interface IBlogTemplate {
   data: Queries.singleBlogQuery
@@ -54,6 +57,8 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
 
   }, []);
 
+ 
+
 
   return (
     <Layout>
@@ -64,29 +69,31 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
         ogImage={ogImage}
         // ogUrl={`blogs/${slug}`}
       />
-      <article className="">
-        <header className="bg-greyBg-dark">
-          <div className="content-container flex flex-col items-center">
-            <p>Published {blog?.date}</p>
-            <h1 className="text-center mt-5">
-              {blog?.markdown?.childMarkdownRemark?.frontmatter?.title}
-            </h1>
-            <div className="flex items-center my-5">
-              <Book fill="#545456" width="20px" customClass="inline-block mr-2" />
-              <p>{blog?.markdown?.childMarkdownRemark?.timeToRead} min read</p>
+      <article className="mt-20 pt-20">
+        <Container>
+          <header>
+            <div className="flex flex-col items-center">
+              <p>Published {blog?.date}</p>
+              <h1 className="text-center mt-5">
+                {blog?.markdown?.childMarkdownRemark?.frontmatter?.title}
+              </h1>
+              <div className="flex items-center my-5">
+                <Book fill="#545456" width="20px" customClass="inline-block mr-2" />
+                <p>{blog?.markdown?.childMarkdownRemark?.timeToRead} min read</p>
+              </div>
+              <TagsList
+                tags={blog?.markdown?.childMarkdownRemark?.frontmatter?.tags as string[]}
+              />
+              {/* <GatsbyImage 
+                image={blog.featuredImage.gatsbyImageData} 
+                alt={blog.featuredImage.title}  
+              /> */}
             </div>
-            <TagsList
-              tags={blog?.markdown?.childMarkdownRemark?.frontmatter?.tags as string[]}
-            />
-            {/* <GatsbyImage 
-              image={blog.featuredImage.gatsbyImageData} 
-              alt={blog.featuredImage.title}  
-            /> */}
-          </div>
-        </header>
-        <div className="content-container">
-          <section className={`prose prose-lg lg:prose-xl max-w-none mx-auto prose-headings:text-darkFont prose-code:whitespace-nowrap prose-a:decoration-accent-1
-                            prose-figcaption:text-center prose-li:marker:text-${color}-600
+          </header>
+        
+        {/* <div className="content-container"> */}
+          <section className={`pt-10 prose prose-lg lg:prose-xl max-w-[920px] mx-auto prose-headings:text-darkFont prose-code:whitespace-nowrap prose-a:decoration-accent-1
+                            prose-figcaption:text-center ${color? getLiMarkerStyle(color) : 'prose-li:marker:text-indigo-600'}
           `}>
             <div
               dangerouslySetInnerHTML={{
@@ -94,17 +101,22 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
               }}
             />
           </section>
-          <ThanksForReading />
-        </div>
+        </Container>
       </article>
+      <section className="max-w-[920px] mx-auto">
+            <ThanksForReading />
+      </section>
       {filteredBlogs && filteredBlogs.length > 0 ? (
-        <section className="bg-greylightBg">
-          <div className="content-container">
-            <h2 className="mb-5">
-              Related {filteredBlogs.length > 1 ? "blogs" : "blog"}
-            </h2>
+        <section className="pt-20">
+          <Container>
+            {/* <h2 className="mb-5"> */}
+            <div className="mb-5">
+              <SectionTitle title={`Related ${filteredBlogs.length > 1 ? "blogs" : "blog"}`} />
+            </div>
+              {/* Related {filteredBlogs.length > 1 ? "blogs" : "blog"} */}
+            {/* </h2> */}
             <AllCards data={filteredBlogs} />
-          </div>
+          </Container>
         </section>
       ) : null}
     </Layout>

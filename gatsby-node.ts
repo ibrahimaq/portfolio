@@ -1,7 +1,8 @@
 
 // const path = require("path");
 import path from 'path'
-const _ = require("lodash")
+import _ from 'lodash'
+// const _ = require("lodash")
 
 //@ts-ignore
 exports.createPages = async ({graphql, actions}) =>{

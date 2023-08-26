@@ -1,7 +1,8 @@
 import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction, useEffect, useRef, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
-import { getInputStyle, validator } from "helpers/tools";
 import Label from "./Label";
+import React from "react";
+import { validator, getInputStyle } from "../../tools/tools";
 
 export interface ITextfieldProps {
 	type: 'name' | 'email'
@@ -117,7 +118,9 @@ const Textfield = ({type, id, onValueUpdate, placeholder, label, initialError}: 
 				onBlur={e => onBlur()}
 				onKeyDown={e => onKeyDown(e)}
 				className={`px-5 py-3 rounded-md focus:outline-sky-500
-					${getInputStyle({error, validated})}
+				${getInputStyle({ error, validated })}
+				
+				
 				`}
 			/>
 			{error && <ErrorMessage error={error} />}
@@ -126,3 +129,7 @@ const Textfield = ({type, id, onValueUpdate, placeholder, label, initialError}: 
 }
 
 export default Textfield;
+
+// ${error && "outline outline-2 outline-red-400/70 bg-red-50/50"}
+// ${validated && "outline-2 outline outline-emerald-400/70 bg-emerald-50"}
+// ${!error && !validated && "bg-slate-100"}

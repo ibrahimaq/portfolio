@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { graphql, Link, useStaticQuery } from 'gatsby'
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Button from "../Buttons/Button";
-import RecentCards from "../cards/AllCards";
+import AllCards from "../cards/AllCards";
 import SectionTitle from "../SectionTitle";
+import Container from "../Container";
 
 
 const RecentBlogs = () => {
@@ -35,20 +35,20 @@ const RecentBlogs = () => {
 
   const allBlogs = data.allContentfulBlog.nodes
 
-  deckDeckGoHighlightElement();
 
   return (
-    <section className="bg-greylightBg">
-      <div className="content-container">
+    <section className="py-20">
+      <Container>
         <SectionTitle title="Recent blogs" />
         {/* <h2 className="mb-10">Recent Blogs</h2> */}
         <div className="mt-[30px]">
           {allBlogs &&
-            <RecentCards data={allBlogs.slice(0, 3)} />
+            <AllCards data={allBlogs.slice(0, 3)} />
           }
         </div>
         <Button link="/blogs" label="View all blogs" className="mt-12 block !w-full py-4 md:!w-[350px] sm:mx-auto" />
-      </div>
+   
+      </Container>
     </section>
   );
 }

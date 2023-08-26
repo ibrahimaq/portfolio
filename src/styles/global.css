@@ -105,7 +105,7 @@ input:-webkit-autofill {
   
   transition-timing-function: ease-out;
   opacity: 0;
-  /* bottom: -50px; */
+
 }
 
 .mobileMenu-item-animation.in {

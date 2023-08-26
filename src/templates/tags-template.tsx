@@ -6,6 +6,7 @@ import TagsList from "../components/TagsList";
 import {kebabCase, camelCase} from 'lodash'
 import AllCards from "../components/cards/AllCards";
 import { getSlugFromUrl } from "../helpers";
+import Container from "../components/Container";
 
 
 const TagsPage = () => {
@@ -72,6 +73,10 @@ const TagsPage = () => {
 
     }, [activeTag])
 
+    // let noOfBlogs;
+
+    // if (taggedBlogs.length) taggedBlogs.length;
+
     return ( 
         <Layout>
           <Seo 
@@ -80,8 +85,7 @@ const TagsPage = () => {
           ogType="article"
           // ogUrl={`blogs/${slug}`}
           />
-          <div className="bg-greyBg-dark">
-            <div className="content-container">
+            <Container className="pt-[150px]">
               <h1 className="text-center text-base md:text-lg">
               {numberOfTaggedBlogs} blog{numberOfTaggedBlogs<2? '' : 's'} tagged
                 <span className="block w-fit mx-auto text-2xl md:text-3xl px-3 py-1 mt-2 rounded-lg">#{camelCase(activeTag)}</span>
@@ -89,11 +93,12 @@ const TagsPage = () => {
                 {data && uniqueTags.length > 0 && 
                     <TagsList tags={uniqueTags} activeTag={activeTag} wrapperClass='mt-5' />
                 }
-            </div>
-            </div>
-            <section className="content-container">
-                {taggedBlogs && <AllCards data={taggedBlogs} />}
-            </section>
+          
+              <section className="pt-20">
+                  {/* <p className="p-subtitle">{noOfBlogs} blog{noOfBlogs && noOfBlogs > 1 ? 's' : ''} found</p> */}
+                  {taggedBlogs && <AllCards data={taggedBlogs} />}
+              </section>
+            </Container>
         </Layout>
      );
 }

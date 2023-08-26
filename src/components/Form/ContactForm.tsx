@@ -92,10 +92,10 @@ const ContactForm = () => {
 		if (form.current)
 		emailjs
 			.sendForm(
-				`${process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID}`,
-				`${process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID}`,
+				`${process.env.GATSBY_EMAILJS_SERVICE_I}`,
+				`${process.env.GATSBY_EMAILJS_TEMPLATE_ID}`,
 				form.current,
-				`${process.env.NEXT_PUBLIC_EMAILJS_USER_ID}`
+				`${process.env.GATSBY_EMAILJS_USER_ID}`
 			)
 			.then(res => {
 				console.log("SUCCESS! ", res.status, res.text)
@@ -153,7 +153,9 @@ const ContactForm = () => {
 							<Textfield id="email" label="Email" type='email' onValueUpdate={onChange} initialError={formError.email} />
 							<TextArea id="message" label="Message" onValueUpdate={onChange} initialError={formError.message} />
 	
-							<Button label="Send Message" large className="mt-5" loading={loading} type="submit" />
+							<div className="mt-auto">
+								<Button label="Send Message" large className="mt-5" loading={loading} type="submit" />
+							</div>
 						</form>
 					
 				</>
@@ -174,5 +176,5 @@ interface ErrorType {
 
 export const formText = {
 	title: "Let's Work Together",
-	text: "Have a question, a project idea, or just want to say hello? I'd love to hear from you! Get in touch using the form below and I'll get back to you as soon as possible."
+	text: "Have a question, a project idea, or just want to say hello? I'd love to hear from you! Get in touch using the form and I'll get back to you as soon as possible."
 }

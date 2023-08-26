@@ -1,5 +1,7 @@
+import { ColorType } from "../context/GlobalContext"
+
 export type themeColorsType = {
-	color: string
+	color: ColorType
 	textClass: string
 	bgClass: string
 }
@@ -116,6 +118,21 @@ export const getDuration = (i: number) => {
 		default:
 			return "duration-[700ms]"
 	}
+}
+
+export const getLiMarkerStyle = (color: ColorType) => {
+
+	switch (color) {
+		case "indigo":
+			return "prose-li:marker:text-indigo-600"
+		case "cyan":
+			return "prose-li:marker:text-cyan-600"
+		case "pink":
+			return "prose-li:marker:text-pink-600"
+		default: 
+			return 'prose-li:marker:text-indigo-600' 
+	}
+
 }
 
 // export const changeToDark = () => {

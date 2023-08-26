@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react"
 import { PageProps, graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
-
 import AllCards from "../components/cards/AllCards"
+import Container from "../components/Container"
+import PageHeading from "../components/PageHeading"
 
 // import SearchBlogs from "../components/SearchBlogs"
 
@@ -46,22 +47,17 @@ const Blogs = ({ data }: PageProps<Queries.blogsPageQuery>) => {
         // ogImage={undefined}      // ogUrl={"/blogs"}
       />
 
-      <section className="bg-greyBg">
-          <div className="content-container">
-            <h1>Blogs</h1>
-          </div>
-      </section>
-      
-      <section className="bg-greylightBg">
-          <div className="content-container min-h-screen">
+      <Container className="pt-20 mt-20">
+        <PageHeading title="Blogs" />
+          <section className="min-h-screen pt-20">
             {/* <SearchBlogs setSearchTerm={setSearchTerm} searchTerm={searchTerm} /> */}
             {blogs.length > 0 ? 
               <AllCards data={blogs} /> 
               :
               <p className="text-center mt-10">No blogs found :(</p>
             }
-          </div>
-      </section>
+          </section>
+      </Container>
     </Layout>
   )
 }

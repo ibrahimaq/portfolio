@@ -1,4 +1,4 @@
-
+import React from "react"
 interface ILabelProps {
     id: string,
     label: string,

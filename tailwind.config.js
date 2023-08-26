@@ -11,8 +11,9 @@ const a = colors.forEach(color => {
   const hoverBg = `hover:bg-${color}-600`
   const proseHeadings = `prose-headings:text-${color}-600`
   const proseLiMarker = `prose-li:marker:text-${color}-600`
+  const borderB = `border-b-${color}-600`
   // const duration = 'duration'
-  safeList.push(text, bg, beforeBg, hoverBg, proseHeadings, proseLiMarker, decorationText)
+  safeList.push(text, bg, beforeBg, hoverBg, proseHeadings, decorationText, proseLiMarker, borderB)
 })
 
 module.exports = {
@@ -72,9 +73,6 @@ module.exports = {
             'code::after': {
               content: '',
             },
-            'li::marker': {
-              color: theme('colors.accent-1')
-            }
             
           
           }

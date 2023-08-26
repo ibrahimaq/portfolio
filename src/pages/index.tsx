@@ -7,6 +7,9 @@ import Intro from "../components/homepage/Intro"
 import RecentBlogs from "../components/blogs/RecentBlogs"
 import FindMe from "../components/FindMe";
 import Hero from "../components/Hero";
+import AboutMe from "../components/AboutMe";
+import SayHello from "../components/SayHello";
+
 
 
 export default function Home() {
@@ -31,10 +34,9 @@ export default function Home() {
       ogType={"profile"}
       />
       <Hero />
-      {/* <FloatingContactIcon /> */}
-      <Intro />
+      <AboutMe />
       <RecentBlogs />
-      <FindMe />
+      <SayHello />
 
       
     </Layout>

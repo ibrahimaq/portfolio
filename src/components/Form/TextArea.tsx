@@ -1,8 +1,9 @@
 import { KeyboardEvent, useEffect, useState } from "react";
 import { ErrorType, ITextfieldProps } from "./Textfield";
 import Label from "./Label";
-import { getInputStyle, validator } from "helpers/tools";
 import ErrorMessage from "./ErrorMessage";
+import React from "react";
+import { validator, getInputStyle } from "../../tools/tools";
 
 interface ITextAreaProps extends Omit<ITextfieldProps, 'type'> { }
 

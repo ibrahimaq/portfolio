@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { themeClassBuilder, getBeforeBgColor } from "../tools/theme";
 import { useGlobalContext } from "../context/GlobalContext";
 import Button from "./Buttons/Button";
+import avatar from '../assets/images/myAvatar.svg'
 
 const Navbar = () => {
 	const [active, setActive] = useState<number>(-1);
@@ -63,11 +64,13 @@ const Navbar = () => {
 
 			{/* desktop */}
 			{/* <Container className="hidden md:block pt-8 mx-auto"> */}
-			<div className="hidden md:block md:absolute md:w-full md:pt-8 bg-transparent z-10">
-				<div className="flex flex-row justify-between px-16 max-w-[1440px] mx-auto">
+			<div className={`hidden md:block md:absolute md:w-full md:pt-8 bg-transparent z-10 `}>
+				<div className="flex flex-row justify-between items-center px-16 max-w-[1440px] mx-auto">
 
-					<NavIcon bgColor={themeClassBuilder({ color, el: "bg" })} />
-					<nav className="flex flex-row items-center ml-[65px]">
+					<div className="w-[40px] h-[40px]"><img src={avatar} alt="avatr of Ibrahim" className="object-cover" /></div>
+					
+					{/* <NavIcon bgColor={themeClassBuilder({ color, el: "bg" })} /> */}
+					<nav className="flex flex-row items-center mr-[30px] ml-auto">
 						<ul className="flex flex-row">
 							{navLinks.map((item, i) => (
 								<li key={i} className="mx-3">
@@ -97,14 +100,17 @@ const Navbar = () => {
 			{/* </Container> */}
 
 			{/* Mobile */}
-			<div className={`md:hidden w-full fixed z-[100]
+			<div className={`md:hidden w-full fixed z-[100] transition-all duration-300 
 					${scroll && 'bg-white/40 shadow-md backdrop-blur-md'}
+					${overlay ? 'opacity-0 top-[-200px]' : 'opacity-100 top-0'}
 			`}>
 				<div
 					className={`relative flex flex-row justify-between items-center py-5 px-6
                 `}
 				>
-					<NavIcon bgColor={themeClassBuilder({ color, el: "bg" })} />
+					<div className="w-[40px] h-[40px]"><img src={avatar} alt="avatr of Ibrahim" className="object-cover" /></div>
+
+					{/* <NavIcon bgColor={themeClassBuilder({ color, el: "bg" })} /> */}
 					<button
 						className="flex flex-col justify-between items-center h-[36px] w-[40px] py-[8px]"
 						aria-label="toggle navigation menu"
@@ -158,7 +164,7 @@ const Navbar = () => {
 					</ul>
 
 					<div
-						className={`mobileMenu-item-animation px-[24px] mt-[20px] relative flex flex-row justify-center
+						className={`mobileMenu-item-animation px-[24px] mt-[20px] relative flex flex-row justify-center max-w-[300px] mx-auto
                     ${mobileMenu
 								? "mobileMenu-lets-chat-btn-in"
 								: "mobileMenu-lets-chat-btn-out"
@@ -181,7 +187,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const navLinks = [
+export const navLinks = [
 	{
 		label: "Home",
 		link: "/",
@@ -189,10 +195,6 @@ const navLinks = [
 	{
 		label: "About",
 		link: "/about",
-	},
-	{
-		label: "Examples",
-		link: "/examples",
 	},
 	{
 		label: "Blogs",

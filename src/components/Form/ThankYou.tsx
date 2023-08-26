@@ -1,6 +1,6 @@
+import React from "react";
 import Lottie from "lottie-react";
-import tick from 'assets/Lottie/tick-animation.json'
-import tick2 from 'assets/Lottie/animation_lk4rvout.json'
+import tick2 from '../../assets/Lottie/animation_lk4rvout.json'
 
 const ThankYou = () => {
     return ( 
