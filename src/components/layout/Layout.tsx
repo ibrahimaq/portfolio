@@ -1,7 +1,7 @@
 import React from "react"
 import Header from "../Navbar"
 import Footer from "../footer/Footer"
-import ThemeOption from "../ThemeOption"
+import ThemeOption from "../FloatingThemeBtn"
 import Overlay from "../Overlay"
 
 interface ILayout {
