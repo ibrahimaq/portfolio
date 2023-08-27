@@ -7,7 +7,13 @@ import { useInView } from "react-intersection-observer";
 import { useGlobalContext } from "../context/GlobalContext";
 import { themeClassBuilder } from "../tools/theme";
 
+interface IAboutMe {
+  data: AboutMeDataType
+}
 
+export type AboutMeDataType = {
+  
+}
 const AboutMe = () => {
   const { color } = useGlobalContext()
 
@@ -59,7 +65,7 @@ const pStyle = `text-2xl font-light transition-all duration-500 ${textInView ? '
             src='../assets/images/myAvatar.png'
             alt='avatar'
             placeholder="blurred"
-            className={`shadow-lg object-fit md:w-[250px] lg:w-[300px] relative rounded-full bg-white p-1 z-[1] transition-all duration-300
+            className={`shadow-3d object-fit md:w-[250px] lg:w-[300px] relative rounded-full bg-white p-1 z-[1] transition-all duration-300
             ${imgInView ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-x-[20px] translate-y-[20px]'}
             `}
           />

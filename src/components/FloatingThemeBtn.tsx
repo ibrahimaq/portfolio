@@ -32,7 +32,7 @@ const ThemeOption = () => {
 
 	return (
 		<>
-			<div ref={ref} className={`z-[100] fixed rounded-full right-0 top-1/4 flex flex-col h-max`}>
+			<div ref={ref} className={`z-[100] fixed rounded-full right-2 md:right-5 bottom-[50px] flex flex-col h-max`}>
 				<IconContext.Provider value={{ className: 'text-white w-[30px] h-[30px]' }}>
 				<button
 					className={`p-1 ${themeClassBuilder({ color, el: 'bg' })} shadow-3d rounded-full cursor-pointer text-white`}
@@ -67,13 +67,13 @@ interface IAnimatedButton {
 const AnimatedButton = ({index, active, themeObj, setTheme}: IAnimatedButton) => {
 
 	const transitions = useTransition(active, {
-		from: { opacity: 0, top: 0 },
-		enter: { opacity: 1, top: index === 0 ? 48 : index===1 ? 86 : 126 },
-		leave: { opacity: 0, top: 0, },
+		from: { opacity: 0, bottom: 0 },
+		enter: { opacity: 1, bottom: index === 0 ? 48 : index===1 ? 86 : 126 },
+		leave: { opacity: 0, bottom: 0, },
 		delay: index * 100,
-		config: { tension: 220, friction: 25},
+		config: { tension: 230, friction: 25, mass: 2},
 		
-		// trail: index*100,
+		// trail: index*200,
 	});
 
 
