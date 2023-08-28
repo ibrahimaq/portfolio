@@ -53,7 +53,7 @@ const HeroBgGradient = ({data}: IHeroBgGradient) => {
 					</h1>
 
 					{bodyCopy &&
-						<p className="text-2xl md:text-2xl text-darkFont font-light text-center my-5 md:my-8 tracking-wider max-w-[800px]">{bodyCopy}</p>
+						<p className="text-2xl md:text-2xl text-dark font-light text-center my-5 md:my-8 tracking-wider max-w-[800px]">{bodyCopy}</p>
 					}
 					<div>
 						<Button label="Let's chat" onClick={() => setOverlay(true)} large />

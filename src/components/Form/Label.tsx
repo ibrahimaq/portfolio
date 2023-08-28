@@ -5,7 +5,7 @@ interface ILabelProps {
 }
 const Label = ({id, label}: ILabelProps) => {
     return (
-        <label htmlFor={id} className='text-darkFont mb-2 w-fit'>{label}</label>
+        <label htmlFor={id} className='text-dark mb-2 w-fit'>{label}</label>
      );
 }
  

@@ -37,7 +37,7 @@ const pStyle = `text-2xl font-light transition-all duration-500 ${textInView ? '
     <Container className="flex flex-col md:flex-row md:justify-between">
       <div className="md:w-1/2">
 
-        {/* <h2 className={`text-darkFont mb-5
+        {/* <h2 className={`text-dark mb-5
         ${darkTheme && 'text-slate-200'}
         `}>About</h2> */}
         <SectionTitle title="About" />

@@ -29,7 +29,7 @@ const Card = ({ data }: ICard) => {
 
 					<div className='p-5 relative flex flex-col h-full'>
 						<Link to={`/blogs/${data?.markdown?.childMarkdownRemark?.frontmatter?.slug}`} className="hover:no-underline">
-							<h3 className="font-bold text-lg text-darkFont">{data?.markdown?.childMarkdownRemark?.frontmatter?.title}</h3>
+							<h3 className="font-bold text-lg text-dark">{data?.markdown?.childMarkdownRemark?.frontmatter?.title}</h3>
 						</Link>
 
 						<div className="mt-auto">

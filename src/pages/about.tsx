@@ -36,7 +36,7 @@ const About = () => {
               <PageHeading title="About me" />
               <article>
                 <div
-                    className={`mt-20 prose lg:prose-xl prose-headings:text-darkFont ${color? getLiMarkerStyle(color) : 'prose-li:marker:text-indigo-600'}`}
+                    className={`mt-20 prose lg:prose-xl prose-headings:text-dark ${color? getLiMarkerStyle(color) : 'prose-li:marker:text-indigo-600'}`}
                     dangerouslySetInnerHTML={{
                         __html: query.file.childMarkdownRemark.html,
                     }}

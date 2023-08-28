@@ -19,6 +19,8 @@ Outside of coding, you'll find me reading about the universe and its mysteries, 
 - React/TypeScript
 - Gatsby
 - GraphQL
+- Jest and React-testing-library
+- Storybook
 - Node
 - NPM
 - Git/Github

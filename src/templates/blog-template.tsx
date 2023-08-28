@@ -91,9 +91,12 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
             </div>
           </header>
         
-        {/* <div className="content-container"> */}
-          <section className={`pt-10 prose prose-lg lg:prose-xl max-w-[920px] mx-auto prose-headings:text-darkFont prose-code:whitespace-nowrap prose-a:decoration-accent-1
-                            prose-figcaption:text-center ${color? getLiMarkerStyle(color) : 'prose-li:marker:text-indigo-600'}
+
+          <section 
+          className={`pt-10 prose prose-lg lg:prose-xl mx-auto prose-headings:text-dark
+          prose-code:font-medium prose-code:!text-base prose-code:whitespace-nowrap prose-blockquote:overflow-auto 
+          prose-blockquote:border-l-${color}-600 prose-blockquote:bg-${color}-600 prose-blockquote:bg-opacity-5 prose-a:decoration-accent-1
+              prose-figcaption:text-center ${color? getLiMarkerStyle(color) : 'prose-li:marker:text-indigo-600'}
           `}>
             <div
               dangerouslySetInnerHTML={{
@@ -101,11 +104,16 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
               }}
             />
           </section>
+
         </Container>
       </article>
+
+
       <section className="max-w-[920px] mx-auto">
             <ThanksForReading />
       </section>
+
+
       {filteredBlogs && filteredBlogs.length > 0 ? (
         <section className="pt-20">
           <Container>
@@ -113,12 +121,11 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
             <div className="mb-5">
               <SectionTitle title={`Related ${filteredBlogs.length > 1 ? "blogs" : "blog"}`} />
             </div>
-              {/* Related {filteredBlogs.length > 1 ? "blogs" : "blog"} */}
-            {/* </h2> */}
             <AllCards data={filteredBlogs} />
           </Container>
         </section>
       ) : null}
+
     </Layout>
   )
 }

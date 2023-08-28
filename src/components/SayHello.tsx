@@ -20,10 +20,10 @@ const SayHello = ({heading, body}: ISayHello) => {
 			<Container className='py-20'>
 				<div className="w-full flex flex-col items-center bg-white rounded-md mx-auto">
 					{heading && 
-						<h2 className='text-center sm:text-start text-3xl md:text-4xl text-darkFont'>{heading}</h2>
+						<h2 className='text-center sm:text-start text-3xl md:text-4xl text-dark'>{heading}</h2>
 					}
 					{body && 
-						<p className='text-center my-4 text-darkFont text-xl'>{body}</p>
+						<p className='text-center my-4 text-dark text-xl'>{body}</p>
 					}
 					{/* <div className='flex flex-row justify-between items-center w-full px-[40px]'> */}
 

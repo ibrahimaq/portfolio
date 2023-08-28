@@ -12,8 +12,10 @@ const a = colors.forEach(color => {
   const proseHeadings = `prose-headings:text-${color}-600`
   const proseLiMarker = `prose-li:marker:text-${color}-600`
   const borderB = `border-b-${color}-600`
+  const blockquoteBLcolor = `prose-blockquote:border-l-${color}-600`
+  const blockquoteBg = `prose-blockquote:bg-${color}-600`
   // const duration = 'duration'
-  safeList.push(text, bg, beforeBg, hoverBg, proseHeadings, decorationText, proseLiMarker, borderB)
+  safeList.push(text, bg, beforeBg, hoverBg, proseHeadings, decorationText, proseLiMarker, borderB, blockquoteBLcolor, blockquoteBg)
 })
 
 module.exports = {
@@ -29,7 +31,7 @@ module.exports = {
       colors: (theme) =>  ({
         primary: theme.colors.indigo[600],
         backgroundDark: theme.colors.indigo[900],
-        darkFont: theme.colors.zinc[700],
+        dark: theme.colors.zinc[700],
         // OLD COLOURS
         // 'blackBg': '#262932',
         // 'greyBg': '#EBECF0',
@@ -56,8 +58,8 @@ module.exports = {
             blockquote: {
               // maxWidth: "600px",
               margin: "0 20px",
-              backgroundColor: theme('colors.pink.50'),
-              borderLeftColor: theme('colors.accent-2'),
+              // backgroundColor: theme('colors.pink.50'),
+              // borderLeftColor: theme('colors.accent-2'),
               paddingTop: '1px',
               paddingBottom: '1px',
               paddingRight: '15px',
@@ -80,20 +82,6 @@ module.exports = {
         }
       })
     },
-      //  typography: {
-      //       DEFAULT: {
-      //           css: {
-      //             maxWidth: '1200px',
-      //               // pre: null,
-      //               // code: null,
-      //               // 'code::before': null,
-      //               // 'code::after': null,
-      //               // 'pre code': null,
-      //               // 'pre code::before': null,
-      //               // 'pre code::after': null,
-      //           },  
-      //       },
-      //   },
   },
   plugins: [
     require('@tailwindcss/typography'),

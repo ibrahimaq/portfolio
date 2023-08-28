@@ -7,7 +7,7 @@ const SectionTitle = ({title}: ISectionTitle) => {
   const {darkTheme} = useGlobalContext();
 
   return ( 
-    <h2 className={`${darkTheme ? 'text-slate-200' : 'text-darkFont'}`}>{title}</h2>
+    <h2 className={`${darkTheme ? 'text-slate-200' : 'text-dark'}`}>{title}</h2>
    );
 }
  

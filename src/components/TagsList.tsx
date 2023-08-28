@@ -20,7 +20,7 @@ const TagsList = ({ tags, activeTag, wrapperClass }: ITagsList) => {
                     to={`/tags/${kebabCase(tag)}`}
                     className={`
                         block w-full h-full py-1 px-2 bg-slate-200 hover:bg-slate-300 rounded-lg hover:no-underline
-                        ${activeTag === kebabCase(tag) ? `${themeClassBuilder({color, el: 'text'})}` : 'text-darkFont'}
+                        ${activeTag === kebabCase(tag) ? `${themeClassBuilder({color, el: 'text'})}` : 'text-dark'}
                         `}
                     >
                         #{camelCase(tag)}
