@@ -92,7 +92,7 @@ const ContactForm = () => {
 		if (form.current)
 		emailjs
 			.sendForm(
-				`${process.env.GATSBY_EMAILJS_SERVICE_I}`,
+				`${process.env.GATSBY_EMAILJS_SERVICE_ID}`,
 				`${process.env.GATSBY_EMAILJS_TEMPLATE_ID}`,
 				form.current,
 				`${process.env.GATSBY_EMAILJS_USER_ID}`

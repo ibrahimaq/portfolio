@@ -9,7 +9,7 @@ const ThankYou = () => {
             <div className="max-w-[200px] mx-auto">
                 <Lottie animationData={tick2} loop={false}  />
             </div>
-            <p className="h2">Thank you!</p>
+            <p className="p-subtitle">Thank you!</p>
             <p className="p-subtitle mt-5">Your email has been received.</p>
         </div>
         </>

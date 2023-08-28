@@ -62,7 +62,7 @@ const Overlay = () => {
 			{transition && 
 			transition((style, item) => item && (
 				<animated.div style={style} 
-				className='fixed w-full bg-white z-[9999] overflow-hidden flex flex-col max-h-[calc(100%-100px)] md:max-h-full md:h-full'
+				className='fixed w-full bg-white z-[9999] overflow-hidden flex flex-col h-full max-h-[calc(100%-100px)] md:max-h-full md:h-full'
 				>
 					<div className="p-[20px] flex flex-row justify-end sticky top-0 bg-white rounded-tr-xl rounded-tl-xl">
 						<button
