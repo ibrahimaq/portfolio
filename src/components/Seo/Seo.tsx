@@ -22,7 +22,7 @@ const Seo = ({title, description, ogType, ogImage}: propType) => {
             description
           }
         }
-        contentfulLogo(metaImage: {title: {eq: "black logo"}}) {
+        contentfulLogo(metaImage: {title: {eq: "index snapshot"}}) {
           metaImage {
             gatsbyImageData
           }
