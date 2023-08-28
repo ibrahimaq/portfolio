@@ -4,18 +4,19 @@ import { themeClassBuilder, getBeforeBgColor } from "../tools/theme";
 import { useGlobalContext } from "../context/GlobalContext";
 import Button from "./Buttons/Button";
 import avatar from '../assets/images/myAvatar.svg'
+import { animated, useTransition } from "@react-spring/web";
 
 const Navbar = () => {
-	const [active, setActive] = useState<number>(-1);
+	// const [active, setActive] = useState<number>(-1);
 	const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 	const [scroll, setScroll] = useState<boolean>(false)
 
 	const { color } = useGlobalContext();
 	const { overlay, setOverlay } = useGlobalContext();
 
-	const handleClick = (index: number) => {
-		setActive(index);
-	};
+	// const handleClick = (index: number) => {
+	// 	setActive(index);
+	// };
 
 	const handleMobileLetsChatClick = () => {
 		setOverlay(true);
@@ -42,22 +43,26 @@ const Navbar = () => {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [])
 
-	const getDelayTime = (i: number) => {
-		switch (i) {
-			case 0:
-				return "700ms";
-			case 1:
-				return "800ms";
-			case 2:
-				return "900ms";
-			case 3:
-				return "1000ms";
-		}
-	};
+	// const getDelayTime = (i: number) => {
+	// 	switch (i) {
+	// 		case 0:
+	// 			return "700ms";
+	// 		case 1:
+	// 			return "800ms";
+	// 		case 2:
+	// 			return "900ms";
+	// 		case 3:
+	// 			return "1000ms";
+	// 	}
+	// };
 
-	const getTextColor = () => {
-		return themeClassBuilder({ color, el: "text" });
-	};
+	// const getTextColor = () => {
+	// 	return themeClassBuilder({ color, el: "text" });
+	// };
+
+	// const transition = useTransition(mobileMenu, {
+
+	// })
 
 	return (
 		<>
@@ -83,7 +88,7 @@ const Navbar = () => {
 										
 										${getBeforeBgColor(color)}
 										`}
-										onClick={() => handleClick(i)}
+										// onClick={() => handleClick(i)}
 									>
 										{item.label}
 									</Link>
@@ -115,6 +120,7 @@ const Navbar = () => {
 						className="flex flex-col justify-between items-center h-[36px] w-[40px] py-[8px]"
 						aria-label="toggle navigation menu"
 						onClick={() => setMobileMenu(!mobileMenu)}
+						aria-controls="mobile-menu"
 					>
 						<div
 							className={`${mobileMenu
@@ -137,9 +143,12 @@ const Navbar = () => {
 					</button>
 				</div>
 				<nav
-					className={`${mobileMenu ? "scale-100 opacity-100  z-[-1]" : "scale-0 opacity-0 "
-						} 
-                w-full absolute top-0 transition-all duration-700 origin-top-right`}
+					className={`${mobileMenu ? "scale-100 opacity-100  z-[-1]" : "scale-0 opacity-0"
+						} w-full absolute top-0 transition-all duration-700 origin-top-right`}
+					aria-hidden={!mobileMenu}
+					aria-disabled={!mobileMenu}
+					id="mobile-menu"
+					
 				>
 					<span
 						className={`absolute rounded-full right-0  w-[30px] h-[30px] transition-all duration-700 
@@ -149,36 +158,10 @@ const Navbar = () => {
 					></span>
 					<ul className={`mt-[150px]`}>
 						{navLinks.map((item, i) => (
-							<li key={i} className={`mb-[10px]`}>
-								<Link
-									to={item.link}
-									className={`mobileMenu-item-animation flex md:hidden text-2xl tracking-wider font-medium text-white px-6 py-2 text-center relative w-full flex-row justify-center
-									${mobileMenu ? "in" : "out"}
-                  `}
-									style={{ transitionDelay: mobileMenu ? getDelayTime(i) : "" }}
-								>
-									{item.label}
-								</Link>
-							</li>
+							<AnimatedLinks active={mobileMenu} index={i} navItem={item} key={i} />
 						))}
 					</ul>
-
-					<div
-						className={`mobileMenu-item-animation px-[24px] mt-[20px] relative flex flex-row justify-center max-w-[300px] mx-auto
-                    ${mobileMenu
-								? "mobileMenu-lets-chat-btn-in"
-								: "mobileMenu-lets-chat-btn-out"
-							}
-                    `}
-					>
-						<Button
-							label="Let's chat"
-							backgroundColor="bg-white"
-							large
-							textColor={themeClassBuilder({ color, el: "text" })}
-							onClick={handleMobileLetsChatClick}
-						/>
-					</div>
+					<AnimatedButton active={mobileMenu} />
 				</nav>
 			</div>
 		</>
@@ -187,7 +170,13 @@ const Navbar = () => {
 
 export default Navbar;
 
-export const navLinks = [
+
+type NavLinksDataType = {
+	label: 'Home' | 'About' | 'Blogs',
+	link: string
+}
+
+export const navLinks: NavLinksDataType[] = [
 	{
 		label: "Home",
 		link: "/",
@@ -218,3 +207,67 @@ const NavIcon = ({ bgColor }: INavIconProps) => {
 		</Link>
 	);
 };
+
+
+interface AnimatedLinks {
+	index: number,
+	active: boolean,
+	navItem: NavLinksDataType
+}
+
+const AnimatedLinks = ({index, active, navItem}: AnimatedLinks) => {
+
+	const transitions = useTransition(active, {
+		from: { opacity: 0, bottom: -20 },
+		enter: { opacity: 1, bottom: 0 },
+		delay: 700 + (index*200),
+		config: { tension: 230, friction: 18, mass: 2},
+		expires: true,
+	});
+
+
+	return transitions(
+		(style, item) =>
+			item && (
+				<animated.li style={style} className='relative'
+				>
+					<Link
+						to={navItem.link}
+						className={`flex md:hidden text-2xl tracking-wider font-medium text-white px-6 py-2 text-center relative w-full flex-row justify-center
+						`}
+					>
+						{navItem.label}
+					</Link>
+				</animated.li>
+			)
+	);
+};
+
+
+const AnimatedButton = ({active}: {active: boolean}) => {
+	const { color, setOverlay } = useGlobalContext()
+
+	const transitions = useTransition(active, {
+		from: { opacity: 0, bottom: -20 },
+		enter: { opacity: 1, bottom: 0 },
+		delay: 1300,
+		config: { tension: 270, friction: 15, mass: 2 },
+		expires: true,
+
+	});
+
+	return transitions(
+		(style, item) =>
+			item && (
+				<animated.div style={style} className='relative px-[24px] mt-[20px] relative flex flex-row justify-center max-w-[300px] mx-auto'>
+						<Button
+							label="Let's chat"
+							backgroundColor="bg-white"
+							large
+							textColor={themeClassBuilder({ color, el: "text" })}
+							onClick={() => setOverlay(true)}
+						/>
+				</animated.div>
+			)
+	);
+}
