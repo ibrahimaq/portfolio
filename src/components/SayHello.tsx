@@ -61,7 +61,7 @@ const SocialComp = ({color}: ISocialComp) => {
 	return (
 		<IconContext.Provider value={{ className: `w-[70px] h-[70px] ${themeClassBuilder({ color, el: 'text' })}` }}>
 			{socials.map((item, i) => (
-				<a key={i} href={item.link} className='shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300  rounded-full'>
+				<a key={i} href={item.link} target='_blank' rel="noreferrer noopener" className='shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300  rounded-full'>
 					{item.icon}
 				</a>
 			))}
