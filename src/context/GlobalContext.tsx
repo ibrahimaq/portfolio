@@ -43,7 +43,7 @@ export const GlobalContextProvider = ({ children }: Props) => {
 	const setTheme = (themeColor: string) => {
 		localStorage.setItem(localStorageKeyName, themeColor);
 		setColor(themeColor as ColorType)
-		console.log(themeColor)
+		// console.log(themeColor)
 
 	}
 

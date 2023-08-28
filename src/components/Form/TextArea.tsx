@@ -27,14 +27,14 @@ const TextArea = ({ onValueUpdate, label, id, placeholder, initialError }: IText
 
   useEffect(() => {
     if (initialError) setError(initialError)
-    console.log(initialError)
+    // console.log(initialError)
   }, [initialError])
 
 
   const handleBlur = () => {
     setError('')
     setValidated(false)
-    console.log(value.length)
+    // console.log(value.length)
     
       const result = validator('message', value)
       if (result.valid) setValidated(true)
