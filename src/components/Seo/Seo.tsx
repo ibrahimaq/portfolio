@@ -63,6 +63,8 @@ const Seo = ({title, description, ogType, ogImage}: propType) => {
             <meta name="twitter:url" content={"ibrahimaq.com"} />
             <meta name="twitter:image" content={ogImage? ogImage : logoSrc} />
             <meta name="twitter:creator" content="@ibrahimaq30" />
+
+            <meta name="color-scheme" content="light" />
           
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
             
