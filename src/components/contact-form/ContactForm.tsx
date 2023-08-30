@@ -60,7 +60,7 @@ const ContactForm = () => {
         `${process.env.GATSBY_EMAILJS_USER_ID}`
       )
       .then(res => {
-        console.log("SUCCESS! ", res.status, res.text)
+        // console.log("SUCCESS! ", res.status, res.text)
         // setSubmitSuccess(true);
         // setShowAlert(false);
         setLoading(false);
@@ -68,7 +68,7 @@ const ContactForm = () => {
       })
 
       .catch(err => {
-        console.log("FAILED ", err)
+        // console.log("FAILED ", err)
         // setShowAlert(true);
         setFormValidation({ ...formValidation, isSubmit: false })
       })

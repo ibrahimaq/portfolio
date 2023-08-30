@@ -52,7 +52,7 @@ const ContactForm = () => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		setLoading(true)
-		console.log('formValues: ', formValues)
+		// console.log('formValues: ', formValues)
 		await validateForm()
 
 	}
@@ -79,7 +79,7 @@ const ContactForm = () => {
 			const result = validator(key as keyof FormValuesType, value)
 
 			if (result) {
-				console.log('error: ', `${key}: ${result.message}`)
+				// console.log('error: ', `${key}: ${result.message}`)
 				setFormError((prevFormError) => ({
 					...prevFormError, [key]: result.valid ? '' : result.message,
 				}))
@@ -98,13 +98,13 @@ const ContactForm = () => {
 				`${process.env.GATSBY_EMAILJS_USER_ID}`
 			)
 			.then(res => {
-				console.log("SUCCESS! ", res.status, res.text)
+				// console.log("SUCCESS! ", res.status, res.text)
 				setLoading(false);
 				setFormIsSubmitted(true)
 			})
 
 			.catch(err => {
-				console.log("FAILED ", err)
+				// console.log("FAILED ", err)
 				setLoading(false)
 				setFormIsSubmitted(false)
 		

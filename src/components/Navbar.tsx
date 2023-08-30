@@ -25,10 +25,10 @@ const Navbar = () => {
 	useEffect(() => {
 		if (mobileMenu) {
 			document.body.classList.add("overflow-y-hidden");
-			console.log("no scroll");
+			// console.log("no scroll");
 		} else if (!mobileMenu) {
 			document.body.classList.remove("overflow-y-hidden");
-			console.log("scroll");
+			// console.log("scroll");
 		}
 	}, [mobileMenu]);
 
