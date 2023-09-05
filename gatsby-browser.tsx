@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalContextProvider } from './src/context/GlobalContext'
 import './src/styles/global.css';
+require("prismjs/themes/prism-tomorrow.css")
 
 // import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 // deckDeckGoHighlightElement();

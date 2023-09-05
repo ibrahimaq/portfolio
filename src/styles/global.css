@@ -101,23 +101,9 @@ input:-webkit-autofill {
 } 
 
 
-.prose code {
-  @apply bg-gray-200 text-gray-800 px-1 py-[2px] rounded-[3px];
+.prose p code.language-text {
+  @apply px-1 py-[2px] rounded-[3px];
 }
+/* !bg-gray-300  */
 
-
-:root{
-  --deckgo-highlight-code-white-space: nowrap;
-} 
-
-/* CODE BLOCK CUSTOM PROPERTIES  */
-/* :root {
-    --deckgo-highlight-code-carbon-toolbar-display: none;
-    --deckgo-highlight-code-carbon-box-shadow: rgba(0, 0, 0, 0.55) 0 6px 10px;
-    --deckgo-highlight-code-scroll: scroll !important;
-    --deckgo-highlight-code-container-width: 100% !important;  
-} */
-.deckgo-highlight-code-carbon {
-  @apply mx-1 sm:mx-4 shadow-lg text-sm md:text-base;
-}
 

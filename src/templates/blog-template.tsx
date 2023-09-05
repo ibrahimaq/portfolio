@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import Layout from "../components/layout/Layout"
 import Seo from "../components/Seo/Seo"
 import { getSrc } from "gatsby-plugin-image"
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Book from "../assets/icons/Book"
 import AllCards from "../components/cards/AllCards"
 import TagsList from "../components/TagsList"
@@ -22,7 +21,6 @@ interface IBlogTemplate {
 const BlogTemplate = ({ data }: IBlogTemplate) => {
   const [filteredBlogs, setFilteredBlogs] = useState<Queries.ContentfulBlog[] | null>(null);
   // code block highlighter
-  deckDeckGoHighlightElement();
 
   const { color } = useGlobalContext();
 
@@ -93,9 +91,9 @@ const BlogTemplate = ({ data }: IBlogTemplate) => {
         
 
           <section 
-          className={`pt-10 prose prose-lg lg:prose-xl mx-auto prose-headings:text-dark
+          className={`blog-template pt-10 prose prose-lg lg:prose-xl mx-auto prose-headings:text-dark
           prose-code:font-medium prose-code:!text-base prose-code:whitespace-nowrap prose-blockquote:overflow-auto 
-          prose-blockquote:border-l-${color}-600 prose-blockquote:bg-${color}-600 prose-blockquote:bg-opacity-5 prose-a:decoration-accent-1
+          prose-blockquote:border-l-${color}-600 prose-blockquote:bg-${color}-600 prose-blockquote:bg-opacity-5 prose-blockquote:font-light prose-a:decoration-accent-1
               prose-figcaption:text-center ${color? getLiMarkerStyle(color) : 'prose-li:marker:text-indigo-600'}
           `}>
             <div

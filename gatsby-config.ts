@@ -73,12 +73,7 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-highlight-code`,
-            options: {
-              terminal: "carbon",
-              theme: "bdracula",
-              lineNumbers: true,
-            },
+            resolve: `gatsby-remark-prismjs`,
           },
           {
             resolve: `gatsby-remark-images-contentful`,
