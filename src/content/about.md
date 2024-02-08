@@ -17,6 +17,7 @@ Outside of coding, you'll find me reading about the universe and its mysteries, 
 - Bootstrap/Tailwind
 - JavaScript
 - React/TypeScript
+- Nextjs
 - Gatsby
 - GraphQL
 - Jest and React-testing-library
