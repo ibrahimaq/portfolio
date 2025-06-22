@@ -5,4 +5,3 @@ featuredImage: company-website.png
 description: A business themed website with JavaScript-made carousel
 slug: company-website
 ---
-

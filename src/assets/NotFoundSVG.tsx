@@ -4,7 +4,7 @@ interface INotFoundSVG {
   customClass?: string
 }
 
-const INotFoundSVG = ({customClass}: INotFoundSVG) => (
+const INotFoundSVG = ({ customClass }: INotFoundSVG) => (
   <svg
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"

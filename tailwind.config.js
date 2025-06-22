@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = ['indigo', 'pink', 'cyan'];
+const colors = ["indigo", "pink", "cyan"]
 
-let safeList = [];
+let safeList = []
 const a = colors.forEach(color => {
   const text = `text-${color}-600`
   const bg = `bg-${color}-600`
@@ -15,20 +15,31 @@ const a = colors.forEach(color => {
   const blockquoteBLcolor = `prose-blockquote:border-l-${color}-600`
   const blockquoteBg = `prose-blockquote:bg-${color}-600`
   // const duration = 'duration'
-  safeList.push(text, bg, beforeBg, hoverBg, proseHeadings, decorationText, proseLiMarker, borderB, blockquoteBLcolor, blockquoteBg)
+  safeList.push(
+    text,
+    bg,
+    beforeBg,
+    hoverBg,
+    proseHeadings,
+    decorationText,
+    proseLiMarker,
+    borderB,
+    blockquoteBLcolor,
+    blockquoteBg
+  )
 })
 
 module.exports = {
-  content: [  
+  content: [
     "./src/pages/**/*.{js,jsx,ts,tsx}",
-    './src/components/**/*.{js, jsx,ts,tsx}',
-    './src/templates/**/*.{js, jsx,ts,tsx}',
-    './src/assets/**/*.{js, jsx,ts,tsx}',
+    "./src/components/**/*.{js, jsx,ts,tsx}",
+    "./src/templates/**/*.{js, jsx,ts,tsx}",
+    "./src/assets/**/*.{js, jsx,ts,tsx}",
   ],
   safelist: safeList,
   theme: {
     extend: {
-      colors: (theme) =>  ({
+      colors: theme => ({
         primary: theme.colors.indigo[600],
         backgroundDark: theme.colors.indigo[900],
         dark: theme.colors.zinc[700],
@@ -40,50 +51,46 @@ module.exports = {
         // 'white': '#FFFFFF',
         // 'font-greydark': '#545456',
         // 'font-greylight': '#E0E0E0',
-        'accent-1': '#5a9eaf',
-        'accent-2': '#D96299',
+        "accent-1": "#5a9eaf",
+        "accent-2": "#D96299",
       }),
       boxShadow: {
-        '3d': '3px 3px rgba(0, 0, 0, 1)',
-        'allRound': '0px 0px 14px 7px rgba(0,0,0,0.1);'
+        "3d": "3px 3px rgba(0, 0, 0, 1)",
+        allRound: "0px 0px 14px 7px rgba(0,0,0,0.1);",
       },
-      typography: (theme) => ({
+      typography: theme => ({
         DEFAULT: {
           css: {
-          //   maxWidth: '1200px'
-          // }
+            //   maxWidth: '1200px'
+            // }
             a: {
-              textUnderlineOffset: '4px',
+              textUnderlineOffset: "4px",
             },
             blockquote: {
               // maxWidth: "600px",
               margin: "0 20px",
               // backgroundColor: theme('colors.pink.50'),
               // borderLeftColor: theme('colors.accent-2'),
-              paddingTop: '1px',
-              paddingBottom: '1px',
-              paddingRight: '15px',
+              paddingTop: "1px",
+              paddingBottom: "1px",
+              paddingRight: "15px",
             },
-            'blockquote p:first-of-type::before': {
-              content: '',
+            "blockquote p:first-of-type::before": {
+              content: "",
             },
             code: {
-              margin: '0 5px',
+              margin: "0 5px",
             },
-            'code::before': {
-              content: '',
+            "code::before": {
+              content: "",
             },
-            'code::after': {
-              content: '',
+            "code::after": {
+              content: "",
             },
-            
-          
-          }
-        }
-      })
+          },
+        },
+      }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 }

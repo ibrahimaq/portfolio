@@ -6,7 +6,7 @@ import ButtonSpinner from "../Buttons/ButtonSpinner"
 
 const ContactForm = () => {
   // const [submitSuccess, setSubmitSuccess] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: null,
     email: null,
@@ -51,7 +51,7 @@ const ContactForm = () => {
   }, [formValidation.isSubmit])
 
   const submitForm = () => {
-    setLoading(true);
+    setLoading(true)
     emailjs
       .sendForm(
         `${process.env.GATSBY_EMAILJS_SERVICE_ID}`,
@@ -63,7 +63,7 @@ const ContactForm = () => {
         // console.log("SUCCESS! ", res.status, res.text)
         // setSubmitSuccess(true);
         // setShowAlert(false);
-        setLoading(false);
+        setLoading(false)
         navigate("/thank-you")
       })
 
@@ -93,19 +93,19 @@ const ContactForm = () => {
     if (!formData.message) {
       errors.message = "Message is required"
     } else if (formData.message.length < 10 || formData.message.length > 1000) {
-      errors.message =
-        "Message needs to be between 10 and 1000 characters long"
+      errors.message = "Message needs to be between 10 and 1000 characters long"
     }
 
     return errors
   }
 
-  const inputClassName = 'w-full bg-inherit text-font-greydark p-3 border-b border-b-gray-400 focus:border-b-gray-600  border-l border-l-gray-400 focus:border-l-gray-600 focus:outline-none';
+  const inputClassName =
+    "w-full bg-inherit text-font-greydark p-3 border-b border-b-gray-400 focus:border-b-gray-600  border-l border-l-gray-400 focus:border-l-gray-600 focus:outline-none"
 
-  const errClassName = 'text-rose-400';
+  const errClassName = "text-rose-400"
 
   return (
-      <form
+    <form
       ref={form}
       onSubmit={e => handleSubmit(e)}
       onChange={e => handleChange(e)}
@@ -122,7 +122,9 @@ const ContactForm = () => {
         name="name"
         className={`${inputClassName}`}
       />
-      {formValidation.errors.name && <p className={errClassName}>{formValidation.errors.name}</p>}
+      {formValidation.errors.name && (
+        <p className={errClassName}>{formValidation.errors.name}</p>
+      )}
 
       <label htmlFor="formEmail" hidden>
         Email
@@ -135,29 +137,34 @@ const ContactForm = () => {
         placeholder="Email"
         className={`mt-5 ${inputClassName}`}
       />
-      {formValidation.errors.email && <p className={errClassName}>{formValidation.errors.email}</p>}
+      {formValidation.errors.email && (
+        <p className={errClassName}>{formValidation.errors.email}</p>
+      )}
 
-      <label htmlFor="formMessage" hidden>Message</label>
-      <textarea 
-      name="message" 
-      id="formMessage"
-      cols="10" 
-      rows="5"
-      required
-      placeholder="Hello, how can I help?"
-      className={`mt-5 resize-none ${inputClassName}`}
+      <label htmlFor="formMessage" hidden>
+        Message
+      </label>
+      <textarea
+        name="message"
+        id="formMessage"
+        cols="10"
+        rows="5"
+        required
+        placeholder="Hello, how can I help?"
+        className={`mt-5 resize-none ${inputClassName}`}
       />
-      {formValidation.errors.message && <p className={errClassName}>{formValidation.errors.message}</p>}
+      {formValidation.errors.message && (
+        <p className={errClassName}>{formValidation.errors.message}</p>
+      )}
 
       <button
-      type="submit"
-      value='Send'
-      onClick={e => handleSubmit(e)}
-      className='px-3 py-3 mt-8 bg-blackBg text-greylightBg cursor-pointer flex justify-center items-center'
+        type="submit"
+        value="Send"
+        onClick={e => handleSubmit(e)}
+        className="px-3 py-3 mt-8 bg-blackBg text-greylightBg cursor-pointer flex justify-center items-center"
       >
         {loading && <ButtonSpinner />}
-        {!loading && 'Send Message'}
-        
+        {!loading && "Send Message"}
       </button>
     </form>
   )

@@ -9,12 +9,12 @@ interface ILayout {
 }
 const Layout = ({ children }: ILayout) => {
   return (
-    <div className='overflow-hidden min-h-screen flex flex-col'>
+    <div className="overflow-hidden min-h-screen flex flex-col">
       <Header />
       <Overlay />
-      <div className='flex-grow'>
+      <div className="flex-grow">
         <ThemeOption />
-        
+
         {children}
       </div>
       <Footer />
